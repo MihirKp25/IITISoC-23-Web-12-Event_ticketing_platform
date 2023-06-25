@@ -1,0 +1,67 @@
+html {
+    scroll-behavior: smooth;
+  }
+.navbar{
+    position: fixed;
+    width: 100%;
+    height: 89px;
+    top: 0;
+    display: flex;
+    z-index: 10;
+    background-color: #000000;
+    
+}
+.logo{
+    cursor: pointer;
+    margin-top: 9px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 65px;
+    width: 170px;
+    transition: 0.5s;
+}
+.logo:hover{
+    height: 67px;
+    margin-right: 20px;
+}
+
+.navbar ul{
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    display: flex;
+    padding-left: 190px;
+    margin-top: 30px;
+}
+.navbarli{
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    padding-right: 60px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.navbari{
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    transition: 0.5s;
+}
+.navbari:hover{
+    color: red;
+}
+.search{
+    font-size: 17px;
+    margin-left: 34px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    transition: 0.5s;
+}
+.search:hover{
+    color: red;
+}
+.icons{
+    margin-left: 450px;
+    margin-top: 27px;
+}
