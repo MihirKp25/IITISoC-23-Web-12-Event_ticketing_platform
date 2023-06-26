@@ -24,13 +24,13 @@ const TicketSchema =new mongoose.Schema({
         type: String,
       
     },
-    totalTickets:{
-        type:Number
-    },
-    remainingTickets:{
-        type:Number
-    },
-    ticketNumber:[]
+    // totalTickets:{
+    //     type:Number
+    // },
+    // remainingTickets:{
+    //     type:Number
+    // },
+    // ticketNumber:[]
 
 
 
