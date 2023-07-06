@@ -2,23 +2,32 @@
     background-color: rgb(31,31,31);
     position: relative;
     top:-60px;
-    height: 9122x;
+    height: 912px;
+    width: 100%;
     color: white;
     padding-top: 80px;
     font-family: 'Poppins', sans-serif;
 }
+.newContainer{
+    margin:100px;
+}
 input:focus {outline:none;}
 
 .top{
+    
     text-align: center;
     align-items: center;
     margin-bottom: 30px;
     font-family:  'Poppins', sans-serif;
     color: antiquewhite;
     font-weight: 900;
+    margin-top: 100px;
 }
 .right{
-    padding-left: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .inputform{
@@ -59,6 +68,7 @@ input:focus {outline:none;}
     border-radius: 3px;
 }
 .createtktbtn{
+    margin-left: 450px;
     width: 180px;
     height: 50px;
     margin-top: 25px;
@@ -70,3 +80,56 @@ input:focus {outline:none;}
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
 }
+.qwert{
+    display: flex;
+    margin-left: 120px;
+    text-align:center; align-items:center; margin-left:460px;
+}
+ @media(max-width:1000px){
+    .new{
+        width: 331%;
+        height: 3702px;
+    }
+    .newContainer{
+        margin-top: 200px;
+    }
+    .top{
+        display: flex;
+    }
+    .tip{
+        margin-left: 20rem;
+    }
+    .toptitle{
+        margin-top: 400px;
+        font-size: 150px;
+    }
+    .inputform{
+        display: flex;
+        flex-direction: column;
+        width: 1300px;
+
+    }
+    .inputlabel{
+        font-size: 60px;
+        padding-left: 30px;
+        padding-top: 20px;
+    }
+    .inputstyle{
+        margin-left: 30px;
+        width: 1180px;
+        height: 80px;
+        font-size: 55px;
+    }
+    .inputoption{
+        height: 80px;
+        width: 120px;
+        font-size: 40px;
+    }
+    .createtktbtn{
+        width: 402px;
+        height: 150px;
+        margin-top: 40px;
+        font-size: 50px;
+        
+    }
+} 

@@ -1,11 +1,32 @@
-
+.jhabi{
+    margin-left: 35px;
+    margin-right: 35px;
+    padding-bottom: 60px;
+    width: 370px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
 .card {
-    background-color: #b3b0b0;
-     
-     margin-top: 90px;
-     padding-left: 10px;
-     color: #000000;
+    background-color: rgb(22,22,22);
+    border-radius: 5px;
+    border: 1px gray solid;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
  
+ }
+
+.singleeventimg{
+    margin-top: 10px;
+    border-radius: 8px;
+    width: 350px;
+} 
+ .card-title{
+    font-size: 18px;
  }
  
  .card-text {

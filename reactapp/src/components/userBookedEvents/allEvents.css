@@ -1,9 +1,10 @@
 html{
     scroll-behavior: smooth;
-  }
+}
   
   .carrier{
   margin-top: 130px;
+  font-family: 'Poppins', sans-serif;
   }
   .row {
     display: flex;
@@ -118,8 +119,12 @@ html{
   }
   
     .listresults {
+      align-items: center;
+      justify-content: center;
+      padding-top: 100px;
       display: flex;
       flex-wrap: wrap;
+      background-color: rgb(31,31,31);
     }
   
   

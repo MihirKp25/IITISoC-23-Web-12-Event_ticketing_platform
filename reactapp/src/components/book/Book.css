@@ -1,9 +1,15 @@
 html{
   scroll-behavior: smooth;
+  font-family: 'Poppins', sans-serif;
 }
 
-.carrier{
-margin-top: 130px;
+.maincontainer{
+  background-color: rgb(31,31,31);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* .carrier{
+  padding-top: 130px;
 }
 .row {
   display: flex;
@@ -117,8 +123,64 @@ color: black;
 text-align: center;
 }
 
+ 
+/* 
+  ADITYA */
+.carrier{
+    padding-top: 170px;
+    padding-bottom: 40px;
+}
+.bookcontainer{
+  background-color: rgb(22,22,22);
+  width: 1075px;
+  display: grid;
+  grid-template-columns: 550px 550px;
+  align-items: center;
+  border: 1px solid gray;
+    border-radius: 5px;
+    padding-top: 15px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+  .labelkadiv{
+    width: 520px;
+    padding-top: 6px;
+    padding-bottom: 10px;
+  }
+  .labelinput{
+    margin-left: 13px;
+    color: rgb(235, 222, 204);
+    font-size: 12px;
+  }
+  .styleinput{
+    margin-left: 13px;
+    height: 40px;
+    width: 436px ;
+    background-color: rgb(39,39,39);
+    color: rgb(145, 145, 145);
+    border: 1px rgb(102, 102, 102) solid;
+    border-radius: 3px;
+  }
+
   .listresults {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  } 
+  .listresultitem{
     display: flex;
     flex-wrap: wrap;
+    margin-right: 20px;
+    margin-left: 20px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+    
+  }
+  .col-lg-4{
+    color: rgb(145, 145, 145);
+    border: 1px rgb(102, 102, 102) solid;
+    border-radius: 7px;
+    width: 500px;
   }
 

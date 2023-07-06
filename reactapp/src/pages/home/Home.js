@@ -50,8 +50,8 @@ export default function Home() {
       <Navbar />
       <div className="contone">
         <div className="contonecont">
-          <span className='lonetit' style={{ fontWeight: '900', fontSize: '65px' }}> <b> {user && "Hi "+user.firstname}</b><br/><b>Have any <span style={{ color: "red" }}>weekend plans?</span></b></span><br /><br />
-          <span className="lonecontent" style={{ fontWeight: '300' , fontSize:'15px'}}>Looking for something to do lately? Whether you're a local, new in town or just cruising <br />through we've got loads of great tips and events-from thrilling concerts to thought-provoking <br />conferences, we have a wide variety of experiences for you to choose from.You can explore<br /> by location, popularity, free stuff... you got this. Ready?</span><br /><br />
+          <span className='lonetit' > <b> {user && "Hi "+user.firstname}</b><br/><b>Have any <span style={{ color: "red" }}>weekend plans?</span></b></span><br /><br /><br/>
+          <div className="lonecontent" >Looking for something to do lately? Whether you're a local, new in town or just cruising through we've got loads of great tips and events-from thrilling concerts to thought-provoking conferences, we have a wide variety of experiences for you to choose from.You can explore by location, popularity, free stuff... you got this. Ready?</div><br /><br />
           <span className="clicknow" style={{ fontWeight: '300' }}>Book an event now!<FontAwesomeIcon icon={faArrowRight} className='arrowright' /></span>
         </div>
          {/* SEARCHBAR */}
@@ -67,27 +67,28 @@ export default function Home() {
        
 
        {/* UPCOMING EVENTS */}
-
-        <span><FontAwesomeIcon icon={faMapLocationDot} style={{ paddingTop: '70px', fontSize: '27px', paddingLeft: '137px', paddingRight: '30px' }} /></span>
+<br/>
+        <div className='findnewevents'><FontAwesomeIcon icon={faMapLocationDot} style={{ paddingTop: '70px', fontSize: '3em', paddingLeft: '137px', paddingRight: '30px' }} />
         <span className='idli'>FIND NEW UPCOMING EVENTS!</span><br /><span className="imlimli">Step out or stay in. Make a plan. Have a look at a few locations. </span>
-
+        </div>
         <Upcoming/>  
 
-        <a style={{ color: 'white', textDecoration: 'none'  }} href="/Book"><span className="imlimli idlidli" >and more.... </span></a><br />
+        <a style={{ color: 'white', textDecoration: 'none'  }} href="/Book"><span className="imlimli idlidli" >and more.... </span></a><br /><br/><br/><br/><br/>
 
-        <span><FontAwesomeIcon icon={faArrowTrendUp} style={{ paddingTop: '70px', fontSize: '27px', paddingLeft: '137px', paddingRight: '30px' }} /></span>
-
+        
 
         {/* EVENTS LIST */}
-
+        <div className='findnewevents'><FontAwesomeIcon icon={faArrowTrendUp} style={{ paddingTop: '70px', fontSize: '3em', paddingLeft: '137px', paddingRight: '30px' }} />
         <span className='idli'>TRENDING EVENTS</span><br /><span className="imlimli">Don't miss out on these trending events!! </span>
+        </div>
         <Event/>
-        <a style={{ color: 'black', textDecoration: 'none' }} href="/Book"><span className="imlimli idlidli" >and more.... </span></a><br />
+        <a style={{ color: 'black', textDecoration: 'none' }} href="/Book"><span className="imlimli idlidli" >and more.... </span></a><br /><br/><br/><br/><br/>
 
         {/* BROWSE BY GENRES */}
 
-        <span><FontAwesomeIcon icon={faList} style={{ paddingTop: '70px', fontSize: '27px', paddingLeft: '137px', paddingRight: '30px' }} /></span>
+        <div className='findnewevents'><FontAwesomeIcon icon={faList} style={{ paddingTop: '70px', fontSize: '3em', paddingLeft: '107px', paddingRight: '30px' }} />
         <span className='idli'>BROWSE EVENTS BY GENRES</span><br /><span className="imlimli">Check out your favourite genres!! </span>
+        </div>
         <Genre />
 
 
@@ -95,19 +96,19 @@ export default function Home() {
 
       <div className="conttwo">
         <div className="conttwocont">
-          <span className='ltwotit' style={{ fontWeight: '900', fontSize: '65px', color: 'white' }}><b>Got an act <span style={{ color: "#3978ff" }}>worth showing?</span></b></span><br /><br />
-          <span className="ltwocontent" style={{ fontWeight: '300', color: 'white' }}>Publish your event in under five minutes.
-            Craft unique experiences using our simple<br /> and powerful event platform. Create, ticket and host both on-ground and digital<br /> events on a platform used by millions of live event loving fans.</span><br /><br />
-          <span className="clicknoq" style={{ fontWeight: '300' }}><a href = "/event" style={{textDecoration:'none'}}>Create event!<FontAwesomeIcon icon={faArrowRight} className='arrowright' /></a></span>
+          <span className='ltwotit'><b>Got an act <span style={{ color: "#3978ff" }}>worth showing?</span></b></span><br /><br />
+          <span className="ltwocontent">Publish your event in under five minutes. Craft unique experiences using our simple and powerful event platform. Create, ticket and host both on-ground and digital events on a platform used by millions of live event loving fans.</span><br /><br />
+          <span className="clicknoq" ><a href = "/event" style={{textDecoration:'none'}}>Create event!<FontAwesomeIcon icon={faArrowRight} className='arrowright' /></a></span>
         </div>
-      </div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      </div>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
       <div className="contfour">
         <div className="contfourcont">
-          <b><span className='ltwotit' style={{ fontWeight: '900', fontSize: '65px', color: 'white' }}><b><span style={{ color: "rgb(192, 255, 57)" }}>EVENTBRITE: </span>Ticketing<br /> made easy!</b></span><br /><br /></b>
-          <span className="ltwocontent" style={{ fontWeight: '300', color: 'white' }}>Publish your event in under five minutes.
-            Craft unique experiences using our simple<br /> and powerful event platform. Create, ticket and host both on-ground and digital<br /> events on a platform used by thousands of live event loving fans.</span><br /><br />
-          <span className="clicknoe" style={{ fontWeight: '300' }}>More about us!<FontAwesomeIcon icon={faArrowRight} className='arrowright' /></span>
+          <b><span className='ltwotit'><b><span style={{ color: "rgb(192, 255, 57)" }}>EVENTBRITE: </span>Ticketing made easy!</b></span><br /><br /></b>
+          <span className="ltwocontent" >Publish your event in under five minutes.
+            Craft unique experiences using our simple and powerful event platform. Create, ticket and host both on-ground and digital events on a platform used by thousands of live event loving fans.</span><br /><br />
+          <span className="clicknoe clicknoq" style={{ fontWeight: '300' }}>More about us!<FontAwesomeIcon icon={faArrowRight} className='arrowright' /></span>
 
         </div>
 

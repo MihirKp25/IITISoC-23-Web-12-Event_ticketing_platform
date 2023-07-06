@@ -1,40 +1,47 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./singleEvent.css"
 import { format } from 'date-fns'
 import TicketDetails from "./ticketDetails";
-
-const searchitem = ({ details}) => {
+import Model from './Model.jsx'
+const Searchitem = ({ details}) => {
+  const [openmodel, setopenmodel]=useState(false)
   return (
-    <>
+    <div>
+    <div>
       
         
-          <div class="col-lg-4">
+          <div class="jhabi">
 
             <div class="card">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-PYJfcaNbGeylYwwFBKhnWtmHUZKtav6IQ&usqp=CAU" class="img-fluid rounded-start" alt="..." />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-PYJfcaNbGeylYwwFBKhnWtmHUZKtav6IQ&usqp=CAU" className="singleeventimg" alt="..." />
 
               <div class="card-body">
-                <h5 class="card-title">{details.eventId.name}</h5>
-                <p class="card-title">{details.eventId.purchaseDate}</p>
-                <p class="card-title">{details.eventId.quantity}</p>
+                <div style={{textAlign:'center'}}><h1 class="card-title" style={{fontSize:'25px'}}><b>{details.eventId.name}</b></h1></div><br/>
+                <span class="card-title">{details.purchaseDate}</span><br/>
+                <span class="card-title">{details.quantity}</span><br/>
                 
+                 {/* MAKE A POP UP FOR THESE    */}
+                 <TicketDetails ticketinfo={details}/>
+               <div style={{display:'flex',alignItems:'center', justifyContent:'center', paddingTop:'30px'}}>
+                  <button className="openModalBtun" onClick={()=>{setopenmodel(true);}} >See Ticket Details</button>
+                  </div>
                 
-               
-                  <button className="btn btn-success" >See Ticket Details</button>
-                
-                  {/* MAKE A POP UP FOR THESE    */}
-                <TicketDetails ticketinfo={details}/>
+                 
 
 
 
               </div>
             </div>
           </div>
+          
      
       
-    </>
+    </div>
+    {openmodel && <Model closemodel={setopenmodel}/>}
+    </div>
   )
 };
 
-export default searchitem
+export default Searchitem
   ;

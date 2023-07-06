@@ -1,4 +1,4 @@
-
+import './createTicket.css';
 import { useContext, useState } from "react";
 import { TicketInputs } from "../../formSource";
 import { EventInputs } from "../../formSource";
@@ -26,8 +26,7 @@ const NewTicket = ({infoEvent}) => {
         
         try {
             const newTicket = {
-                ...info,
-              
+                ...info
               };
               console.log(newTicket);
         //  await axios.post("/event", infoEvent);    
@@ -42,14 +41,14 @@ const NewTicket = ({infoEvent}) => {
 
 
     return (
-        <div className="new">
-            <div className="newContainer" style={{marginLeft:100}}>
+        <div className="newa">
+            <div className="newContainer pop" >
                 <div className="top">
-                    <h1 style={{marginLeft:'-106px'}}><b>Add Tickets</b></h1>
+                    <h1 className="toptitle"><b>Add Tickets</b></h1>
                 </div>
 
-                <div className="right">
-                    <form className='inputform'>
+                <div className="righta">
+                    <form className='inputform' >
 
                         {TicketInputs.map((input) => (
                             <div className="formInput" key={input.id}>
@@ -77,7 +76,7 @@ const NewTicket = ({infoEvent}) => {
                                     ))}
                             </select>
                         </div> */}
-                        <div style={{textAlign:"center", alignItems:"center", marginLeft:'460px'}}>
+                        <div style={{display:'flex',textAlign:"center", alignItems:"center"}}>
                         <button className="createtktbtn" onClick={handleClick}>Create Tickets</button>
                         </div>
                     </form>

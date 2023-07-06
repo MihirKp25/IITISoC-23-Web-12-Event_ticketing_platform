@@ -11,19 +11,19 @@ export default function Footer() {
         <hr className='line'/>
         <div className="wer">
         <div className="footercontent">
-            <span className="title">HOME</span><br/>
-            <span className="contenttitle">Industrial Cybersecurity<br/></span>
-            <span className="contenttitle"> Healthcare Cybersecurity<br/></span>
-            <span className="contenttitle">Commercial Cybersecurity</span>
+            <span className="title"><b>HOME</b></span><br/>
+            <span className="contenttitle">Industrial <br/></span>
+            <span className="contenttitle"> Healthcare <br/></span>
+            <span className="contenttitle">Commercial </span>
           
         </div>
         <div className="footercontent">
-            <span className="title">BOOK EVENT</span><br/>
+            <span className="title"><b>BOOK EVENT</b></span><br/>
             <span className="contenttitle">Research</span><br/>
             <span className="contenttitle">PGP Key<br/></span>
         </div>
         <div className="footercontent">
-            <span className="title">CREATE EVENT</span><br/>
+            <span className="title"><b>CREATE EVENT</b></span><br/>
             <span className="contenttitle">About us</span><br/>
             <span className="contenttitle">Newsroom<br/></span>
         </div>

@@ -31,7 +31,7 @@ function Navbar() {
           <li className='navbarli'><a className="navbari"href = "/About">ABOUT US</a></li>
         </ul>
 
-        {  user ? (<><span style={{color:"white"}} onClick={handleClick}>Logout</span> <h3 style={{color:"white"}}>{user.firstname}</h3></>) :   <div className="icons" style={{display:'flex'}}>
+        {  user ? (<><span style={{color:"white"}} onClick={handleClick}>Logout</span> <span className="usernameo"style={{color:"white"}}>{user.firstname}</span></>) :   <div className="icons" style={{display:'flex'}}>
           <li className='iconli'><a href="/register"><FontAwesomeIcon icon={faMagnifyingGlass} className='search' /></a></li>
          <li className='iconli'><a href="/Login"><FontAwesomeIcon icon={faUser} className='search'/></a></li> 
         

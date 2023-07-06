@@ -5,10 +5,9 @@ import { EventInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 import NewTicket from "../createTicket/createTicket";
-
+import ViewCreatedEvents from "../viewCreatedEvents/viewCreatedEvents";
 
 const NewEvent = () => {
-  const [numTicketTypes, setNumTicketTypes] = useState(1)
   // const [files, setFiles] = useState("");
   const [responseValue, setResponseValue] = useState(null);
   const [info, setInfo] = useState({});
@@ -19,7 +18,6 @@ const NewEvent = () => {
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-    setNumTicketTypes(e.target.value);
   };
 
     // const handleSelect = (e) => {
@@ -50,8 +48,8 @@ const NewEvent = () => {
       <Navbar />
 
       <div className="newContainer" style={{margin:100}}>
-        <div className="top">
-          <h1><b>Add New Event</b></h1>
+        <div className="top tip">
+          <h1 className="toptitle"><b>Add New Event</b></h1>
         </div>
 
         <div className="right">
@@ -82,13 +80,6 @@ const NewEvent = () => {
                 <option className="inputoption"value={false}>Paid</option>
               </select>
             </div>
-            <p>How many ticket types you want to keep</p>
-      <input
-        type="number"
-        id="numTicketTypes"
-        
-        onChange={handleChange}
-      />
             {/* <div className="selectTickets">
                 <label>Tickets</label>
                 <select id="tickets" multiple onChange={handleSelect}>
@@ -103,21 +94,18 @@ const NewEvent = () => {
                 </select>
               </div> */}
 
-            <div style={{textAlign:"center", alignItems:"center", marginLeft:'460px'}}>
+            <div classname = "qwert">
             <button className="createtktbtn"onClick={handleClick}>Move to Create Ticket</button>
             </div>
           </form>
         </div>
       </div>
-     
-      
-   
-  
-    { ticketModal && Array.from({ length: numTicketTypes }).map(() => (
-        <NewTicket infoEvent={responseValue}  />
-      ))}
+      {ticketModal && 
+      <NewTicket infoEvent={responseValue}/>
+      }
+
         
-       
+        <ViewCreatedEvents/>
 
     
     </div>

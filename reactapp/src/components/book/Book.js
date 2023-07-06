@@ -35,32 +35,43 @@ const handleClick=()=>{
 
   return (
      
-    <div>
+    <div className='maincontainer'>
       <Navbar />
-     <>
+       
 
 
-        <div className="carrier">
-       <div className="searchbar">
+    <div className="carrier">
+      <div className="bookcontainer">
 
-        <label ><h5> Search Event location</h5></label>
-                    <input type="text" placeholder={city} onChange={(evt)=>{setDestination(evt.target.value)}} />
-                    
-                    <label ><h5>Event type</h5></label>
-                    <input type="text"  placeholder={type} onChange={(evt)=>{setType(evt.target.value)}}/>
-                    <label ><h5>Price <small>per ticket</small></h5> </label>
-                    <input type="number"  />
-                    <label><h5>No. of Tickets</h5> </label>
-                        < input type="number"  />
-                    </div>
-                    </div>
+        <div className='labelkadiv'><label className='labelinput' style={{fontWeight:'700'}} >Search Event location</label><br/>
+                    <input className="styleinput" type="text" placeholder={city} onChange={(evt)=>{setDestination(evt.target.value)}} />
+                {/* </div>     */}
+        </div> 
+
+        <div className='labelkadiv' style={{marginLeft:'50px'}}><label className='labelinput' style={{fontWeight:'700'}} >  Event type</label><br/>
+                    <input className="styleinput" type="text"  placeholder={type} onChange={(evt)=>{setType(evt.target.value)}}/>
+        </div>
+
+        <div className='labelkadiv'><label className='labelinput' style={{fontWeight:'700'}} >Price per ticket</label><br/>
+                    <input className="styleinput" type="number"  />
+        </div>
+
+        <div className='labelkadiv' style={{marginLeft:'50px'}}><label className='labelinput' style={{fontWeight:'700'}}>   No. of Tickets   </label><br/>
+                        <input className="styleinput" type="number"  /></div>
+      </div>
+    </div>
 
               
-
+    <span style={{marginLeft:'450px', paddingLeft:'50px'}}><h1>Search results:</h1></span><br/><br/>
 <div className="listresults">
   
+  
+ 
+  
   {data.map((item)=>(
+    <div className="listresultitem">
         <Sitem item={item} key={item._id}/>
+    </div>    
   ))}
 
 
@@ -72,7 +83,7 @@ const handleClick=()=>{
 
 
 
-</>
+  
 </div>
   )
 }

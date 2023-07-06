@@ -23,11 +23,13 @@ export default function Event(){
          
           <div className="trendbox"> <img className="trendboximg" src={event.photos[0]}></img>
           {/* <p><CountDown Eventdate={event.date}/></p> */}
+          <div className="trendboxcont">
           <p>{event.date}</p>
           <p>{event.desc}</p>
           <p>{event.city} ,{event.country}</p>
           <p>{event.type}</p>
           <p>ONLINE MODE</p>
+          </div>
        </div>
         ))}
       

@@ -33,35 +33,16 @@ export default function Book() {
 const handleClick=()=>{
   reFetch();
 };
-  
-
-
   return (
-     
     <div>
       <Navbar />
      <>
 
-
-      
-
-              
-
 <div className="listresults">
-
 {uniqueData.map((item)=>(
              <SingleEvent details={item}  />
   ))}
-
-
 </div> 
-
-                    
-                              
-
-
-
-
 </>
 </div>
   )
