@@ -6,9 +6,12 @@ import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 import NewTicket from "../createTicket/createTicket";
 import ViewCreatedEvents from "../viewCreatedEvents/viewCreatedEvents";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp} from '@fortawesome/free-solid-svg-icons';
+
 
 const NewEvent = () => {
-  // const [files, setFiles] = useState("");
+  const [files, setFiles] = useState("");
   const [responseValue, setResponseValue] = useState(null);
   const [info, setInfo] = useState({});
   const [ticketModal, setTicketModal] = useState(false);
@@ -33,7 +36,24 @@ const NewEvent = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-     const newevent={...info};
+      const list = await Promise.all(
+        Object.values(files).map(async (file) => {
+          const data = new FormData();
+          data.append("file", file);
+          data.append("upload_preset", "upload");
+          const uploadRes = await axios.post(
+            "https://api.cloudinary.com/v1_1/dg7seerl9/image/upload",
+            data
+          );
+
+          const { url } = uploadRes.data;
+          
+        })
+      );
+
+    
+
+     const newevent={...info, photos: list,};
       console.log(info);
       const response=await axios.post("/event", newevent);
       setResponseValue(response.data);
@@ -54,6 +74,18 @@ const NewEvent = () => {
 
         <div className="right">
           <form className="inputform">
+          <div className="formInput">
+                <label htmlFor="file">
+                  Images: <FontAwesomeIcon icon={faArrowUp} className='arrowright' />
+                </label>
+                <input
+                  type="file"
+                  id="file"
+                  multiple
+                  onChange={(e) => setFiles(e.target.files)}
+                  style={{ display: "none" }}
+                />
+              </div>
 
             {EventInputs.map((input) => (
               <div className="formInput" key={input.id}>
