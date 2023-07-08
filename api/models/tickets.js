@@ -17,9 +17,11 @@ const TicketSchema =new mongoose.Schema({
      
         min:0,
     },
-    date:[{
-        type:String,
-    }],
+    date:{
+        startDate: Date,
+        endDate: Date,
+        key: String
+      },
     desc: {
         type: String,
       

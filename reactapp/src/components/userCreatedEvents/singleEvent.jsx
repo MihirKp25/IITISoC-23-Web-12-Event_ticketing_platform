@@ -15,14 +15,15 @@ const searchitem = ({ details}) => {
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-PYJfcaNbGeylYwwFBKhnWtmHUZKtav6IQ&usqp=CAU" class="img-fluid rounded-start" alt="..." />
 
               <div class="card-body">
-                <h5 class="card-title">{details.name}</h5>
-                 <p class="card-title">{details.date}</p>
-                <p class="card-title">{details.type}</p> 
+                 <h5 class="card-title"> {details.name}</h5>
+                 <p class="card-title">Event Starts : {details.date.startDate}</p>
+                 <p class="card-title">Event Ends : {details.date.startDate}</p>
+                 <p class="card-title">Event Type: {details.type}</p> 
+                 <p class="card-title">Event Type: {details.address}, {details.city}, {details.country}</p> 
               
-                  <button className="btn btn-success" >Check Event Details</button>
-                
+           
                   {/* MAKE A POP UP FOR THESE    */}
-                <Link to={`/user/details/${details._id}`} ><button>See DETAILS</button></Link>
+                 <Link to={`/user/details/${details._id}`} ><button>See DETAILS</button></Link>
               
                  
 
@@ -37,5 +38,4 @@ const searchitem = ({ details}) => {
   )
 };
 
-export default searchitem
-  ;
+export default searchitem;

@@ -72,11 +72,38 @@ module.exports.getEvents = async (req,res,next)=>{
     const {type,location}=req.query;  //To segregate min and max and others
     console.log(type);
        try{
+        let query = {};
+
+        if (location && type) {
+          query.city = location;
+          query.type = type;
+          const events = await Event.find(query).limit(req.query.limit);
+          console.log(events)
+          return   res.status(200).json(events); 
+        }
+
+        if (type) {
+          query.type = type;
+          const events = await Event.find(query).limit(req.query.limit);
+          console.log(events)
+            return res.status(200).json(events); 
+        }
+    
+        if (location) {
+          query.city = location;
+          const events = await Event.find(query).limit(req.query.limit);
+          console.log(events)
+          return   res.status(200).json(events); 
+        }
+   
+        const events=await Event.find().limit(req.query.limit);
+        return   res.status(200).json(events); 
+       
           
-           const events= await Event.find({type:type,
-               city:location 
-            } ).limit(req.query.limit); //NEW TRUE GIVES US UPDATED VALUE
-           res.status(200).json(events); 
+        
+        
+      
+      
        }
        catch(err){
            next(err);

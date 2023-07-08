@@ -15,17 +15,31 @@ import { useLocation } from 'react-router-dom';
 
 export default function Book() {
   const location = useLocation();
+  let city="";
+  console.log(location)
+ if(location.state){
+   city=location.state.state.city;
+  console.log(city);
+ }
+ 
+  const [destination, setDestination] = useState(city);
+  const [type, setType] = useState("");
   
  
-  const city=location.state.state.city;
-  console.log(city);
-  const [destination, setDestination] = useState(location.state.city);
-  const [type, setType] = useState("asd");
-  const [price, setPrice] = useState("");
- 
 
-  const { data, loading, error , reFetch} = useFetch(`/event?type=${type}&location=${destination}`);
+  const { data, loading, error , reFetch} = useFetch(`/event?type=${type }&location=${destination }`);
   console.log(data);
+  const handleChange1=(e)=>{
+    e.preventDefault();
+    setDestination(e.target.value);
+   
+    // reFetch();
+  }
+  const handleChange2=(e)=>{
+    e.preventDefault();
+    setType(e.target.value);
+    // reFetch();
+  }
 
 const handleClick=()=>{
   reFetch();
@@ -44,20 +58,15 @@ const handleClick=()=>{
       <div className="bookcontainer">
 
         <div className='labelkadiv'><label className='labelinput' style={{fontWeight:'700'}} >Search Event location</label><br/>
-                    <input className="styleinput" type="text" placeholder={city} onChange={(evt)=>{setDestination(evt.target.value)}} />
+                    <input className="styleinput" type="text" placeholder={city} onChange={handleChange1} />
                 {/* </div>     */}
         </div> 
 
         <div className='labelkadiv' style={{marginLeft:'50px'}}><label className='labelinput' style={{fontWeight:'700'}} >  Event type</label><br/>
-                    <input className="styleinput" type="text"  placeholder={type} onChange={(evt)=>{setType(evt.target.value)}}/>
+                    <input className="styleinput" type="text"  placeholder={type} onChange={handleChange2}/>
         </div>
 
-        <div className='labelkadiv'><label className='labelinput' style={{fontWeight:'700'}} >Price per ticket</label><br/>
-                    <input className="styleinput" type="number"  />
-        </div>
-
-        <div className='labelkadiv' style={{marginLeft:'50px'}}><label className='labelinput' style={{fontWeight:'700'}}>   No. of Tickets   </label><br/>
-                        <input className="styleinput" type="number"  /></div>
+    
       </div>
     </div>
 

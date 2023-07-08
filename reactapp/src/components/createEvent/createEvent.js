@@ -8,9 +8,16 @@ import NewTicket from "../createTicket/createTicket";
 import ViewCreatedEvents from "../viewCreatedEvents/viewCreatedEvents";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp} from '@fortawesome/free-solid-svg-icons';
+import { DateRangePicker } from 'react-date-range';
+import { DateRange } from 'react-date-range';
+import { format } from "date-fns";
+
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 
 const NewEvent = () => {
+  const [numTicketTypes, setNumTicketTypes] = useState(1)
   const [files, setFiles] = useState("");
   const [responseValue, setResponseValue] = useState(null);
   const [info, setInfo] = useState({});
@@ -19,8 +26,17 @@ const NewEvent = () => {
 
   const { data, loading, error } = useFetch("/event");
 
+  const [date, setDate] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: 'selection'
+    }
+  ]);
+
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setNumTicketTypes(e.target.value);
   };
 
     // const handleSelect = (e) => {
@@ -53,8 +69,8 @@ const NewEvent = () => {
 
     
 
-     const newevent={...info, photos: list,};
-      console.log(info);
+     const newevent={...info, photos: list,date:date[0]};
+      console.log(list);
       const response=await axios.post("/event", newevent);
       setResponseValue(response.data);
       console.log(response.data);
@@ -99,19 +115,30 @@ const NewEvent = () => {
             </div>
             ))}
             <div className="formInput">
-              <label className="inputlabel">Featured&ensp;</label>
+              <label className="inputlabel">Free/Paid&ensp;</label>
               <select className="inputoption" id="featured" onChange={handleChange}>
-                <option className="inputoption"value={false}>No</option>
-                <option className="inputoption"value={true}>Yes</option>
-              </select>
-            </div>
-            <div className="formInput">
-              <label className="inputlabel">Free or Paid &ensp; </label>
-              <select className="inputoption" id="freeOrPaid" onChange={handleChange}>
-                <option className="inputoption"value={true}>Free</option>
                 <option className="inputoption"value={false}>Paid</option>
+                <option className="inputoption"value={true}>Free</option>
               </select>
             </div>
+            <p>How many ticket types you want to keep</p>
+      <input
+        type="number"
+        id="numTicketTypes"
+        
+        onChange={handleChange}
+      />
+<div className="formInput">
+  <p>Select Date :</p>
+  <p>{`${format(date[0].startDate,"MM/dd/yyyy")} to ${format(date[0].endDate,"MM/dd/yyyy")}`}</p>
+<DateRange
+  editableDateInputs={true}
+  onChange={item => setDate([item.selection])}
+  moveRangeOnFirstSelection={false}
+  ranges={date}
+  minDate={new Date()}
+/>
+  </div>
             {/* <div className="selectTickets">
                 <label>Tickets</label>
                 <select id="tickets" multiple onChange={handleSelect}>
@@ -132,12 +159,10 @@ const NewEvent = () => {
           </form>
         </div>
       </div>
-      {ticketModal && 
-      <NewTicket infoEvent={responseValue}/>
-      }
-
+      { ticketModal && Array.from({ length: numTicketTypes }).map(() => (
+        <NewTicket infoEvent={responseValue}  />
+      ))}
         
-        <ViewCreatedEvents/>
 
     
     </div>

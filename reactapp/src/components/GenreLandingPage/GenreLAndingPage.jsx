@@ -6,22 +6,22 @@ export default function Genre(){
     return(
         <div className="genrecontainer">
         <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faUserGraduate} /><br/>
-          <span className='genrename'><b>EDUCATION</b></span>
+          <span className='genrename'><b>MUSIC CONCERTS</b></span>
         </div>
         <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faFootball} /><br/>
-          <span className='genrename'><b>SPORTS</b></span>
+          <span className='genrename'><b>SPORTS EVENTS</b></span>
         </div>
         <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faHeartPulse} /><br/>
           <span className='genrename'><b>HEALTH AND WELLNESS</b></span>
         </div>
         <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faGamepad} /><br/>
-          <span className='genrename'><b>GAMING</b></span>
+          <span className='genrename'><b>DANCE </b></span>
         </div>
         <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faMusic} /><br/>
-          <span className='genrename'><b>MUSIC</b></span>
+          <span className='genrename'><b>WORKSHOPS AND CLASSES</b></span>
         </div>
         <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faChildren} /><br/>
-          <span className='genrename'><b>KIDS</b></span>
+          <span className='genrename'><b>KIDS , GAMING</b></span>
         </div>
       </div>
     )

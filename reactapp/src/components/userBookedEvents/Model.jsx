@@ -1,74 +1,91 @@
 import React from 'react'
-
+import { useContext } from "react"
+import { AuthContext } from "../../hooks/context/AuthContext"
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./singleEvent.css"
 import { format } from 'date-fns'
-import TicketDetails from "./ticketDetails";
+
 import './Model.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faMapLocationDot, faArrowTrendUp, faBed, faCalendarDays, faList, faLocationDot, faUserGraduate, faMasksTheater, faHeartPulse, faGamepad, faMusic, faChildren,faClock, faLanguage, faMoneyBills, faPeopleArrows, faTags, faClockRotateLeft, faBookmark, faBook, faLocation} from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faMapLocationDot, faArrowTrendUp, faBed, faCalendarDays, faList, faLocationDot, faUserGraduate, faMasksTheater, faHeartPulse, faGamepad, faMusic, faChildren, faClock, faLanguage, faMoneyBills, faPeopleArrows, faTags, faClockRotateLeft, faBookmark, faBook, faLocation } from '@fortawesome/free-solid-svg-icons';
 import a from '../images/cntr2.jpg'
-function Model({closemodel}) {
+function Model({ closemodel, ticketinfo }) {
+
+  const {user}=useContext(AuthContext);
+
   return (
-  //  <div> 
-  //   <div className='modelbody'>
-  //     <div className="eventimg">
-  //       <img src={a} className='eventimg1'></img>
-  //     </div>
-  //     <div className="eventinfo1">
-  //       <span className='eventinfo1title'><b>Event name: </b></span><br/><br/>
-  //       <span className='eventinfo1title'><b>Event type: </b></span><br/><br/>
-  //       <span className='eventinfo1title'><b>Event date:</b> </span><br/><br/>
-  //       <span className='eventinfo1title'><b>Event venue:</b> </span><br/><br/>
-  //       <span className='eventinfo1title'><b>Ticket name:</b> </span><br/><br/>
-  //       <span className='eventinfo1title'><b>Ticket purchase date:</b> </span><br/><br/>
-  //       <span className='eventinfo1title'><b>No of tickets: </b></span><br/><br/>
-  //       <span className='eventinfo1title'><b>Total amount paid: </b></span><br/><br/>
-  //     </div>
-      
-  //     
-  //   </div>
-  //  </div> 
-  <div className="qwe">
-  <div className="eventcontaine" >
-    <div className="eventinf">
-      <img src={a} alt="" className="eventinfoim" />
-      <div className="abouteven">
-        
-        
+  
+    <div className="qwe">
+      <div className="eventcontaine" >
+        {/* <div className="eventinf">
+          <img src={a} alt="" className="eventinfoim" />
+          <div className="abouteven">
+
+
+          </div>
+
+        </div> */}
+        <div className="eventbrie">
+          <span className="eventtitle" style={{ fontSize: '30px', fontWeight: '1000', color: 'rgb(233, 231, 229)' }}><b>INSERT COURSE TITLE</b></span><br /><br />
+
+          <FontAwesomeIcon icon={faBookmark}></FontAwesomeIcon>
+          <span className="childtitl"><b>Event name: </b>{ticketinfo.eventId.name}</span><br />
+          {/* <span className="childinf">&ensp;{data.type}</span><br/><br/> */}
+          <FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon>
+          <span className="childtitl"><b>Event type: </b>{ticketinfo.eventId.type}</span><br />
+          {/* <span className="childinf">&ensp;{data.address} , {data.city} ,{data.country}</span><br/><br/> */}
+          <FontAwesomeIcon icon={faLanguage}></FontAwesomeIcon>
+          <span className="childtitl"><b>Event date:</b> {ticketinfo.eventId.date.startDate} to {ticketinfo.eventId.date.endDate}</span><br />
+          {/* <span className="childinf">&ensp;{data.city}</span><br/><br/> */}
+          <FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
+          <span className="childtitl"><b>Event venue:</b> {ticketinfo.eventId.address}  {ticketinfo.eventId.city}  {ticketinfo.eventId.country}</span><br />
+          <span className="childinf">&ensp;
+          <b>Ticket name:</b> {ticketinfo.ticketId.name}
+          </span><br />
+          <span className="childinf">&ensp;
+          <b>Ticket name:</b> {ticketinfo.ticketId.type}
+        </span><br/>
+        <span className="childinf">&ensp;
+        <b>Ticket purchase date:</b> {ticketinfo.purchaseDate}
+        </span><br/>
+        <span className="childinf">&ensp;
+        <b>No of tickets: </b>{ticketinfo.quantity}
+        </span><br/>
+        <FontAwesomeIcon icon={faMoneyBills} style={{ fontSize: '30px' }}></FontAwesomeIcon>&ensp;
+        <span className="childinf">&ensp;
+        <b>Total amount paid: </b>$ {ticketinfo.quantity * ticketinfo.ticketId.price}
+        </span><br/><br />
+        <span className="childinf">&ensp;
+        <b>Ticket Desc: </b><p>{ticketinfo.ticketId.desc}</p>
+        </span><br/>
+
+ 
+
+          <FontAwesomeIcon icon={faPeopleArrows}></FontAwesomeIcon>
+          <span className="childinf">&ensp;<p>For Further Details, Please check the mail send to your registered EmailId {user.email}</p></span><br /><br /><br />
+         
+          
+          <button className="openModalBt" onClick={() => closemodel(false)}>CLOSE</button>
+        </div>
       </div>
 
+      {/* make a space for qr code */}
+      <span></span><br />
+      <span></span><br />
+      <span></span><br />
+      <span></span><br />
+      <span></span><br />
+      <span></span><br />
+      <span></span><br />
+      <span></span><br />
+      <span></span><br />
+      
+
+
+
     </div>
-    <div className="eventbrie">
-      <span className="eventtitle" style={{fontSize:'30px', fontWeight:'1000', color:'rgb(233, 231, 229)'}}><b>INSERT COURSE TITLE</b></span><br/><br/>
- 
-      <FontAwesomeIcon icon = {faBookmark}></FontAwesomeIcon>
-      <span className="childtitl"> GENRE:</span><br/>
-        {/* <span className="childinf">&ensp;{data.type}</span><br/><br/> */}
-      <FontAwesomeIcon icon = {faLocationDot}></FontAwesomeIcon>
-      <span className="childtitl"> LOCATION:</span><br/>
-        {/* <span className="childinf">&ensp;{data.address} , {data.city} ,{data.country}</span><br/><br/> */}
-        <FontAwesomeIcon icon = {faLanguage}></FontAwesomeIcon>
-      <span className="childtitl"> CITY:</span><br/>
-        {/* <span className="childinf">&ensp;{data.city}</span><br/><br/> */}
-      <FontAwesomeIcon icon = {faClock}></FontAwesomeIcon>
-      <span className="childtitl"> DATE:</span><br/>
-        <span className="childinf">&ensp;
-        {/* {format(data.date, "MM/dd/yyyy")} */}
-        </span><br/><br/>
-      <FontAwesomeIcon icon = {faPeopleArrows}></FontAwesomeIcon>
-      <span className="childtitl"> ORGANISER:</span>
-        <span className="childinf">&ensp;NEED TO PASS</span><br/><br/><br/>
-        <FontAwesomeIcon icon = {faMoneyBills} style={{fontSize:'30px'}}></FontAwesomeIcon>&ensp;
-      <span className="eventprice" style={{marginRight:'100px', fontSize:'30px', fontWeight:'600'}}>₹ 100</span>
-       <button className="openModalBt" onClick={()=>closemodel(false)}>CLOSE</button>  
-    </div>  
-  </div>
- 
-    
-</div>
   )
 }
 

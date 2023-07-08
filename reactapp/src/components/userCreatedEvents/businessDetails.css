@@ -33,13 +33,13 @@ html{
       border-radius: 15px;
     }
     .eventbrief{
-      height: 400px;
+      /* height: 400px; */
       padding-top: 20px;
       padding-left: 15px;
       padding-right: 3px;
-      color:rgb(217, 216, 214);
+      color:rgb(238, 238, 237);
       border: 1px solid rgb(46, 46, 46);
-      background-color: rgb(45,45,45);
+      /* background-color: rgb(45,45,45); */
       border-radius: 15px;
       font-size: 16px;
     }
@@ -102,3 +102,8 @@ html{
     right: 10px;
     padding: 5px 7px;
   } */
+
+  .ticketbox{
+    background-color: rgb(57, 57, 57);
+    border-radius: 15px;
+  }

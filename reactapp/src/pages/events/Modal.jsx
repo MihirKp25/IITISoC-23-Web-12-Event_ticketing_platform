@@ -8,7 +8,7 @@ import axios from "axios";
 import { AuthContext } from '../../hooks/context/AuthContext';
 
 
-export default function Modal({closeModal,eventId}) {
+export default function Modal({closeModal,eventId,ticketDet}) {
   const {user}=useContext(AuthContext);
   const [openOptions, setOpenOptions] = useState(false);
   const [option, setOption] = useState({
@@ -25,13 +25,13 @@ console.log(data);
     });
   };
   console.log(option)
+  console.log(ticketDet)
 
   
 const handleClick=async ()=>{
-
+  
   try {
-        const purchase= await axios.post(`/ticket/purchase/${eventId}/${data._id}`,{eventId:eventId,ticketId:data._id,ticket:option.tickets,userId:user._id});    //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION  
-         await axios.post("/event/send-confirmation", {eventId:eventId,ticketId:data._id,ticket:option.tickets,userId:user._id} );
+        const purchase= await axios.post(`/ticket/purchase/${eventId}/${ticketDet._id}`,{eventId:eventId,ticketId:ticketDet._id,ticket:option.tickets,userId:user._id});   //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION
         closeModal(false);
   }
  catch(err){
@@ -48,19 +48,19 @@ const handleClick=async ()=>{
         <div className="title" style={{ fontWeight:'400', fontSize:'30px'}}>CONFIRM TICKET BOOKING </div>
         <span className="container">
           <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}><img src={a} alt="" className="modalimg" /></div>
-          <span className="details"><b>Details:</b><small>  {data.totalTickets} Tickets Remaining</small></span><br/>
+          <span className="details"><b>Details:</b><small>  {ticketDet.totalTickets} Tickets Remaining</small></span><br/>
           <FontAwesomeIcon icon = {faBookmark}></FontAwesomeIcon>
           <span className="modalchildtitle"><b> NAME:</b></span>
-            <span className="childinfo">&ensp;{data.name}</span><br/>
+            <span className="childinfo">&ensp;{ticketDet?.name}</span><br/>
           <FontAwesomeIcon icon = {faLocationDot}></FontAwesomeIcon>
           <span className="modalchildtitle"><b> CATEGORY:</b></span>
-            <span className="childinfo">&ensp;{data.type}</span><br/>
+            <span className="childinfo">&ensp;{ticketDet?.type}</span><br/>
             <FontAwesomeIcon icon = {faLanguage}></FontAwesomeIcon>
           <span className="modalchildtitle"><b> DESCRIPTION:</b></span>
-            <span className="childinfo">&ensp;{data.desc}</span><br/>
+            <span className="childinfo">&ensp;{ticketDet?.desc}</span><br/>
           <FontAwesomeIcon icon = {faClock}></FontAwesomeIcon>
           <span className="modalchildtitle"><b> PRICE <small>per Ticket</small> :</b></span>
-            <span className="childinfo">&ensp;<b> $ {data.price}</b></span><br/>
+            <span className="childinfo">&ensp;<b> $ {ticketDet?.price}</b></span><br/>
           <FontAwesomeIcon icon = {faPeopleArrows}></FontAwesomeIcon>
           <span className="modalchildtitle"><b> TICKET SALE ENDS:</b></span>
             <span className="childinfo">&ensp;RUKO zara sabar karo</span><br/><br/>
@@ -103,10 +103,11 @@ const handleClick=async ()=>{
                   </div>
                 )}
               </div>
-              <span className="modalchildtitle"><b>AMOUNT TO PAY : $ {option.tickets*data.price}</b>
+              <span className="modalchildtitle"><b>AMOUNT TO PAY : $ {option.tickets*ticketDet.price}</b>
          </span>
         <button className="openModalBtun" onClick={handleClick}>CONFIRM BOOKING</button>
-        <button className="openModalBtun" onClick={()=>closeModal(false)}>Cancel</button></div>
+        <button className="openModalBtun" onClick={()=>closeModal(false)}>Cancel</button>
+        </div>
       </div>
     </div>
   )
