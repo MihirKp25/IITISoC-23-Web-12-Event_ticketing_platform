@@ -101,9 +101,7 @@ const Event = () => {
             <button className="openModalBtn" onClick={handleClick}>BOOK NOW!</button>
 
           </div>
-          {openModal &&
-          <Modal closeModal={setopenModal} eventId={id} ticketDet={ticket} />
-        }
+       
 
 
         </div>
@@ -111,7 +109,9 @@ const Event = () => {
 
         {/* IF ? NOT GIVEN FOR TICKETTITLE WE GET ERROR OF TICKETTITLE NOT DEFINED */}
 
-
+        {openModal &&
+          <Modal closeModal={setopenModal} eventId={id} ticketDet={ticket} />
+        }
         
       </div>
 

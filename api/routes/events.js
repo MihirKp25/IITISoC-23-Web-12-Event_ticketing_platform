@@ -16,7 +16,7 @@ router.get("/countbycountries",countByCountry);
 
 router.get("/online",LandingPageEvent);
 
-router.post("/send-confirmation",ConfirmationMail);
+router.post("/sendconfirmation",ConfirmationMail);
 
 router.get("/",getEvents);
 

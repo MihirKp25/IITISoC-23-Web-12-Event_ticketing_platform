@@ -155,75 +155,80 @@ module.exports.BookTicket= async (req,res,next)=>{
     }
 };
 
-module.exports.ConfirmationMail= async(req,res)=>{
+module.exports.ConfirmationMail = async (req, res) => {
 
-    const {ticketId , userId, eventId} =req.body;
-    const user= User.findById(userId);
-    
-    const event= Event.findById(eventId);
-    const eventUserId= event.userId;
-    const sender= User.findById(eventUserId);
-    const senderMail= sender.email;
-    const userEmail =user.email;
-    const userName =user.name;
-    const eventname =event.name;
+  const { userId, purchaseId } = req.body;
+  const user = await User.findById(userId);
+  const purchase = await Purchase.findById(purchaseId);
+  console.log(purchase)
+  const event = await Event.findById(purchase.eventId);
+  const ticket = await Ticket.findById(purchase.ticketId);
+  console.log("EMAIL")
+  console.log(user.email)
 
-      const booking = {
-      userEmail,
-      userName,
-      senderMail,
-      eventname,
-      ticketId,
-      };
+  // const event= await  Event.findById(eventId);
+  // const eventUserId= event.userId;
+  // const sender=await User.findById(eventUserId);
+  // const senderMail= sender.email;
+  const userEmail = user.email;
+  // const userName =user.name;
+  // const eventname =event.name;
 
-    Purchase.findOne({ _id: ticketId }, (err, booking) => {
-        if (err) {
-          console.error(err);
-          res.status(500).json({ message: 'An error occurred' });
-          return;
-        }
-    
-        const qrCodeText = `Booking ID: ${ticketId}\nEvent: ${booking.eventname}`;
+
+
+
+  let config = {
+    service: 'gmail',
+    auth: {
+      user: 'eventticketing.team@gmail.com',
+      pass: 'whlviiqznhpebwxj'
+    }
+  }
+  let transporter = nodemailer.createTransport(config);
+          const qrCodeText = `
+          PurchaseId: ${purchaseId}
+          Name :${user.firstname} ${user.lastname}\n
+          email : ${user.email}
+          Ticket Type: ${ticket.type}\n
+          Quantity: ${purchase.quantity}\n,`;
         const qrCodeOptions = {
           errorCorrectionLevel: 'H',
           type: 'png',
           quality: 0.9,
           margin: 1,
         };
-    
-        qrcode.toDataURL(qrCodeText, qrCodeOptions, (error, qrCodeDataUri) => {
-          if (error) {
-            console.error(error);
-            res.status(500).json({ message: 'Failed to generate QR code' });
-            return;
-          }
-    
-          const mailOptions = {
-            from: booking.senderMail,
-            to: booking.userEmail,
-            subject: 'Event Booking Confirmation',
-            text: `Dear ${booking.userName},\n\nThank you for your event booking. Here are the details:\n\nEvent: ${booking.eventname}\n\nWe look forward to seeing you there!\n\nBest regards,\nYour Event Team`,
-            attachments: [
-              {
-                filename: 'qrcode.png',
-                content: qrCodeDataUri.split(';base64,').pop(),
-                encoding: 'base64',
-              },
-            ],
-          };
-    
-          transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-              console.error(error);
-              res.status(500).json({ message: 'Failed to send confirmation email' });
-              return;
-            }
-    
-            res.status(200).json({ message: 'Confirmation email sent' });
-          });
-        });
-      });
-    
-    
 
-}
+        qrcode.toDataURL(qrCodeText, qrCodeOptions, (error, qrCodeDataUri) => {
+                    if (error) {
+                      console.error(error);
+                      res.status(500).json({ message: 'Failed to generate QR code' });
+                      return;
+                    }
+
+
+  let mailOptions = {
+    from: 'eventticketing.team@gmail.com',
+    to: userEmail,
+    subject: 'Event Booking Confirmation',
+    text: `Dear ${user.firstname},
+    Thank you for booking your ticket for ${event.name}. We are pleased to inform you that your ticket has been successfully generated. Please find the details below:
+    Event: ${event.name}
+    Date: ${event.date.startDate} to ${event.date.endDate}
+    Location: ${event.address},${event.city}
+    Best Regards
+  `,
+    attachments: [
+      {
+        filename: 'qrcode.png',
+        content: qrCodeDataUri.split(';base64,').pop(),
+        encoding: 'base64',
+      },
+    ],
+  };
+
+  transporter.sendMail(mailOptions).then(() => { console.log("MAIL SEND SUCCESFULLY") })
+
+
+
+
+})}

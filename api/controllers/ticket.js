@@ -70,7 +70,6 @@ module.exports.getTickets= async (req, res, next) => {
     next(err);
   }
 };
-
 module.exports.purchaseTicket= async (req, res, next) => {
   try {
     const PurchaseInfo={
@@ -90,6 +89,9 @@ module.exports.purchaseTicket= async (req, res, next) => {
 
 
       await Ticket.findByIdAndUpdate(PurchaseInfo.ticketId,{totalTickets:RemainingTickets}).then(()=>{console.log("Updated")});
+     
+      console.log(TicketPurchaseInfo)
+      res.status(200).json(TicketPurchaseInfo)
     
     }
     catch(err){

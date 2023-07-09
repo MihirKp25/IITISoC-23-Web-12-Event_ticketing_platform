@@ -31,8 +31,10 @@ console.log(data);
 const handleClick=async ()=>{
   
   try {
-        const purchase= await axios.post(`/ticket/purchase/${eventId}/${ticketDet._id}`,{eventId:eventId,ticketId:ticketDet._id,ticket:option.tickets,userId:user._id});   //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION
-        closeModal(false);
+        const purchase= await axios.post(`/ticket/purchase/${eventId}/${ticketDet._id}`,{eventId:eventId,ticketId:ticketDet._id,ticket:option.tickets,userId:user._id});   //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION 
+       console.log(purchase.data._id)
+        await axios.post("/event/sendconfirmation",{userId:user._id,purchaseId:purchase.data._id})
+        // closeModal(false);
   }
  catch(err){
     console.log(err);
