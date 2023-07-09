@@ -17,6 +17,10 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 
 
 const NewEvent = () => {
+  const [opencal, setopencal] = useState(false);
+  const clickopencal= ()=>{
+    setopencal(true);
+  }
   const [numTicketTypes, setNumTicketTypes] = useState(1)
   const [files, setFiles] = useState("");
   const [responseValue, setResponseValue] = useState(null);
@@ -121,7 +125,7 @@ const NewEvent = () => {
                 <option className="inputoption"value={true}>Free</option>
               </select>
             </div>
-            <p>How many ticket types you want to keep</p>
+             <p className="inputlabel" >How many ticket types you want to keep</p>
       <input
         type="number"
         id="numTicketTypes"
@@ -129,8 +133,8 @@ const NewEvent = () => {
         onChange={handleChange}
       />
 <div className="formInput">
-  <p>Select Date :</p>
-  <p>{`${format(date[0].startDate,"MM/dd/yyyy")} to ${format(date[0].endDate,"MM/dd/yyyy")}`}</p>
+  <span id = 's'>Select Date :</span><br/>
+  <label id = 's'>{`${format(date[0].startDate,"MM/dd/yyyy")} to ${format(date[0].endDate,"MM/dd/yyyy")}`}</label><br/>
 <DateRange
   editableDateInputs={true}
   onChange={item => setDate([item.selection])}

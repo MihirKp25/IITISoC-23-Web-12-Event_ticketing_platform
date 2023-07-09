@@ -109,7 +109,7 @@ html{
     background-color: #262525;
   }
   .card{
-   margin-bottom: 5px;
+   /* margin-bottom: 5px; */
     
   }
   .searchbar>label{
@@ -122,4 +122,8 @@ html{
       flex-wrap: wrap;
     }
   
-  
+@media(max-width:1000px){
+  .listresults{
+    width: 71rem;
+  }
+}  

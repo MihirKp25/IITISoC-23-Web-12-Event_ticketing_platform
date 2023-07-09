@@ -49,22 +49,24 @@ export default function Business() {
     //   ))}
 
 
-    <div className="qwer">
+    <div className="qwir">
       <Navbar />
       <br /><br /><br /><br /><br />
       <div className="infofo" style={{ color: 'white' }}>INFO</div>
       <div className="eventcontaine" >
 
-        <div className="eventinfo">
-          <img src={a} alt="" className="eventinfoimg" />
+        <div className="eventinfo" id = "busdeteventinfo">
+          
           <div className="aboutevent">
-            <div className="eventtitle" style={{ textAlign: 'center', marginTop: '20px', fontSize: '35px' }}><b>{data.name}</b></div><br />
-            <div className="eventorganiser" style={{ textAlign: 'center', marginTop: '0px', fontSize: '29px' }}><b>BY:</b> <b>NEED TO BE PASSED</b></div>
+            <div className="eventtitle" id = "abevtit"><b>{data.name}</b></div><br />
+            <div className="eventorganiser" ><b>BY:</b> <b>NEED TO BE PASSED</b></div>
+            <span className="eventcontent">
             <p> Event Name: {data.name}</p>
             <p>Event Location: {data.address} , {data.city},{data.country}</p>
             <p>Event Time: {data.time}</p>
             <p>Event Type: {data.type}</p>
             <p>Event Description: {data.desc}</p>
+            </span>
           </div>
 
         </div>

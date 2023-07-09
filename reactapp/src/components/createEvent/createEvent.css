@@ -2,7 +2,7 @@
     background-color: rgb(31,31,31);
     position: relative;
     top:-60px;
-    height: 912px;
+    height: 1400px;
     width: 100%;
     color: white;
     padding-top: 80px;
@@ -42,11 +42,11 @@ input:focus {outline:none;}
 }
 
 .formInput{
-   
+   padding-right: 145px;
     padding-top: 6px;
     padding-bottom: 10px;
 }
-
+#numTicketTypes{width: 100px;left: -16rem; position: relative; background-color: rgb(31,31,31);color: white;border: 0px none; border-radius: 5px;}
 .inputlabel{
     color:rgb(235, 222, 204); font-size:12px;
 }
@@ -60,15 +60,15 @@ input:focus {outline:none;}
 
 .inputstyle{
     padding-left: 10px;
-    width: 400px;
-    height: 40px;
-    background-color: rgb(39,39,39);
+    width: 450px;
+    height: 55px;
+    background-color: rgb(235, 232, 220);
     color: rgb(145, 145, 145);
     border: 1px rgb(102, 102, 102) solid;
     border-radius: 3px;
 }
 .createtktbtn{
-    margin-left: 450px;
+    margin-left: 50px;
     width: 180px;
     height: 50px;
     margin-top: 25px;
@@ -88,7 +88,7 @@ input:focus {outline:none;}
  @media(max-width:1000px){
     .new{
         width: 331%;
-        height: 3702px;
+        height: 51752px;
     }
     .newContainer{
         margin-top: 200px;
@@ -131,5 +131,18 @@ input:focus {outline:none;}
         margin-top: 40px;
         font-size: 50px;
         
+    }
+    #numTicketTypes{
+        margin-bottom: 3rem;
+        border: 6px solid gray;
+        width: 22rem;
+        height: 10rem;
+        left: 4rem;
+    }
+    #s{
+        font-size: 4rem;
+    }
+    .rdrCalendarWrapper{
+        font-size: 45px;
     }
 } 

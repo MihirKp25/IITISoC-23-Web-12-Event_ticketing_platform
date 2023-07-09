@@ -52,14 +52,15 @@ export default function Home() {
         <div className="contonecont">
           <span className='lonetit' > <b> {user && "Hi "+user.firstname}</b><br/><b>Have any <span style={{ color: "red" }}>weekend plans?</span></b></span><br /><br /><br/>
           <div className="lonecontent" >Looking for something to do lately? Whether you're a local, new in town or just cruising through we've got loads of great tips and events-from thrilling concerts to thought-provoking conferences, we have a wide variety of experiences for you to choose from.You can explore by location, popularity, free stuff... you got this. Ready?</div><br /><br />
-          <span className="clicknow" style={{ fontWeight: '300' }}>Book an event now!<FontAwesomeIcon icon={faArrowRight} className='arrowright' /></span>
-        </div>
-         {/* SEARCHBAR */}
-        
-         <div className="input-group" id = "#searchbox" style={{marginLeft:'560px', paddingTop:'60px', width:'500px'}}>
+          
+          <div className="input-group" id = "#searchbox" style={{marginLeft:'560px', paddingTop:'60px', width:'500px'}}>
           <input type="text" name="text" className="input" id="Email"  placeholder="search by location, date or timing!" onChange={(evt)=>{setCity(evt.target.value)}}/>
           <button className="button--submit"onClick={onSearch} >SEARCH</button>
         </div>
+        </div>
+         {/* SEARCHBAR */}
+        
+         
 
       </div>
       <div className="contthreecont">

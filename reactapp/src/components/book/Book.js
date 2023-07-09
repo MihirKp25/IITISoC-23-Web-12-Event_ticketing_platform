@@ -49,7 +49,7 @@ const handleClick=()=>{
 
   return (
      
-    <div className='maincontainer'>
+    <div className='maincontainer' style={{backgroundColor:'rgb(31,31,31)'}}>
       <Navbar />
        
 
@@ -62,16 +62,18 @@ const handleClick=()=>{
                 {/* </div>     */}
         </div> 
 
-        <div className='labelkadiv' style={{marginLeft:'50px'}}><label className='labelinput' style={{fontWeight:'700'}} >  Event type</label><br/>
+        <div className='labelkadiv a'><label className='labelinput' style={{fontWeight:'700'}} >  Event type</label><br/>
                     <input className="styleinput" type="text"  placeholder={type} onChange={handleChange2}/>
         </div>
 
     
       </div>
-    </div>
+ 
 
               
-    <span style={{marginLeft:'450px', paddingLeft:'50px'}}><h1>Search results:</h1></span><br/><br/>
+    <div className='asas' style={{ display:'flex', textAlign:'center',justifyContent:'center',color:'rgb(235, 222, 204)'}}><br/>Search results:
+    </div><br/><br/>
+    </div>
 <div className="listresults">
   
   

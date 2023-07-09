@@ -10,7 +10,7 @@ const searchitem = ({ item }) => {
           <div class="col-lg-4">
 
             <div class="card">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-PYJfcaNbGeylYwwFBKhnWtmHUZKtav6IQ&usqp=CAU" class="img-fluid rounded-start" alt="..." />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-PYJfcaNbGeylYwwFBKhnWtmHUZKtav6IQ&usqp=CAU" className="searchitemimg" alt="..."  />
 
               <div class="card-body">
                 <h5 class="card-title">{item.name}</h5>
@@ -19,9 +19,12 @@ const searchitem = ({ item }) => {
                 < p class="card-title"> Scheduled on {item.date?.startDate}</p>
                 <p class="card-title">Location: {item.address} ,{item.city},{item.country}</p>
                 <p class="card-title">$2500 <small>min price</small></p>
+                
+                <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
                 <Link to={`/event/${item._id}`}>
-                  <button className="btn btn-success" >Book Now</button>
+                  <button className="openModalBtn" >Book Now</button>
                 </Link>
+                </div>
                 <p class="card-text"></p>
 
 

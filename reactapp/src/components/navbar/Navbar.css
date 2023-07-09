@@ -12,6 +12,19 @@ html {
     background-color: #000000;
     
 }
+.hidebooked{
+    padding-top: 20px;
+    position: absolute;
+    display:none;
+}
+.navdropdown{
+    text-decoration: none;
+    color: white;
+    transition: 0.5s;
+}
+.navdropdown:hover{
+    color: red;
+}
 .logo{
     cursor: pointer;
     margin-top: 9px;
@@ -74,13 +87,14 @@ html {
         height: 290px;
     }
     .logo{
-    margin-top: -23px;
-    margin-left: 20px;
-    margin-right: -80px;
-    height: 180px;
-    width: 400px;
+        margin-top: 14px;
+        margin-left: 20px;
+        margin-right: -80px;
+        height: 168px;
+        width: 354px;
     }
     .navul{
+        margin-left: 77px;
         padding-left: 0px;
     }
     .navbarli{
@@ -88,7 +102,12 @@ html {
         font-size: 45px;
     }
     .usernameo{
-        font-size: 55px;
+        font-size: 35px;
+    }
+    .logoutnname{
+        padding-top: 12rem;
+        position: fixed;
+        right: 5rem;
     }
 }
 

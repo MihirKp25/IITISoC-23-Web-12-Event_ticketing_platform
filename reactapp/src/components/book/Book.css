@@ -6,130 +6,19 @@ html{
 .maincontainer{
   background-color: rgb(31,31,31);
   font-family: 'Poppins', sans-serif;
+  padding-top: 100px;
+}
+.asas{
+  font-size: 3rem;
 }
 
 /* .carrier{
-  padding-top: 130px;
-}
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-
-.listcontainer{
-  display: flex;
-  justify-content: left;
-  margin-top: 40px;
-margin-left: 40px;
-
-}
-.searchbar{
-color:#bf2344;
-
-}
-.searchbar>label{
-  margin-left: 20px;
-  margin-right: 20px;
-}
-.searchbar>input{
-background-color: #b3b0b0;
-color: black;
-}
-.type{
-  text-align: center;
-  color: #bf2344;
-  margin-top: 0px;
-}
-.type>input{
-background-color: #b3b0b0;
-color: black;
-}
-.listwrapper{
-  border-radius: 10px;
-  width: 100%;
-  max-width: 424px;
-  display: flex;
-  gap: 20px;
-  background-color: #bf2344;
-  margin-bottom: 1400px;
-}
-.listsearch{
-  flex: 1;
-  background-color: #bf2344;
-  padding: 10px;
-  border-radius: 10px;
-  position: sticky;
-}
-.lsoption{
-  padding: 10px;
-  background-color: #bf2344;
-}
-.lstitle{
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 25px;
-  background-color: #bf2344;
-}
-.lsitem{
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 14px;
-  background-color: #bf2344;
-}
-.lsitem>label{
-  font-size: 22px;
-  font:bold;
-  background-color: #bf2344;
-}
-.lsitem>input{
-  height: 30px;
-  border: none;
-  padding: 5px;
-  background-color: #b3b0b0;
-}
-.lsoptionitem{
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
- color: #262525;
-  font-size: 18px;
-  background-color: #bf2344;
-
-}
-.lsoptiontext1{
-  background-color:#b3b0b0;
-}
-.lsoptiontext{
-  background-color: #bf2344;
-}
-.lsoptiontext>small{
-  background-color: #bf2344;
-}
-.lsoptiontext>input{
-  background-color:#b3b0b0;
-}
-.button{
-  background-color: #262525;
-}
-.card{
- margin-bottom: 5px;
-  
-}
-.searchbar>label{
-  justify-content: center;
-text-align: center;
-}
-
- 
-/* 
-  ADITYA */
-.carrier{
-    padding-top: 170px;
+    padding-top: 110px;
     padding-bottom: 40px;
-}
+    margin-top: 0px;
+    height: 390px;
+  
+} */
 .bookcontainer{
   background-color: rgb(22,22,22);
   width: 1075px;
@@ -139,6 +28,8 @@ text-align: center;
   border: 1px solid gray;
     border-radius: 5px;
     padding-top: 15px;
+    margin-top: 100px;
+    padding-bottom: 10px;
   margin-left: 200px;
   margin-right: 200px;
 }
@@ -147,16 +38,17 @@ text-align: center;
     padding-top: 6px;
     padding-bottom: 10px;
   }
+  .a{margin-left: 50px;}
   .labelinput{
     margin-left: 13px;
-    color: rgb(235, 222, 204);
+    color: rgb(240, 229, 215);
     font-size: 12px;
   }
   .styleinput{
     margin-left: 13px;
     height: 40px;
     width: 436px ;
-    background-color: rgb(39,39,39);
+    background-color: rgb(232, 230, 200);
     color: rgb(145, 145, 145);
     border: 1px rgb(102, 102, 102) solid;
     border-radius: 3px;
@@ -184,3 +76,46 @@ text-align: center;
     width: 500px;
   }
 
+/* RESPONSIVE DESIGN */
+@media (max-width: 1000px){
+  .maincontainer{
+    width: 83rem;
+    height: 62rem;
+  }
+  .carrier{
+    padding-top: 15rem;
+    height: 70rem;
+    background-color: rgb(31,31,31);
+  }
+  .bookcontainer{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 135px;
+  }
+  .a{margin-left: 0px;}
+  .labelkadiv{
+    width: 62rem;
+  }
+  .labelinput{
+    font-size: 3rem;
+  }
+  .styleinput{
+    width: 60rem;
+    height: 6rem;
+    font-size: 2.5rem;
+  }
+  .asas{
+    font-size: 5rem;
+  }
+  .listresults{
+    display: flex;
+    flex-direction: column;
+  }
+  .listresultitem{
+    width: 60rem;
+    height: 95rem;
+  }
+  .bookfooter{
+  margin-top:-93rem; width:'30%'; top:0}
+}

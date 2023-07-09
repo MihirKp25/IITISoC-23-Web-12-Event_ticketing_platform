@@ -47,21 +47,21 @@ const Event = () => {
   }
 
   console.log(id);
-  return (
+  return (<div>
     <div className="qwer">
       <Navbar />
       <div className="eventcontainer" >
         <div className="eventinfo">
           <img src={a} alt="" className="eventinfoimg" />
           <div className="aboutevent">
-            <div className="eventtitle" style={{ textAlign: 'center', marginTop: '20px', fontSize: '35px' }}><b>WEB-DEVELOPMENT: A COMPLETE JOURNEY</b></div><br />
-            <div className="eventorganiser" style={{ textAlign: 'center', marginTop: '0px', fontSize: '29px' }}><b>BY:</b> <b>NEED TO BE PASSED</b></div>
+            <div className="eventtitle" ><b>WEB-DEVELOPMENT: A COMPLETE JOURNEY</b></div><br />
+            <div className="eventorganiser" ><b>BY:</b> <b>NEED TO BE PASSED</b></div>
             <span className="eventcontent">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam praesentium quisquam fugiat cumque quibusdam necessitatibus illo, repellendus sapiente perspiciatis excepturi laborum amet sequi facilis accusamus architecto aliquid quaerat aliquam autem ipsum impedit deserunt quia similique. Temporibus exercitationem praesentium pariatur, totam reiciendis maxime iste commodi eligendi ab atque magni consectetur voluptates possimus. Labore corrupti voluptatibus id ipsa nostrum voluptas aut consequatur autem, beatae itaque ex nesciunt at repellendus deleniti quibusdam. Hic est, atque, magni corrupti blanditiis quae delectus quas quidem corporis perferendis optio maxime pariatur quis nostrum. Consectetur voluptate voluptatibus ipsa. Error id et numquam delectus fuga officia assumenda tempore modi.</span>
           </div>
 
         </div>
         <div className="eventbrief">
-          <span className="eventtitle" style={{ fontSize: '37px', fontWeight: '1000', color: 'rgb(233, 231, 229)' }}><b>WEB-DEVELOPMENT COURSE</b></span><br /><br />
+          <span className="eventtitle"><b>WEB-DEVELOPMENT COURSE</b></span><br /><br />
 
           <FontAwesomeIcon icon={faBookmark}></FontAwesomeIcon>
           <span className="childtitle"> GENRE:</span>
@@ -101,6 +101,9 @@ const Event = () => {
             <button className="openModalBtn" onClick={handleClick}>BOOK NOW!</button>
 
           </div>
+          {openModal &&
+          <Modal closeModal={setopenModal} eventId={id} ticketDet={ticket} />
+        }
 
 
         </div>
@@ -109,15 +112,13 @@ const Event = () => {
         {/* IF ? NOT GIVEN FOR TICKETTITLE WE GET ERROR OF TICKETTITLE NOT DEFINED */}
 
 
-        {openModal &&
-          <Modal closeModal={setopenModal} eventId={id} ticketDet={ticket} />
-        }
-
+        
       </div>
 
 
 
       <Footer />
+    </div>
     </div>
   );
 };

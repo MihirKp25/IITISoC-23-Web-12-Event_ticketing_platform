@@ -4,9 +4,11 @@ import image from '../images/logo.png'
 import '../navbar/Navbar.css';
 import { AuthContext} from "../../hooks/context/AuthContext";
 import { useContext } from 'react';
-
+import { useState, useRef } from 'react';
 
 function Navbar() {
+  
+  const [isActive, setisActive] = useState(false);
 
   const {user,dispatch} =useContext(AuthContext);
   const handleClick=()=>{
@@ -26,16 +28,19 @@ function Navbar() {
 
         <ul className="navul">
           <li className='navbarli'><a className="navbari"href = "/">HOME</a></li>
-          <li className='navbarli'><a className="navbari"href = "/list">BOOK</a></li>
+          <li className='navbarli'><a a className="dropdown-btn navbari"  onMouseOut={(e)=>{setisActive(!isActive)}}>BOOK{isActive && (<div onMouseOver={(e)=>{setisActive(true)}}className='dropdown-content' style={{textDecoration:'none', position:'absolute'}}><span className="dropdown-item"><a className='navdropdown' href = "/list">booked events</a></span></div>)}</a></li>
+          
           <li className='navbarli'><a className="navbari" href = "/event">CREATE</a></li>
           <li className='navbarli'><a className="navbari"href = "/About">ABOUT US</a></li>
         </ul>
 
-        {  user ? (<><span style={{color:"white"}} onClick={handleClick}>Logout</span> <span className="usernameo"style={{color:"white"}}>{user.firstname}</span></>) :   <div className="icons" style={{display:'flex'}}>
+        <div className='logoutnname'>
+        {  user ? (<><span className="usernameo"style={{color:"white", paddingRight:"50px"}} onClick={handleClick}>Logout</span> <span className="usernameo"style={{color:"white"}}>{user.firstname}</span></>) :   <div className="icons" style={{display:'flex'}}>
           <li className='iconli'><a href="/register"><FontAwesomeIcon icon={faMagnifyingGlass} className='search' /></a></li>
          <li className='iconli'><a href="/Login"><FontAwesomeIcon icon={faUser} className='search'/></a></li> 
         
         </div> }
+        </div>
      
       </div>
 

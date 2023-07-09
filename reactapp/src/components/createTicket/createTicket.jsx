@@ -62,7 +62,7 @@ const NewTicket = ({ infoEvent }) => {
         <div className="newa">
             <div className="newContainer pop" >
                 <div className="top">
-                    <h1 className="toptitle"><b>Add Tickets</b></h1>
+                    <h1 className="toptitle"><b>Add Ticket type</b></h1>
                 </div>
 
                 <div className="righta">
@@ -95,8 +95,8 @@ const NewTicket = ({ infoEvent }) => {
                             </select>
                         </div> */}
 
-                        <p>{`Ticket Sale Starts ${format(ticketDate[0].startDate, "MM/dd/yyyy")} `} </p>
-                        <p>{`Ticket Sale Ends ${format(ticketDate[0].endDate, "MM/dd/yyyy")} `} </p>
+                        <p id = 's'>{`Ticket Sale Starts ${format(ticketDate[0].startDate, "MM/dd/yyyy")} `} </p>
+                        <p id = 's'>{`Ticket Sale Ends ${format(ticketDate[0].endDate, "MM/dd/yyyy")} `} </p>
                     
 
                         <DateRange

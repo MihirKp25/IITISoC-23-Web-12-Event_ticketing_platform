@@ -1,6 +1,6 @@
 .footer{
     background-color: black;
-    margin-top: 70px;
+    margin-top: -16px;
     font-family: 'Poppins', sans-serif;
 }
 .footercontent{
@@ -59,7 +59,7 @@
 @media (max-width: 1000px){
     .footer{
         width: 331%;
-        height: 1300px;
+        height: 1400px;
         margin-top: 1466px;
     }
     .line{
@@ -84,9 +84,12 @@
         font-size: 65px;
     }
     .connect{
+        display: grid;
+        align-items: center;
+
         grid-template-columns: 1fr 1fr 1fr;
-        padding-left: 300px;
-        padding-right: 300px;
+        /* padding-left: 300px;
+        padding-right: 300px; */
     }
     .smicon{
         color: rgb(186, 184, 184);
