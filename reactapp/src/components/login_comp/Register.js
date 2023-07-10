@@ -4,7 +4,11 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios"
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Navbar from '../navbar/Navbar';
+
 
 const Create = () => {
   const [info, setInfo] = useState({});
@@ -21,20 +25,30 @@ const Create = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
+      toast.success('Registered Succesfully ', {
+        position: toast.POSITION.TOP_CENTER
+    });
      const newuser={...info};
       console.log(info);
       const response=await axios.post("/auth/register", newuser);
       setResponseValue(response.data);
       console.log(response.data);
-      navigate.push('/login')
+      setTimeout(() => {
+        navigate.push("/login");
+      }, 2000); // Delay the navigation by 2000 milliseconds (2 seconds)
       
       }
-       catch (err) { console.log(err) }
+       catch (err) { 
+        toast.error('Try different Username or Password', {
+          position: toast.POSITION.TOP_CENTER
+      });
+        console.log(err) }
   };
 
   return (
     <>
     <Navbar/>
+    <ToastContainer/>
     <div className="flex">
       <div className="left"></div>
       <div className="create">

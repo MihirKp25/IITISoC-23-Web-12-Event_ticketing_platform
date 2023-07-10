@@ -6,17 +6,26 @@ import { AuthContext} from "../../hooks/context/AuthContext";
 import { useContext } from 'react';
 import { useState, useRef } from 'react';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function Navbar() {
   
   const [isActive, setisActive] = useState(false);
 
   const {user,dispatch} =useContext(AuthContext);
   const handleClick=()=>{
+   
+      toast.info('Logout Succesfully ', {
+        position: toast.POSITION.TOP_CENTER
+    });
+    
     dispatch({ type: "LOGOUT" });
   }
 
   return (
     <>
+    <ToastContainer/>
       <div className='navbar'>
    
         <div className="navnamenlogo">
@@ -36,8 +45,8 @@ function Navbar() {
 
         <div className='logoutnname'>
         {  user ? (<><span className="usernameo"style={{color:"white", paddingRight:"50px"}} onClick={handleClick}>Logout</span> <span className="usernameo"style={{color:"white"}}>{user.firstname}</span></>) :   <div className="icons" style={{display:'flex'}}>
-          <li className='iconli'><a href="/register"><FontAwesomeIcon icon={faMagnifyingGlass} className='search' /></a></li>
-         <li className='iconli'><a href="/Login"><FontAwesomeIcon icon={faUser} className='search'/></a></li> 
+          <li className='iconli'><a href="/register"><FontAwesomeIcon icon={faMagnifyingGlass} className='search' />Register</a></li>
+         <li className='iconli'><a href="/Login"><FontAwesomeIcon icon={faUser} className='search'/>Login</a></li> 
         
         </div> }
         </div>

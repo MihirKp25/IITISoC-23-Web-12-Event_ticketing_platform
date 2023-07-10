@@ -7,6 +7,10 @@ import useFetch from "../../hooks/useFetch"
 import axios from "axios";
 import { AuthContext } from '../../hooks/context/AuthContext';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import TicketBook from '../../components/ticketbBook/TicketBook';
+
 
 export default function Modal({closeModal,eventId,ticketDet}) {
   const {user}=useContext(AuthContext);
@@ -31,10 +35,16 @@ console.log(data);
 const handleClick=async ()=>{
   
   try {
+       
         const purchase= await axios.post(`/ticket/purchase/${eventId}/${ticketDet._id}`,{eventId:eventId,ticketId:ticketDet._id,ticket:option.tickets,userId:user._id});   //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION 
+        toast.success('Tickets Booked Succesfully ..Please check your registered Email for more details', {
+          position: toast.POSITION.TOP_CENTER
+      });
+      
        console.log(purchase.data._id)
         await axios.post("/event/sendconfirmation",{userId:user._id,purchaseId:purchase.data._id})
-        // closeModal(false);
+      
+        closeModal(false);
   }
  catch(err){
     console.log(err);
@@ -42,9 +52,10 @@ const handleClick=async ()=>{
 }
 
   return (
-    
+   
     
     <div className="modalBackground">
+       
       {/* <span onClick={closeModal(false)}>Close</span> */}
       <div className="modalContainer">
         <div className="title" style={{ fontWeight:'400', fontSize:'30px'}}>CONFIRM TICKET BOOKING </div>
@@ -71,6 +82,7 @@ const handleClick=async ()=>{
           
             
         </span>
+        <ToastContainer/>
         <div className="imlidli" style={{display:'flex', flexDirection:'column', alignItems:'center', marginTop:'10px'}}>
         <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faPerson} className="headerIcon" />
@@ -107,7 +119,8 @@ const handleClick=async ()=>{
               </div>
               <span className="modalchildtitle"><b>AMOUNT TO PAY : $ {option.tickets*ticketDet.price}</b>
          </span>
-        <button className="openModalBtun" onClick={handleClick}>CONFIRM BOOKING</button>
+                 <button className="openModalBtun" onClick={handleClick}>CONFIRM BOOKING</button>
+         
         <button className="openModalBtun" onClick={()=>closeModal(false)}>Cancel</button>
         </div>
       </div>

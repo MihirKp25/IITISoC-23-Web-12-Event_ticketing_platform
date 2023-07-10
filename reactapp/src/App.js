@@ -10,6 +10,7 @@ import BookedEvents from "../src/components/userBookedEvents/allEvents.jsx"
 import CreatedEvents from './components/userCreatedEvents/allEvents.jsx';
 import { BrowserRouter as  Router, Switch, Route} from 'react-router-dom';
 import Business from './components/userCreatedEvents/businessDetails';
+import Payment from './components/paymentConfirmation/confirmation';
 function App() {
   return (
     <Router>
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/event/edit" component={EditEvent}></Route>
         <Route exact path="/event/:id" component={IndividualEvent}></Route>
         <Route exact path="/user/details/:id" component={Business}></Route>
+        <Route exact path="/confirm" component={Payment}></Route>
         
         </Switch>
       

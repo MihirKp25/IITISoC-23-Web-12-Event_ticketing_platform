@@ -20,6 +20,10 @@ import { SearchContext } from '../../hooks/context/SearchContext';
 import { AuthContext } from '../../hooks/context/AuthContext';
 
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 export default function Home() {
   //all functions
   const {user}=useContext(AuthContext);
@@ -40,6 +44,11 @@ export default function Home() {
     dispatch({type:"NEW_SEARCH" , payload :{city}});
     navigate.push("/list", { state:  {city}  });
   };
+  if(user){
+    toast.success('Login Successfull Welcome !', {
+      position: toast.POSITION.TOP_CENTER
+  });
+  }
   
 
 
@@ -48,6 +57,7 @@ export default function Home() {
 
     < div className='home'>
       <Navbar />
+      <ToastContainer/>
       <div className="contone">
         <div className="contonecont">
           <span className='lonetit' > <b> {user && "Hi "+user.firstname}</b><br/><b>Have any <span style={{ color: "red" }}>weekend plans?</span></b></span><br /><br /><br/>

@@ -12,6 +12,8 @@ import a from '../../components/images/cntr4.jpg'
 import { format } from "date-fns";
 import { AuthContext } from "../../hooks/context/AuthContext";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Event = () => {
 
@@ -42,7 +44,14 @@ const Event = () => {
       setTicket(t1);
       setopenModal(true);
     } else {
+      toast.warn('Please Login to Book Tickets', {
+        position: toast.POSITION.TOP_CENTER
+    });
+    setTimeout(() => {
       navigate.push("/login");
+    }, 3000); // Delay the navigation by 2000 milliseconds (2 seconds)
+
+      // navigate.push("/login");
     }
   }
 
@@ -50,6 +59,7 @@ const Event = () => {
   return (<div>
     <div className="qwer">
       <Navbar />
+      <ToastContainer/>
       <div className="eventcontainer" >
         <div className="eventinfo">
           <img src={a} alt="" className="eventinfoimg" />

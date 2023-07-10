@@ -10,11 +10,15 @@ import { AuthContext } from "../../hooks/context/AuthContext";
 import { DateRange } from 'react-date-range';
 import { format } from "date-fns";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
 
-const NewTicket = ({ infoEvent }) => {
+const NewTicket = ({ infoEvent ,index}) => {
+    const [isTicketButtonDisabled, setIsTicketButtonDisabled] = useState(false);
     const location = useLocation();
     console.log(location);
     const [info, setInfo] = useState({});
@@ -42,6 +46,10 @@ const NewTicket = ({ infoEvent }) => {
         e.preventDefault();
 
         try {
+            setIsTicketButtonDisabled(true)
+            toast.success(`Ticket Type ${index+1} ,Generated Successfully`, {
+                position: toast.POSITION.TOP_CENTER
+            });
             const newTicket = {
                 ...info,
                 date:ticketDate[0]
@@ -60,9 +68,10 @@ const NewTicket = ({ infoEvent }) => {
 
     return (
         <div className="newa">
+            <ToastContainer/>
             <div className="newContainer pop" >
                 <div className="top">
-                    <h1 className="toptitle"><b>Add Ticket type</b></h1>
+                    <h1 className="toptitle"><b>Add Ticket type {index+1}</b></h1>
                 </div>
 
                 <div className="righta">
@@ -76,6 +85,8 @@ const NewTicket = ({ infoEvent }) => {
                                     onChange={handleChange}
                                     type={input.type}
                                     placeholder={input.placeholder}
+                                    disabled={isTicketButtonDisabled}
+                                    style={{ backgroundColor: isTicketButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
                                 />
                             </div>
                         ))}
@@ -98,19 +109,22 @@ const NewTicket = ({ infoEvent }) => {
                         <p id = 's'>{`Ticket Sale Starts ${format(ticketDate[0].startDate, "MM/dd/yyyy")} `} </p>
                         <p id = 's'>{`Ticket Sale Ends ${format(ticketDate[0].endDate, "MM/dd/yyyy")} `} </p>
                     
-
+                        {!isTicketButtonDisabled &&
                         <DateRange
                             editableDateInputs={true}
                             onChange={item => setTicketDate([item.selection])}
                             moveRangeOnFirstSelection={false}
                             ranges={ticketDate}
                             minDate={new Date()}
-                            />
+                            />}
                             
                         <div style={{ display: 'flex', textAlign: "center", alignItems: "center" }}>
                             <button className="createtktbtn" onClick={handleClick}>Create Tickets</button>
+                           
                         </div>
+                        {isTicketButtonDisabled && <small>*Ticket Generated and Form is <b>Locked</b> </small>}
                     </form>
+                    
                 </div>
             </div>
 

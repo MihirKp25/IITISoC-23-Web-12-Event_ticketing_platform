@@ -69,28 +69,57 @@ module.exports.getEvent= async (req,res,next)=>{
 };
 
 module.exports.getEvents = async (req,res,next)=>{
-    const {type,location}=req.query;  //To segregate min and max and others
-    console.log(type);
+    const {type,location,name}=req.query;  //To segregate min and max and others
+   
        try{
         let query = {};
+        if (location && type && name) {
+          query.city = { $regex: new RegExp(`^${location}$`, 'i') };
+          query.type ={ $regex: new RegExp(`^${type}$`, 'i') };
+          query.name = { $regex: new RegExp(`^${name}$`, 'i') };
+          const events = await Event.find(query).limit(req.query.limit);
+          console.log(events)
+          return   res.status(200).json(events); 
+        }
+        if (location && name) {
+          query.city = { $regex: new RegExp(`^${location}$`, 'i') };
+          query.name = { $regex: new RegExp(`^${name}$`, 'i') };
+          const events = await Event.find(query).limit(req.query.limit);
+          console.log(events)
+          return   res.status(200).json(events); 
+        }
+        if (name && type) {
+          query.name = { $regex: new RegExp(`^${name}$`, 'i') };
+          query.type = { $regex: new RegExp(`^${type}$`, 'i') };
+          const events = await Event.find(query).limit(req.query.limit);
+          console.log(events)
+          return   res.status(200).json(events); 
+        }
 
         if (location && type) {
-          query.city = location;
-          query.type = type;
+          query.city ={ $regex: new RegExp(`^${city}$`, 'i') };
+          query.type ={ $regex: new RegExp(`^${type}$`, 'i') };
           const events = await Event.find(query).limit(req.query.limit);
           console.log(events)
           return   res.status(200).json(events); 
         }
 
         if (type) {
-          query.type = type;
+          query.type = { $regex: new RegExp(`^${type}$`, 'i') }
           const events = await Event.find(query).limit(req.query.limit);
           console.log(events)
             return res.status(200).json(events); 
         }
     
         if (location) {
-          query.city = location;
+          query.city = { $regex: new RegExp(`^${location}$`, 'i') };
+          const events = await Event.find(query).limit(req.query.limit);
+          console.log(events)
+          return   res.status(200).json(events); 
+        }
+
+        if (name) {
+          query.name = { $regex: new RegExp(`^${name}$`, 'i') };
           const events = await Event.find(query).limit(req.query.limit);
           console.log(events)
           return   res.status(200).json(events); 

@@ -24,10 +24,11 @@ export default function Book() {
  
   const [destination, setDestination] = useState(city);
   const [type, setType] = useState("");
+  const [name, setName] = useState("");
   
  
 
-  const { data, loading, error , reFetch} = useFetch(`/event?type=${type }&location=${destination }`);
+  const { data, loading, error , reFetch} = useFetch(`/event?type=${type }&location=${destination }&name=${name}`);
   console.log(data);
   const handleChange1=(e)=>{
     e.preventDefault();
@@ -38,6 +39,11 @@ export default function Book() {
   const handleChange2=(e)=>{
     e.preventDefault();
     setType(e.target.value);
+    // reFetch();
+  }
+  const handleChange3=(e)=>{
+    e.preventDefault();
+    setName(e.target.value);
     // reFetch();
   }
 
@@ -56,6 +62,9 @@ const handleClick=()=>{
 
     <div className="carrier">
       <div className="bookcontainer">
+      <div className='labelkadiv a'><label className='labelinput' style={{fontWeight:'700'}} >  Event Name</label><br/>
+                    <input className="styleinput" type="text"  placeholder={name} onChange={handleChange3}/>
+        </div>
 
         <div className='labelkadiv'><label className='labelinput' style={{fontWeight:'700'}} >Search Event location</label><br/>
                     <input className="styleinput" type="text" placeholder={city} onChange={handleChange1} />
