@@ -22,7 +22,7 @@ const Event = () => {
   const [openModal, setopenModal] = useState(false);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const { data, error, loading } = useFetch(`/event/find/${id}`);
+  const { data, error, loading } = useFetch(`http://localhost:3000/event/find/${id}`);
   // console.log(data);
   // console.log(data.tickettitle);
   const [displayPrice, setdisplayPrice] = useState(0);

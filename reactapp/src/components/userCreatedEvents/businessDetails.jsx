@@ -24,7 +24,7 @@ export default function Business() {
   console.log(detailsId);
   // const [data,setData]=useState({})
 
-  const { data, loading, error, reFetch } = useFetch(`/user/events/details/booked/${detailsId}`);
+  const { data, loading, error, reFetch } = useFetch(`http://localhost:3000/user/events/details/booked/${detailsId}`);
   console.log(data);
   // console.log(data.eventId);
 

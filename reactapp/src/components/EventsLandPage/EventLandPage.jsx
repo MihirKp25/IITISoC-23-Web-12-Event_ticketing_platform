@@ -7,36 +7,63 @@ import i from '../images/p3.jpeg';
 import j from '../images/p4.jpeg';
 import k from '../images/p5.jpeg';
 import l from '../images/p6.jpeg';
+import a from "../images/cntr1.jpg"
 import CountDown from '../functions/countdown'
 import { format } from "date-fns";
+import Card from 'react-bootstrap/Card';
+  import ListGroup from 'react-bootstrap/ListGroup';
 
 
 
 export default function Event() {
-  const { data, loading, error } = useFetch("/event/online?featured=true");
+  const { data, loading, error } = useFetch("http://localhost:3000/event/online?featured=true");
   console.log(data);
 
 
-  return (
-    <div className="main-scroll-div">
-      <div className="cover">
-        <div className="trendcont">
+  {/* 
+  
+  export default function Event () {
 
+    const { data, loading, error } = useFetch("http://localhost:3000/event/online?featured=true");
+    console.log(data);
+    return (
+      <>
+      {data.map(event=>(
+        <Link
+      <Card style={{ width: '18rem' }}>
+        <Card.Img variant="top" src="{event.photos[0]}" />
+        <Card.Body>
+          <Card.Title>{event.name}</Card.Title>
+         
+        </Card.Body>
+        <ListGroup className="list-group-flush">
+          <ListGroup.Item>{event.city} ,{event.country}</ListGroup.Item>
+          <ListGroup.Item>{event.type}</ListGroup.Item>
+          <ListGroup.Item>{event.date?.startDate} to {event.date?.endDate} </ListGroup.Item>
+        </ListGroup>
+      
+      </Card>
+
+     </>);
+  }
+  
+export default KitchenSinkExample;*/}
+return (
+  <div className="main-scroll-div">
+    <div className="cover ">
+      <div className="trendcont">
           {data.map(event => (
             <Link to={`/event/${event._id}`}>
-              <div className="trendbox"> <img className="trendboximg" src={event.photos[0]}></img>
-                {/* <p><CountDown Eventdate={event.date}/></p> */}
-                <div className="trendboxcont">
-                  <h2 style={{ color: "red" }}>FREE</h2>
-                  {/* <p>{format(event.date,"MM/dd/yyyy")}</p> */}
-                  <p>{event.name}</p>
-                  <p>{event.city} ,{event.country}</p>
-                  <p>{event.type}</p>
-                  <p>{event.date?.startDate} to {event.date?.endDate} </p>
+               <Card style={{ width: '18rem' ,margin:"2rem"}}>
+      <Card.Img variant="top" src={a} />
+      <Card.Body>
+        <Card.Title >{event.name}</Card.Title>
+      </Card.Body>
 
+     
+    </Card>
 
-                </div>
-              </div></Link>
+          </Link>
           ))}
 
         </div>

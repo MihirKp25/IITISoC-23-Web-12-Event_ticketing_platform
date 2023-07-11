@@ -24,7 +24,7 @@ export default function Book() {
 
  
 
-  const { data, loading, error , reFetch} = useFetch(`/user/events/created/${user._id}`);
+  const { data, loading, error , reFetch} = useFetch(`http://localhost:3000/user/events/created/${user._id}`);
   console.log(data);
   const uniqueData = _.uniqBy(data, '_id')
   console.log(uniqueData)

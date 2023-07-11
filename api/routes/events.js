@@ -1,5 +1,5 @@
 const express=require("express");
-const {getEvents, countByCountry,createEvent, deleteEvent, editEvent, getEvent, LandingPageEvent, BookTicket, CreatedEvent, ConfirmationMail } = require("../controllers/events");
+const {getEvents, countByCountry,createEvent, deleteEvent, editEvent, getEvent, LandingPageEvent, BookTicket, CreatedEvent, ConfirmationMail , EventsbyType, EventsbyCountry} = require("../controllers/events");
 const Event=require("../models/event.js")
 const router=express.Router();
 const {verifyToken, verifyUser}= require("../utils/verifyToken");
@@ -13,6 +13,10 @@ router.post("/",createEvent);
 router.delete("/:id", verifyUser,deleteEvent);
 
 router.get("/countbycountries",countByCountry);
+
+router.get('/genre/:type',EventsbyType);
+
+router.get("/location/:country",EventsbyCountry);
 
 router.get("/online",LandingPageEvent);
 

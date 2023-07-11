@@ -28,7 +28,7 @@ export default function Book() {
   
  
 
-  const { data, loading, error , reFetch} = useFetch(`/event?type=${type }&location=${destination }&name=${name}`);
+  const { data, loading, error , reFetch} = useFetch(`http://localhost:3000/event?type=${type }&location=${destination }&name=${name}`);
   console.log(data);
   const handleChange1=(e)=>{
     e.preventDefault();

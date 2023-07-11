@@ -37,10 +37,12 @@ function Navbar() {
 
         <ul className="navul">
           <li className='navbarli'><a className="navbari"href = "/">HOME</a></li>
-          <li className='navbarli'><a a className="dropdown-btn navbari"  onMouseOut={(e)=>{setisActive(!isActive)}}>BOOK{isActive && (<div onMouseOver={(e)=>{setisActive(true)}}className='dropdown-content' style={{textDecoration:'none', position:'absolute'}}><span className="dropdown-item"><a className='navdropdown' href = "/list">booked events</a></span></div>)}</a></li>
+          <li className='navbarli'><a  href = "/list" className="dropdown-btn navbari"  onMouseOut={(e)=>{setisActive(!isActive)}}>BOOK{isActive && (<div onMouseOver={(e)=>{setisActive(true)}}className='dropdown-content' style={{textDecoration:'none', position:'absolute'}}><span className="dropdown-item"><a className='navdropdown' href = "/booked/event">Booked events</a></span></div>)}</a></li>
+
+          <li className='navbarli'><a  href = "/event" className="dropdown-btn navbari"  onMouseOut={(e)=>{setisActive(!isActive)}}>Create{isActive && (<div onMouseOver={(e)=>{setisActive(true)}}className='dropdown-content' style={{textDecoration:'none', position:'absolute'}}><span className="dropdown-item"><a className='navdropdown' href = "/created/event">Created events</a></span></div>)}</a></li>
           
-          <li className='navbarli'><a className="navbari" href = "/event">CREATE</a></li>
-          <li className='navbarli'><a className="navbari"href = "/About">ABOUT US</a></li>
+        
+          <li className='navbarli'><a className="navbari"href = "/AboutUs">ABOUT US</a></li>
         </ul>
 
         <div className='logoutnname'>

@@ -36,13 +36,13 @@ const handleClick=async ()=>{
   
   try {
        
-        const purchase= await axios.post(`/ticket/purchase/${eventId}/${ticketDet._id}`,{eventId:eventId,ticketId:ticketDet._id,ticket:option.tickets,userId:user._id});   //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION 
+        const purchase= await axios.post(`http://localhost:3000/ticket/purchase/${eventId}/${ticketDet._id}`,{eventId:eventId,ticketId:ticketDet._id,ticket:option.tickets,userId:user._id});   //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION 
         toast.success('Tickets Booked Succesfully ..Please check your registered Email for more details', {
           position: toast.POSITION.TOP_CENTER
       });
       
        console.log(purchase.data._id)
-        await axios.post("/event/sendconfirmation",{userId:user._id,purchaseId:purchase.data._id})
+        await axios.post("http://localhost:3000/event/sendconfirmation",{userId:user._id,purchaseId:purchase.data._id})
       
         closeModal(false);
   }

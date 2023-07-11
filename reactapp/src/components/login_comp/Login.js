@@ -26,14 +26,12 @@ const Create = () => {
   };
 //  const notify=()=>{toast("Wow so easy!");};
   const handleClick = async (e) => {
-    // e.preventDefault();
+     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/auth/login", credentials);
+      const res = await axios.post("http://localhost:3000/auth/login", credentials);
       if (res.data.isAdmin || !res.data.isAdmin) {
-        toast.success("User not found , Please try again", {
-          position: toast.POSITION.TOP_CENTER
-      });
+       
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
         // notify();
         navigate.push("/");

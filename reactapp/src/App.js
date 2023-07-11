@@ -11,6 +11,10 @@ import CreatedEvents from './components/userCreatedEvents/allEvents.jsx';
 import { BrowserRouter as  Router, Switch, Route} from 'react-router-dom';
 import Business from './components/userCreatedEvents/businessDetails';
 import Payment from './components/paymentConfirmation/confirmation';
+import AllEventsPage from "./components/EventByType/EventByTypePage";
+import AllEventsCountryPage from "./components/EventByType/EventByCountry";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import AboutUs from './components/AboutUs/About';
 function App() {
   return (
     <Router>
@@ -28,6 +32,9 @@ function App() {
         <Route exact path="/event/:id" component={IndividualEvent}></Route>
         <Route exact path="/user/details/:id" component={Business}></Route>
         <Route exact path="/confirm" component={Payment}></Route>
+        <Route exact path="/event/genre/:type" component={AllEventsPage}></Route>
+        <Route exact path="/event/location/:country" component={AllEventsCountryPage}></Route>
+        <Route exact path="/AboutUs" component={AboutUs}></Route>
         
         </Switch>
       

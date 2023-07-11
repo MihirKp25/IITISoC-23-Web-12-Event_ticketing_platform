@@ -7,7 +7,7 @@ import axios from "axios";
 import NewTicket from "../createTicket/createTicket";
 import ViewCreatedEvents from "../viewCreatedEvents/viewCreatedEvents";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faFileImage, faImage, faImagePortrait, faTimesRectangle } from '@fortawesome/free-solid-svg-icons';
 import { DateRangePicker } from 'react-date-range';
 import { DateRange } from 'react-date-range';
 import { format } from "date-fns";
@@ -33,7 +33,7 @@ const NewEvent = () => {
   const [ticketModal, setTicketModal] = useState(false);
   const [tickets, setTickets] = useState([]);
 
-  const { data, loading, error } = useFetch("/event");
+  const { data, loading, error } = useFetch("http://localhost:3000/event");
 
   const [date, setDate] = useState([
     {
@@ -76,7 +76,7 @@ const NewEvent = () => {
           );
 
           const { url } = uploadRes.data;
-
+          return url;
         })
       );
 
@@ -108,10 +108,10 @@ const NewEvent = () => {
         <div className="right">
 
           <form className="inputform">
-
+       
             <div className="formInput">
               <label htmlFor="file">
-                Images: <FontAwesomeIcon icon={faArrowUp} className='arrowright' />
+                Images: <FontAwesomeIcon icon={faImage} className='arrowright' />
               </label>
               <input
                 type="file"

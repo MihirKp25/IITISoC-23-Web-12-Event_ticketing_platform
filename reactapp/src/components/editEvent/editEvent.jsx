@@ -12,7 +12,7 @@ const EditEvent = ({infoEvent}) => {
   const [info, setInfo] = useState({});
   const [eventId, setEventId] = useState(undefined);
   
-  const { data, loading, error } = useFetch(`/event/${infoEvent._id}`);
+  const { data, loading, error } = useFetch(`http://localhost:3000/event/${infoEvent._id}`);
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -32,7 +32,7 @@ const EditEvent = ({infoEvent}) => {
     try {
      const updatedevent={...info};
       console.log(info);
-      const response=await axios.post(`/event/${infoEvent._id}`, updatedevent);
+      const response=await axios.post(`http://localhost:3000/event/${infoEvent._id}`, updatedevent);
      
       }
        catch (err) { console.log(err) }

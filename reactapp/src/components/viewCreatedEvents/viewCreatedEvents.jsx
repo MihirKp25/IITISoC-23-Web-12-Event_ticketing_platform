@@ -5,7 +5,7 @@ import useFetch from "../../hooks/useFetch";
 export default function ViewCreatedEvents(){
 
 const {user}=useContext(AuthContext);
-const {data,loading,error}=useFetch(`/user/events/${user._id}`);
+const {data,loading,error}=useFetch(`http://localhost:3000/user/events/${user._id}`);
 
 console.log(data);
 

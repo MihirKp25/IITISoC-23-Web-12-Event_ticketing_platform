@@ -6,6 +6,7 @@ const userRoute=require("./routes/user")
 const AuthRoute=require("./routes/auth");
 const ticketRoute= require("./routes/tickets");
 const cookieParser=require("cookie-parser");
+const cors= require("cors");
 
 
 dotenv.config();
@@ -26,6 +27,7 @@ mongoose.connection.on("disconnected", () => {
 //MIDDLEWARES
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 app.use((err, req, res, next) => {
     const errorStatus = err.status || 500;

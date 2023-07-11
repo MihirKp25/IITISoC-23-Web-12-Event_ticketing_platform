@@ -184,6 +184,34 @@ module.exports.BookTicket= async (req,res,next)=>{
     }
 };
 
+
+module.exports.EventsbyType= async (req,res, next)=>{
+  const { type } = req.params;
+  
+
+  try {
+    const events = await Event.find({ type: type});
+    res.status(200).json(events);
+  } catch (error) {
+    next(error);
+  }
+}
+
+
+module.exports.EventsbyCountry=async(req,res, next)=>{
+  const { country } = req.params;
+
+  
+  try {
+    const events = await Event.find({ country: country});
+    res.status(200).json(events);
+  } catch (error) {
+    next(error);
+  }
+
+
+}
+
 module.exports.ConfirmationMail = async (req, res) => {
 
   const { userId, purchaseId } = req.body;

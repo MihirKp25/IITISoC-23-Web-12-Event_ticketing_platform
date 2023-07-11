@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import './Home.css';
 import Navbar from '../../components/navbar/Navbar';
@@ -24,6 +24,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
+
 export default function Home() {
   //all functions
   const {user}=useContext(AuthContext);
@@ -44,11 +45,14 @@ export default function Home() {
     dispatch({type:"NEW_SEARCH" , payload :{city}});
     navigate.push("/list", { state:  {city}  });
   };
-  if(user){
-    toast.success('Login Successfull Welcome !', {
-      position: toast.POSITION.TOP_CENTER
-  });
-  }
+  useEffect(()=>{
+
+    if(user){
+      toast.success('Login Successfull Welcome !', {
+        position: toast.POSITION.TOP_CENTER
+    });
+    }
+  }, []);
   
 
 
@@ -56,7 +60,7 @@ export default function Home() {
 
 
     < div className='home'>
-      <Navbar />
+      <Navbar/>
       <ToastContainer/>
       <div className="contone">
         <div className="contonecont">

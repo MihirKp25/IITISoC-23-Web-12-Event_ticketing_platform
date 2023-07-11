@@ -25,7 +25,7 @@ const NewTicket = ({ infoEvent ,index}) => {
     const { user } = useContext(AuthContext);
     const [eventId, setEventId] = useState(undefined);
 
-    const { data, loading, error } = useFetch(`/ticket/${infoEvent._id}`);
+    const { data, loading, error } = useFetch(`http://localhost:3000/ticket/${infoEvent._id}`);
 
     const handleChange = (e) => {
         setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));

@@ -15,7 +15,7 @@ const Create = () => {
   const [responseValue, setResponseValue] = useState(null);
 
   const navigate=useHistory(); 
-  const { data, loading, error } = useFetch("/auth/register");
+  const { data, loading, error } = useFetch("http://localhost:3000/auth/register");
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));

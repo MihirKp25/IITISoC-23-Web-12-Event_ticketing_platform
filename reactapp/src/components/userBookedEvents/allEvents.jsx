@@ -22,7 +22,7 @@ export default function Book() {
 
  
 
-  const { data, loading, error , reFetch} = useFetch(`/user/events/booked/${user._id}`);
+  const { data, loading, error , reFetch} = useFetch(`http://localhost:3000/user/events/booked/${user._id}`);
   console.log(data);
 
 const handleClick=()=>{
@@ -47,19 +47,14 @@ const handleClick=()=>{
 
   
   {data.map((item)=>(
+        
         <SingleEvent details={item}  />
+           
   ))}
 
 
 
 </div> 
-
-
-                    
-                              
-
-
-
 
 </>
 </div>
