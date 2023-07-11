@@ -15,6 +15,7 @@ import AllEventsPage from "./components/EventByType/EventByTypePage";
 import AllEventsCountryPage from "./components/EventByType/EventByCountry";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AboutUs from './components/AboutUs/About';
+
 function App() {
   return (
     <Router>
@@ -35,7 +36,7 @@ function App() {
         <Route exact path="/event/genre/:type" component={AllEventsPage}></Route>
         <Route exact path="/event/location/:country" component={AllEventsCountryPage}></Route>
         <Route exact path="/AboutUs" component={AboutUs}></Route>
-        
+        <Route exact path="/confirm" component={Payment}></Route>
         </Switch>
       
     </Router>  

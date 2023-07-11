@@ -78,6 +78,7 @@ module.exports.purchaseTicket= async (req, res, next) => {
       quantity:req.body.ticket,
       purchaseDate:new Date(),
       userId:  req.body.userId,
+      orderDetail:req.body.orderId
     }
     
     const TicketPurchaseInfo= new Purchase(PurchaseInfo);

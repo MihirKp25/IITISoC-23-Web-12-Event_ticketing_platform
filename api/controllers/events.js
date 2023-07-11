@@ -216,7 +216,7 @@ module.exports.ConfirmationMail = async (req, res) => {
 
   const { userId, purchaseId } = req.body;
   const user = await User.findById(userId);
-  const purchase = await Purchase.findById(purchaseId);
+  const purchase = await Purchase.findById(purchaseId).populate('orderDetail');
   console.log(purchase)
   const event = await Event.findById(purchase.eventId);
   const ticket = await Ticket.findById(purchase.ticketId);
@@ -243,10 +243,12 @@ module.exports.ConfirmationMail = async (req, res) => {
   }
   let transporter = nodemailer.createTransport(config);
           const qrCodeText = `
-          PurchaseId: ${purchaseId}
+          PaymentId: ${purchase.orderDetail.razorpay.paymentId},
+          OrderId: ${purchase.orderDetail.razorpay.orderId}
           Name :${user.firstname} ${user.lastname}\n
           email : ${user.email}
           Ticket Type: ${ticket.type}\n
+          Amount : Rs ${purchase.orderDetail.amount}
           Quantity: ${purchase.quantity}\n,`;
         const qrCodeOptions = {
           errorCorrectionLevel: 'H',
@@ -254,7 +256,7 @@ module.exports.ConfirmationMail = async (req, res) => {
           quality: 0.9,
           margin: 1,
         };
-
+  
         qrcode.toDataURL(qrCodeText, qrCodeOptions, (error, qrCodeDataUri) => {
                     if (error) {
                       console.error(error);

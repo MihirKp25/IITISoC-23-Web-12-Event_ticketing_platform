@@ -19,7 +19,12 @@ const PurchaseSchema = new mongoose.Schema({
    },
    quantity:{
     type:Number
-   }
+   },
+   orderDetail:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'Order'
+  },
+
 
 }, { timestamps: true })
 

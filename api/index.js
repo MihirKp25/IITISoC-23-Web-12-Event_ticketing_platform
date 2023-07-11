@@ -5,6 +5,7 @@ const eventRoute=require("./routes/events");
 const userRoute=require("./routes/user")
 const AuthRoute=require("./routes/auth");
 const ticketRoute= require("./routes/tickets");
+const PaymentRoute=require("./routes/payment")
 const cookieParser=require("cookie-parser");
 const cors= require("cors");
 
@@ -45,6 +46,7 @@ app.use((err, req, res, next) => {
  app.use('/user',userRoute); 
  app.use('/auth', AuthRoute);
  app.use('/ticket', ticketRoute);
+ app.use('/', PaymentRoute);
 
 
 app.get("/",(req,res)=>{
