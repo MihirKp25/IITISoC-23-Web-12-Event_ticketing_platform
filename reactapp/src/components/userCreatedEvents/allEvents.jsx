@@ -35,9 +35,9 @@ const handleClick=()=>{
 };
   return (
     <div>
-      <Navbar />
+      <Navbar/>
      <>
-
+     <h2 id = "ub1">CREATED EVENTS:</h2>
 <div className="listresults">
 {uniqueData.map((item)=>(
              <SingleEvent details={item}  />

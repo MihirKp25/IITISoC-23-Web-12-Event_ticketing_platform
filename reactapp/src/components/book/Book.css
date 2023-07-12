@@ -11,30 +11,35 @@ html{
 .asas{
   font-size: 3rem;
 }
-
-/* .carrier{
-    padding-top: 110px;
-    padding-bottom: 40px;
-    margin-top: 0px;
-    height: 390px;
+#b1{
+  padding-top: 00px;
   
-} */
+}
+
+.carrier{
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+}
 .bookcontainer{
   background-color: rgb(22,22,22);
-  width: 1075px;
-  display: grid;
-  grid-template-columns: 550px 550px;
+  display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  width: 545px;
+  /* display: grid;
+  grid-template-columns: 550px 550px; */
   align-items: center;
   border: 1px solid gray;
     border-radius: 5px;
     padding-top: 15px;
     margin-top: 100px;
     padding-bottom: 10px;
-  margin-left: 200px;
-  margin-right: 200px;
 }
   .labelkadiv{
-    width: 520px;
+    width: 456px;
     padding-top: 6px;
     padding-bottom: 10px;
   }
@@ -53,7 +58,10 @@ html{
     border: 1px rgb(102, 102, 102) solid;
     border-radius: 3px;
   }
-
+  #br{
+    justify-content: center;
+    align-items: center;
+  }
   .listresults {
     align-items: center;
     display: grid;
@@ -88,10 +96,12 @@ html{
     background-color: rgb(31,31,31);
   }
   .bookcontainer{
+    left: 2rem;
+    width: 70rem;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-left: 135px;
+    margin-left: 0px;
   }
   .a{margin-left: 0px;}
   .labelkadiv{
@@ -118,4 +128,7 @@ html{
   }
   .bookfooter{
   margin-top:-93rem; width:'30%'; top:0}
+  #b1{
+    width: 83rem;
+  }
 }

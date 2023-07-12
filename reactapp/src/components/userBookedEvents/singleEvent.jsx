@@ -7,24 +7,24 @@ import Model from './Model.jsx'
 const Searchitem = ({ details }) => {
   const [openmodel, setopenmodel] = useState(false)
   return (
-    <div>
-      <div>
+    <>
+      
+      <div class = "col-lg-4">
 
-
-        <div class="jhabi">
+        
 
           <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-PYJfcaNbGeylYwwFBKhnWtmHUZKtav6IQ&usqp=CAU" className="singleeventimg" alt="..." />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-PYJfcaNbGeylYwwFBKhnWtmHUZKtav6IQ&usqp=CAU" className="searchitemimg" alt="..." />
 
-            <div class="card-body">
-              <div style={{ textAlign: 'center' }}><h1 class="card-title" style={{ fontSize: '25px' }}><b>{details.eventId.name}</b></h1></div><br />
-              <span class="card-title">{details.purchaseDate}</span><br />
-              <span class="card-title">{details.quantity}</span><br />
+            <div class="card-body" id = "se2">
+              <div ><h1 ><b className="card-title">{details.eventId.name}</b></h1></div>
+              <span class="card-title">{details.purchaseDate}</span><br/>
+              <span class="card-title"  id = "se1">{details.quantity}</span>
 
               {/* MAKE A POP UP FOR THESE    */}
             
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '30px' }}>
-                <button className="openModalBtun" onClick={() => { setopenmodel(true); }} >See Ticket Details</button>
+              <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+                <button id = "se3"className="openModalBtn" onClick={() => { setopenmodel(true); }} >SEE DETAILS</button>
               </div>
 
 
@@ -33,13 +33,14 @@ const Searchitem = ({ details }) => {
 
             </div>
           </div>
-        </div>
+        
 
 
 
-      </div>
+      
       {openmodel && <Model closemodel={setopenmodel} ticketinfo={details} />}
-    </div>
+      </div>
+    </>
   )
 };
 

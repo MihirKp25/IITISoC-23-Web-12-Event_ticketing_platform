@@ -38,7 +38,7 @@ const handleClick=()=>{
       <Navbar />
      <>
 
-     <h2 style={{paddingTop:'100px', color:'white', backgroundColor:'rgb(31,31,31)', marginBottom:'0px', textAlign:'center'}}>BOOKED EVENTS:</h2>
+     <h2 id = "ub1">BOOKED EVENTS:</h2>
       
 
               

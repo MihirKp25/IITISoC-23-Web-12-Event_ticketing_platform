@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React , {useEffect} from 'react';
 import { useState } from 'react';
 import './Home.css';
 import Navbar from '../../components/navbar/Navbar';
@@ -24,7 +24,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-
 export default function Home() {
   //all functions
   const {user}=useContext(AuthContext);
@@ -45,6 +44,11 @@ export default function Home() {
     dispatch({type:"NEW_SEARCH" , payload :{city}});
     navigate.push("/list", { state:  {city}  });
   };
+  // if(user){
+  //   toast.success('Login Successfull Welcome !', {
+  //     position: toast.POSITION.TOP_CENTER
+  // });
+  // }
   useEffect(()=>{
 
     if(user){
@@ -53,21 +57,20 @@ export default function Home() {
     });
     }
   }, []);
-  
 
 
   return (
 
 
     < div className='home'>
-      <Navbar/>
+      <Navbar />
       <ToastContainer/>
       <div className="contone">
         <div className="contonecont">
           <span className='lonetit' > <b> {user && "Hi "+user.firstname}</b><br/><b>Have any <span style={{ color: "red" }}>weekend plans?</span></b></span><br /><br /><br/>
           <div className="lonecontent" >Looking for something to do lately? Whether you're a local, new in town or just cruising through we've got loads of great tips and events-from thrilling concerts to thought-provoking conferences, we have a wide variety of experiences for you to choose from.You can explore by location, popularity, free stuff... you got this. Ready?</div><br /><br />
           
-          <div className="input-group" id = "#searchbox" style={{marginLeft:'560px', paddingTop:'60px', width:'500px'}}>
+          <div className="input-group" id = "#searchbox" >
           <input type="text" name="text" className="input" id="Email"  placeholder="search by location, date or timing!" onChange={(evt)=>{setCity(evt.target.value)}}/>
           <button className="button--submit"onClick={onSearch} >SEARCH</button>
         </div>
@@ -123,7 +126,7 @@ export default function Home() {
           <b><span className='ltwotit'><b><span style={{ color: "rgb(192, 255, 57)" }}>EVENTBRITE: </span>Ticketing made easy!</b></span><br /><br /></b>
           <span className="ltwocontent" >Publish your event in under five minutes.
             Craft unique experiences using our simple and powerful event platform. Create, ticket and host both on-ground and digital events on a platform used by thousands of live event loving fans.</span><br /><br />
-          <span className="clicknoe clicknoq" style={{ fontWeight: '300' }}>More about us!<FontAwesomeIcon icon={faArrowRight} className='arrowright' /></span>
+          <span className="clicknoe clicknoq" style={{ fontWeight: '300' }}><a href = "/AboutUs">More about us!</a><FontAwesomeIcon icon={faArrowRight} className='arrowright' /></span>
 
         </div>
 

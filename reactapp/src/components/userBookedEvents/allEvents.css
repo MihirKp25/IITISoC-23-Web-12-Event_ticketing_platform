@@ -1,5 +1,6 @@
 html{
     scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
 }
   
   .carrier{
@@ -126,5 +127,19 @@ html{
       flex-wrap: wrap;
       background-color: rgb(31,31,31);
     }
+  #ub1{
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    padding-top:100px; color:white; background-color:rgb(31,31,31); margin-bottom:0px; text-align:center;
+  } 
+  
+@media(max-width:1000px){
+  #ub1{
+    font-size: 6rem;
+    width: 249.5%;
+    padding-top: 15rem;
+    padding-bottom: 5rem;
+  }
+}  
   
   

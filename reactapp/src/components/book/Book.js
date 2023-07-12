@@ -60,9 +60,9 @@ const handleClick=()=>{
        
 
 
-    <div className="carrier">
+    <div className="carrier" id="b3">
       <div className="bookcontainer">
-      <div className='labelkadiv a'><label className='labelinput' style={{fontWeight:'700'}} >  Event Name</label><br/>
+      <div className='labelkadiv'><label className='labelinput' style={{fontWeight:'700'}} >  Event Name</label><br/>
                     <input className="styleinput" type="text"  placeholder={name} onChange={handleChange3}/>
         </div>
 
@@ -71,7 +71,7 @@ const handleClick=()=>{
                 {/* </div>     */}
         </div> 
 
-        <div className='labelkadiv a'><label className='labelinput' style={{fontWeight:'700'}} >  Event type</label><br/>
+        <div className='labelkadiv'><label className='labelinput' style={{fontWeight:'700'}} >  Event type</label><br/>
                     <input className="styleinput" type="text"  placeholder={type} onChange={handleChange2}/>
         </div>
 
@@ -83,7 +83,7 @@ const handleClick=()=>{
     <div className='asas' style={{ display:'flex', textAlign:'center',justifyContent:'center',color:'rgb(235, 222, 204)'}}><br/>Search results:
     </div><br/><br/>
     </div>
-<div className="listresults">
+<div className="listresults" id = "b1">
   
   
  

@@ -155,7 +155,7 @@ font-family: 'Poppins', sans-serif;
 }
 .trendcont{
   display: flex;
-  height: auto;
+  height: 500px;
   width: 100%;
   justify-content: left;
   align-items: center;
@@ -165,7 +165,7 @@ font-family: 'Poppins', sans-serif;
 }
 .trendbox{
   min-width: 350px;
-  height: 277px;
+  height: 335px;
   overflow: hidden;
   cursor: pointer;
 }
@@ -307,6 +307,9 @@ font-family: 'Poppins', sans-serif;
 }
 
 /* searchbar after genrebox  */
+#searchbox{
+  margin-left:560px; padding-top:60px; width:500px;
+}
 .input-group {
   display: flex;
   align-items: center;
@@ -426,10 +429,10 @@ font-family: 'Poppins', sans-serif;
     font-size: 50px;
   }
   .input{
-    margin-left: -400px;
-    width: 656px;
-    height: 150px;
-    font-size: 37px;
+    margin-left: 5px;
+    width: 731px;
+    height: 176px;
+    font-size: 40px;
     font-weight: 400;
     color: white;
   }
@@ -441,6 +444,10 @@ font-family: 'Poppins', sans-serif;
   .idli{
     font-size: 70px;
     padding-top: 50px;
+  }
+  .imlimli{
+    font-size: 3rem;
+    margin-left: 25px;
   }
 
   /* CONTTHREECONT */
