@@ -15,7 +15,7 @@ import AllEventsPage from "./components/EventByType/EventByTypePage";
 import AllEventsCountryPage from "./components/EventByType/EventByCountry";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AboutUs from './components/AboutUs/About';
-import userProfile from './components/userprofile/userProfile';
+import UserProfile from './components/userprofile/userProfile';
 
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
         <Route exact path="/event/location/:country" component={AllEventsCountryPage}></Route>
         <Route exact path="/AboutUs" component={AboutUs}></Route>
         <Route exact path="/confirm" component={Payment}></Route>
-        <Route exact path="/userProfile"component={userProfile}></Route>
+        <Route exact path="/user/profile" component={UserProfile}></Route>
         </Switch>
       
     </Router>  

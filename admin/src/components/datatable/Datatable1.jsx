@@ -6,39 +6,52 @@ import useFetch from "../../hook/useFetch";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate} from "react-router-dom";
+
+
+
 
 const Datatable1 = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState();
-  const { data, loading, error } = useFetch(`/${path}`);
+  const [user, setUser] = useState([]);
+  const { data, loading, error } = useFetch(`http://localhost:3000/${path}`);
 
   useEffect(() => {
     setList(data);
   }, [data]);
 
+  const navigate = useNavigate();
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/${path}/${id}`);
+      await axios.delete(`http://localhost:3000/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };
+  const handleClick = async (id) => {
+    try{
+      navigate(`/user/${id}`);}
+      catch(err){
+        console.log(err);
+      }
+  };
 
-  const [user, setUser] = useState([]);
-
+  
+/*
   useEffect(() => {
     fetchUser();
   }, []);
 
   const fetchUser = async () => {
     try {
-      const response = await axios.get('/user/:id');
+      const response = await axios.get('http://localhost:3000/user/:id');
       setUser(response.data);
     } catch (error) {
        console.log(error);
     }
   };
-
+*/
   const actionColumn = [
     {
       field: "action",
@@ -47,9 +60,9 @@ const Datatable1 = () => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to={`user/${user._id}`} style={{ textDecoration: "none" }}>
-              <div className="viewButton">View</div>
-            </Link>
+            
+              <div className="viewButton" onClick={ ()=>handleClick(params.row._id)}>View</div>
+           
             <div
               className="deleteButton"
               onClick={() => handleDelete(params.row._id)}
@@ -65,7 +78,7 @@ const Datatable1 = () => {
     <div className="datatable">
       <div className="datatableTitle">
          User
-        <Link to="/users/new" className="link">
+        <Link to="/new" className="link">
           Add New
         </Link>
       </div>

@@ -26,13 +26,14 @@ const New = () => {
       );
 
       const { url } = uploadRes.data;
+      console.log(url);
 
       const newUser = {
         ...info,
-        img: url,
+        image: url,
       };
-
-      await axios.post("/auth/register", newUser);
+       console.log(newUser);
+      await axios.post("http://localhost:3000/auth/register", newUser);
     } catch (err) {
       console.log(err);
     }

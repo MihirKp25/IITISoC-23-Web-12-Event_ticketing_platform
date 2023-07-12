@@ -16,7 +16,7 @@ const Datatable3 = () => {
   console.log(userId)
 
 
-  const {data,loading,error}=useFetch(`/user/events/${userId}`);
+  const {data,loading,error}=useFetch(`http://localhost:3000/user/events/created/${userId}`);
   console.log(data);
   
   
@@ -28,7 +28,7 @@ const Datatable3 = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/event/${id}`);
+      await axios.delete(`http://localhost:3000/event/${id}`);
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
   };
@@ -38,7 +38,7 @@ const Datatable3 = () => {
     {
       field: "action",
       headerName: "Action",
-      width: 200,
+      width: 100,
       renderCell: (params) => {
         return (
           <div className="cellAction">

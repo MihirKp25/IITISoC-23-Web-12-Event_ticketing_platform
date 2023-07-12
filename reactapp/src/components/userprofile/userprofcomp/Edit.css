@@ -1,4 +1,7 @@
-
+::placeholder{
+    font-weight: bold;
+    color: black;
+}
 .asdfg{
     display: flex;
     flex-direction: column;
@@ -38,6 +41,7 @@
     position: relative;
     font-size: 20px;
     padding: 5px;
+    margin: 5px;
 }
 
 @media(max-width:1000px){

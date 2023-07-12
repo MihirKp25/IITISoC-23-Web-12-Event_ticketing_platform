@@ -46,7 +46,7 @@ function Navbar() {
         </ul>
 
         <div className='logoutnname'>
-        {  user ? (<><span className="usernameo"style={{color:"white", paddingRight:"50px"}} onClick={handleClick}>Logout</span> <span className="usernameo"style={{color:"white"}}>{user.firstname}</span></>) :   <div className="icons" style={{display:'flex'}}>
+        {  user ? (<><span className="usernameo"style={{color:"white", paddingRight:"50px"}} onClick={handleClick}>Logout</span>  <a href='/user/profile'><span  className="usernameo"style={{color:"white" , textDecoration:"none"}}>{user.firstname}</span></a> </>) :   <div className="icons" style={{display:'flex'}}>
           <li className='iconli'><a href="/register"><FontAwesomeIcon icon={faMagnifyingGlass} className='search' />Register</a></li>
          <li className='iconli'><a href="/Login"><FontAwesomeIcon icon={faUser} className='search'/>Login</a></li> 
         

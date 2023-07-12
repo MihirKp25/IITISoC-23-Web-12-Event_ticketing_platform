@@ -4,9 +4,9 @@ const User=require("../models/user.js")
 const router=express.Router();
 const {verifyToken, verifyAdmin, verifyUser}= require("../utils/verifyToken");
 
-router.get("/:id",verifyUser, getUser);
+router.get("/:id", getUser);
 
-router.get("/",verifyAdmin , getUsers);
+router.get("/", getUsers);
 router.get("/count" , getUserCount);
 
 router.get("/events/created/:id", viewUserCreatedEvents);

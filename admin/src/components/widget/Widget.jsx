@@ -5,31 +5,15 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import { useState, useEffect } from "react";
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Widget = ({ type }) => {
   let data;
 
-    const [count, setCount] = useState(0);
-  
-    useEffect(() => {
-      axios.get('/user/count')
-        .then(response => response.json())
-        .then(data => {
-          setCount(data.count);
-        })
-        .catch(error => {
-          console.error('Error retrieving user count:', error);
-        });
-    }, []);
   
 
-  //temporary
- // const [info, setInfo]=useState({});
-  //const {data, loading ,error}= useFetch("./user")
-  const amount = 100;
-  const diff = 20;
+
 
   switch (type) {
     case "user":
@@ -48,51 +32,8 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "order":
-      data = {
-        title: "ORDERS",
-        isMoney: false,
-        link: "View all orders",
-        icon: (
-          <ShoppingCartOutlinedIcon
-            className="icon"
-            style={{
-              backgroundColor: "rgba(218, 165, 32, 0.2)",
-              color: "goldenrod",
-            }}
-          />
-        ),
-      };
-      break;
-    case "earning":
-      data = {
-        title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
-        icon: (
-          <MonetizationOnOutlinedIcon
-            className="icon"
-            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
-          />
-        ),
-      };
-      break;
-    case "balance":
-      data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
-        icon: (
-          <AccountBalanceWalletOutlinedIcon
-            className="icon"
-            style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
-            }}
-          />
-        ),
-      };
-      break;
+  
+      
     default:
       break;
   }
@@ -102,16 +43,9 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"}{count}
+          {data.isMoney && "$"}100+
         </span>
        <Link to="/user"   style={{textDecoration:"none"}}> <span className="link">See all users</span></Link>
-      </div>
-      <div className="right">
-        <div className="percentage positive">
-          <KeyboardArrowUpIcon />
-          {diff} %
-        </div>
-        {data.icon}
       </div>
     </div>
   );
