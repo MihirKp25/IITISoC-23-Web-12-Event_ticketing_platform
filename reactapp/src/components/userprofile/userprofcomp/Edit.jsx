@@ -21,7 +21,7 @@ export default function Edit() {
    const [info, setInfo] = useState({firstname:"", lastname:"", username:"", email:"",age:""});
 
 const navigate =useHistory();
-
+console.log(user)
 
 const handleChange = (e) => {
   setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));

@@ -30,7 +30,7 @@ const Create = () => {
     });
      const newuser={...info};
       console.log(info);
-      const response=await axios.post("/auth/register", newuser);
+      const response=await axios.post("http://localhost:3000/auth/register", newuser);
       setResponseValue(response.data);
       console.log(response.data);
       setTimeout(() => {

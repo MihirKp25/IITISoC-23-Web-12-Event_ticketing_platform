@@ -1,21 +1,13 @@
 const Razorpay = require('razorpay');
 const mongoose = require('mongoose');
+const Order=require('../models/order')
 const dotenv =require('dotenv');
 const express=require("express");
 const router=express.Router();
 
 dotenv.config();
 
-const OrderSchema = mongoose.Schema({
-    isPaid: Boolean,
-    amount: Number,
-    razorpay: {
-      orderId: String,
-      paymentId: String,
-      signature: String,
-    },
-  });
-  const Order = mongoose.model('Order', OrderSchema);
+
 
   
 router.get('/get-razorpay-key', (req, res) => {

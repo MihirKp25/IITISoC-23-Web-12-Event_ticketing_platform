@@ -84,7 +84,7 @@ const NewEvent = () => {
 
       const newevent = { ...info, photos: list, date: date[0] };
       console.log(list);
-      const response = await axios.post("/event", newevent);
+      const response = await axios.post("http://localhost:3000/event", newevent);
       setResponseValue(response.data);
       console.log(response.data);
       setTicketModal(true);

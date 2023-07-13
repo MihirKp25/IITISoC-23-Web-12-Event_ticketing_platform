@@ -23,7 +23,9 @@ const searchitem = ({ details}) => {
               
            
                   {/* MAKE A POP UP FOR THESE    */}
-                 <Link to={`/user/details/${details._id}`} ><button className="openModalBtn">SEE DETAILS</button></Link>
+                 <Link to={`/user/details/${details._id}`} ><button className="openModalBtn">VIEW DETAILS</button></Link>
+
+                 <Link to={`/bookings/${details._id}`} ><button className="openModalBtn">VIEW BOOKINGS</button></Link>
               
                  
 

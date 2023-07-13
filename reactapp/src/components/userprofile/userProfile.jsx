@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 
 import Navbar from '../navbar/Navbar';
 import a from "./profilepic.jpg"

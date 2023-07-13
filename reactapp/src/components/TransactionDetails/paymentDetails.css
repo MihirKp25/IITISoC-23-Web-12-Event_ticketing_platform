@@ -1,0 +1,78 @@
+/* *{
+    background-color: black;
+  } */
+  .unit{
+    color: beige;
+    text-align: center;
+    justify-content: center;
+  }
+  .ticket{
+    text-align: left;
+    justify-content: left;
+   
+    margin-top: 20px;
+  
+  }
+  .input{
+    background-color: rgb(208, 147, 15);
+    opacity: 95%;
+  }
+  .ticket>h3{
+    float: left;
+  }
+  
+  .alert{
+    background-color:rgba(128, 128, 128, 0.199);
+  
+    
+    height: 60px;
+    width: 1000px;
+    border-radius: 10px;
+    border: solid;
+    border-color:rgb(128, 128, 128);
+    margin-top: 60px;
+    margin-left: 100px;
+    
+    }
+    .alert1{
+      background-color:rgba(128, 128, 128, 0.199);
+    
+      
+      height: 60px;
+      width: 1000px;
+      border-radius: 10px;
+      border: solid;
+      border-color:rgb(128, 128, 128);
+      margin-top: 10px;
+      margin-left: 100px;
+  
+      }
+      .alert2{
+        background-color:rgba(128, 128, 128, 0.199);
+    
+      
+      height: 60px;
+      width: 1000px;
+      border-radius: 10px;
+      border: solid;
+      border-color:rgb(128, 128, 128);
+      margin-top: 10px;
+      margin-left: 100px;
+      margin-bottom: 60px;
+      }
+  .col-md-12>span{
+    margin-left: 100px;
+  } 
+  .container{
+  border: solid;
+  border-color: aliceblue;
+  margin-top: 50px;
+  margin-bottom: 90px;
+  margin-left: 40px;
+  margin-right: 265px;
+  border-radius:6px;
+  
+  }
+  .col-md-12{
+    margin-top: 50px;
+  }

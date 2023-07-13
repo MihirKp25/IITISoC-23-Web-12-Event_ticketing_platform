@@ -1,5 +1,6 @@
 const Event=require('../models/event.js');
 const Ticket=require('../models/tickets.js');
+const Order=require('../models/order.js');
 const Purchase =require("../models/purchased.js");
 const User =require("../models/user.js");
 const CreatedEvent= require("../models/sold.js");
@@ -210,6 +211,51 @@ module.exports.EventsbyCountry=async(req,res, next)=>{
   }
 
 
+}
+
+module.exports.getOrders=async(req,res, next)=>{
+  const orders = await Purchase.find({eventId:req.params.id}).populate('orderDetail').populate('ticketId').exec();
+
+  
+  try {
+   console.log(orders)
+   res.status(200).json(orders);
+
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports.searchOrders=async(req,res, next)=>{
+  const {orderId,paymentId} = req.query;
+  console.log(req.query)
+  let query={};
+  
+  try {
+    if(orderId && paymentId){
+      query.paymentId=paymentId;
+      const searchOrder=await Order.find({razorpay:query});
+      return res.status(200).json(searchOrder);
+     }
+     if(orderId){
+      query.orderId=orderId;
+      const searchOrder=await Order.find({razorpay:query});
+      return res.status(200).json(searchOrder);
+     }
+     if(paymentId){
+      query.paymentId=paymentId;
+      const searchOrder=await Order.find({razorpay:query});
+      return res.status(200).json(searchOrder);
+     }
+    
+
+
+  //  console.log(searchOrder)
+
+
+  } catch (error) {
+    next(error);
+  }
 }
 
 module.exports.ConfirmationMail = async (req, res) => {

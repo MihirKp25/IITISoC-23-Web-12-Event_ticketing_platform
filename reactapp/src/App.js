@@ -16,6 +16,7 @@ import AllEventsCountryPage from "./components/EventByType/EventByCountry";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AboutUs from './components/AboutUs/About';
 import UserProfile from './components/userprofile/userProfile';
+import PaymentDetails from './components/TransactionDetails/paymentDetails';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route exact path="/AboutUs" component={AboutUs}></Route>
         <Route exact path="/confirm" component={Payment}></Route>
         <Route exact path="/user/profile" component={UserProfile}></Route>
+        <Route exact path="/bookings/:id" component={PaymentDetails}></Route>
         </Switch>
       
     </Router>  

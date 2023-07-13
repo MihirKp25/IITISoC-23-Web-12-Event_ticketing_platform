@@ -56,10 +56,10 @@ const NewTicket = ({ infoEvent ,index}) => {
             };
             console.log(newTicket);
             //  await axios.post("/event", infoEvent);    
-            const response = await axios.post(`/ticket/${infoEvent._id}`, newTicket);
+            const response = await axios.post(`http://localhost:3000/ticket/${infoEvent._id}`, newTicket);
             console.log(response.data);
             console.log(infoEvent._id)
-            await axios.post(`/user/event`, { ticketId: response.data._id, userId: user._id, eventId: infoEvent._id });
+            await axios.post(`http://localhost:3000/user/event`, { ticketId: response.data._id, userId: user._id, eventId: infoEvent._id });
         } catch (err) {
             console.log(err);
         }

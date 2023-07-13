@@ -7,6 +7,7 @@ const {verifyToken, verifyAdmin, verifyUser}= require("../utils/verifyToken");
 router.get("/:id", getUser);
 
 router.get("/", getUsers);
+
 router.get("/count" , getUserCount);
 
 router.get("/events/created/:id", viewUserCreatedEvents);
