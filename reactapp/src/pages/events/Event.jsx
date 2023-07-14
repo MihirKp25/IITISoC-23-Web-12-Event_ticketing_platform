@@ -134,7 +134,7 @@
 // };
 
 // export default Event;
-
+import axios from "axios";
 import "./Event.css";
 import Footer from '../../components/footer/Footer.js'
 import Modal from './Modal.jsx';
@@ -151,9 +151,10 @@ import { AuthContext } from "../../hooks/context/AuthContext";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import Date from "../../components/calendar feature code/calendar";
 
 const Event = () => {
-  
+  const currentDate = new Date();
   const [slideNumber, setSlideNumber] = useState(0);
   
   const [image,setImage]=useState("")
@@ -164,23 +165,54 @@ const Event = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const { data, error, loading,reFetch } = useFetch(`http://localhost:3000/event/find/${id}`);
-  // const LandImage=data.photos[0];
-  // console.log(LandImage)
-  // console.log(data);
-  // console.log(data.tickettitle);
+  const { data:organizer } = useFetch(`http://localhost:3000/event/organizer/${id}`);
+ 
   const [displayPrice, setdisplayPrice] = useState(0);
   const [ticketIndex, setTicketIndex] = useState(0);
   const [ticket, setTicket] = useState({});
-  // console.log(displayPrice);
-  // if(data.photos){
-  //   setImage(data.photos[0]);
-  // }
-  // if(!data.photos){
-  //   setImage(a);
-  // }
+  console.log(organizer)
   console.log(data.date)
   console.log(data.photos)
 
+
+  const dateStart = new Date(data.date?.startDate); // Replace this with your actual date
+  const startDate = dateStart.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+  const dateEnd = new Date(data.date?.endDate); // Replace this with your actual date
+  const endDate = dateEnd.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try { reFetch();
+  //       const response = await axios.get(`http://localhost:3000/event/organizer/${id}`);
+  //       console.log(response)
+  //       setOrganizer(response.data);
+       
+  //     } catch (error) {
+  //      console.log(error)
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  // const seeOrganizerData=async()=>{
+  //   const organizerr=await axios.get(`http://localhost:3000/event/organizer/${id}`);
+  //   setOrganizer(organizerr);
+   
+  //   console.log("hello")
+
+
+
+  // }
+  // console.log(organizer)
 
  
 
@@ -204,8 +236,13 @@ const Event = () => {
       // navigate.push("/login");
     }
   }
-
-  console.log(id);
+  const formattedEndDate = endDate.slice(0, -1); // Remove the 'Z' at the end
+  const currentDateString = currentDate.toISOString();
+console.log(currentDateString>endDate)
+console.log(currentDateString)
+console.log(data.date?.endDate)
+ 
+ 
   return (<div>
     <div className="qwer">
       <Navbar />
@@ -214,18 +251,18 @@ const Event = () => {
         <div className="eventinfo">
         <img src={image} alt="Unable to load image, Please hover over Gallery" className="eventinfoimg" />
           <div className="aboutevent">
-            <div className="eventtitle" ><b>WEB-DEVELOPMENT: A COMPLETE JOURNEY</b></div><br />
-            <div className="eventorganiser" ><b>BY:</b> <>NEED TO BE PASSED</></div><br/><br/><br/>
-            <span className="eventcontent">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam praesentium quisquam fugiat cumque quibusdam necessitatibus illo, repellendus sapiente perspiciatis excepturi laborum amet sequi facilis accusamus architecto aliquid quaerat aliquam autem ipsum impedit deserunt quia similique. Temporibus exercitationem praesentium pariatur, totam reiciendis maxime iste commodi eligendi ab atque magni consectetur voluptates possimus. Labore corrupti</span>
+            <div className="eventtitle" ><b>{data.name}</b></div><br />
+            {/* <div className="eventorganiser" ><b>BY:</b> <>NEED TO BE PASSED</></div><br/><br/><br/> */}
+            <span className="eventcontent">{data.desc}</span>
           </div>
 
         </div>
         <div>      
        <div className="eventbriefi">
-          <div className="eventtitle"><b>WEB-DEVELOPMENT COURSE</b></div><br /><br />
+          <div className="eventtitle"><b>{data.name}</b></div><br /><br />
           <div id="asdasd">
           <FontAwesomeIcon icon={faBookmark}></FontAwesomeIcon>
-          <span className="childtitle"> GENRE:</span>
+          <span className="childtitle"> TYPE:</span>
           <span className="childinfo">&ensp;{data.type}</span><br />
           <FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon>
           <span className="childtitle"> LOCATION:</span>
@@ -236,16 +273,15 @@ const Event = () => {
           <FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
           <span className="childtitle"> EVENT STARTS :</span>
           <span className="childinfo">&ensp;
-            { data.date?.startDate }
+            {startDate}
             {/* //NOTE WHENEVER THERES A OBJECT WHITHIN A OBJECT AND ANOTHER OBJECT GIVE A QUESTION MARK SO THAT IT TAKES A NULL VALUE TOO VVVVVVVIMPPPPPPP */}
           </span><br />
+          <FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
           <span className="childtitle"> EVENT ENDS :</span>
           <span className="childinfo">&ensp;
-            {data.date?.endDate}
+            {endDate}
           </span><br />
-          <FontAwesomeIcon icon={faPeopleArrows}></FontAwesomeIcon>
-          <span className="childtitle"> ORGANISER:</span>
-          <span className="childinfo">&ensp;NEED TO PASS</span><br /><br />
+         
           </div>
           <FontAwesomeIcon icon={faMoneyBills} id = "jaja"></FontAwesomeIcon>&ensp;
           <span className="eventprice" ><small>per ticket</small>₹ {displayPrice}</span>
@@ -260,14 +296,28 @@ const Event = () => {
                 <option key={ticket.id} className="inputoption" value={ticket.price} onClick={(e)=>{setTicket(ticket)}} >{ticket.price}</option>
               ))}
             </select>
-            <button className="openModalBtn" id= "kaka" onClick={handleClick}>BOOK NOW!</button>
-
+            { currentDateString<endDate ? <>
+            <h1 >
+             <b style={{color:"#fd5f5f"}}>Bookings Open</b> </h1>
+            <button className="openModalBtn" id= "kaka" onClick={handleClick}>BOOK NOW!</button></> : <h1 > <b style={{color:"#fd5f5f"}}>Event Expired</b> </h1>
+            }
           </div>
        
 
 
         </div>
-        <br/><br/><br/><br/>
+        <br/><br/>
+        <div className="eventbrief1" >
+        <h2 id = "haha"  > <FontAwesomeIcon icon={faPeopleArrows}></FontAwesomeIcon>Organizer Details</h2>
+        <p>NAME : {organizer.firstname} {organizer.lastname}</p>
+        <p>CONTACT NO :{organizer.contactNo}</p>
+        <p>EMAIL :{organizer.email}</p>
+    
+        
+
+
+          
+        </div>
         <div className="eventbrief1">
            <h2 id = "haha">Gallery</h2>
            <div className="listresults1">

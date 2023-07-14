@@ -14,7 +14,7 @@ router.get("/events/created/:id", viewUserCreatedEvents);
 
 router.get("/events/booked/:id", viewUserBookedEvents);
 
-router.put("/:id",verifyUser, editUser);
+router.put("/:id", editUser);
 
 router.delete("/:id",verifyUser, deleteUser);
 

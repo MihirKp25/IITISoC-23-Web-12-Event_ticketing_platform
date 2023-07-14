@@ -6,6 +6,7 @@ const User =require("../models/user.js");
 const CreatedEvent= require("../models/sold.js");
 const nodemailer = require('nodemailer');
 const qrcode = require('qrcode');
+const sold = require('../models/sold.js');
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -67,6 +68,18 @@ module.exports.getEvent= async (req,res,next)=>{
       } catch (err){
         next(err)
       }
+};
+
+module.exports.getOrganizer= async (req,res,next)=>{
+  try {
+      const event = await CreatedEvent.findOne({eventId:req.params.id});
+      const organizer=await User.findById(event.userId)
+      console.log(event)
+      console.log(organizer)
+      res.status(200).json(organizer);
+    } catch (err){
+      next(err)
+    }
 };
 
 module.exports.getEvents = async (req,res,next)=>{
@@ -266,6 +279,8 @@ module.exports.ConfirmationMail = async (req, res) => {
   console.log(purchase)
   const event = await Event.findById(purchase.eventId);
   const ticket = await Ticket.findById(purchase.ticketId);
+  const created = await CreatedEvent.findOne({eventId:purchase.eventId})
+  const organizer=await User.findById(created.userId)
   console.log("EMAIL")
   console.log(user.email)
 
@@ -312,12 +327,12 @@ module.exports.ConfirmationMail = async (req, res) => {
 
 
   let mailOptions = {
-    from: 'eventticketing.team@gmail.com',
+    from: organizer.email,
     to: userEmail,
     subject: 'Event Booking Confirmation',
     text: `Dear ${user.firstname},
     Thank you for booking your ticket for ${event.name}. We are pleased to inform you that your ticket has been successfully generated. Please find the details below:
-    Event: ${event.name}
+    Organizer : ${organizer.email} , ${organizer.contactNo}
     Date: ${event.date.startDate} to ${event.date.endDate}
     Location: ${event.address},${event.city}
     Best Regards

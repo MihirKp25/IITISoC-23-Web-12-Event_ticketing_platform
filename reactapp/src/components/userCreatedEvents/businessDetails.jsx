@@ -27,6 +27,18 @@ export default function Business() {
   const { data, loading, error, reFetch } = useFetch(`http://localhost:3000/user/events/details/booked/${detailsId}`);
   console.log(data);
   // console.log(data.eventId);
+  const dateStart = new Date(data.date?.startDate); // Replace this with your actual date
+  const startDate = dateStart.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+  const dateEnd = new Date(data.date?.endDate); // Replace this with your actual date
+  const endDate = dateEnd.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 
   console.log(data.tickettitle)
 
@@ -66,6 +78,7 @@ export default function Business() {
             <p>Event Time: {data.time}</p>
             <p>Event Type: {data.type}</p>
             <p>Event Description: {data.desc}</p>
+            <p>Event Duration:{startDate} to {endDate}</p>
             </span>
           </div>
 

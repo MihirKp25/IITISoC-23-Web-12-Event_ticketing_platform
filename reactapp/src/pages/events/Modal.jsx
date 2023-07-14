@@ -69,7 +69,7 @@ const loadRazorpay=()=> {
       setOrderAmount(option.tickets*ticketDet.price)
       setLoading(true);
       const result = await axios.post('http://localhost:3000/create-order', {
-        amount: orderAmount ,
+        amount: orderAmount + '00' ,
       });
       const { amount, id: order_id, currency } = result.data;
       const {
@@ -126,8 +126,22 @@ const loadRazorpay=()=> {
   document.body.appendChild(script);
 }
 
+const dateStart = new Date(ticketDet.date?.startDate); // Replace this with your actual date
+const startDate = dateStart.toLocaleDateString('en-US',{
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+const dateEnd = new Date(ticketDet.date?.endDate); // Replace this with your actual date
+const endDate = dateEnd.toLocaleDateString('en-US',{
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 
-
+const currentDate=new Date();
+const formattedEndDate = endDate.slice(0, -1); // Remove the 'Z' at the end
+const currentDateString = currentDate.toISOString();
 
 
 
@@ -156,7 +170,7 @@ const loadRazorpay=()=> {
             <span className="childinfo">&ensp;<b> $ {ticketDet?.price}</b></span><br/>
           <FontAwesomeIcon icon = {faPeopleArrows}></FontAwesomeIcon>
           <span className="modalchildtitle"><b> TICKET SALE ENDS:</b></span>
-            <span className="childinfo">&ensp;RUKO zara sabar karo</span><br/><br/>
+            <span className="childinfo">&ensp;{startDate} - {endDate}</span><br/><br/>
           <FontAwesomeIcon icon = {faTags}></FontAwesomeIcon>
           <span className="modalchildtitle"><b>SELECT NUMBER OF TICKETS:</b></span>
           
@@ -201,8 +215,10 @@ const loadRazorpay=()=> {
          </span>
               
         </div>
+        { currentDateString<endDate ? <>
         <button className="openModalBtun" onClick={loadRazorpay}>CONFIRM BOOKING</button>
-         
+        </> : <h2 style={{color:"#fd5f5f"}}>Ticket Sale Ended</h2>
+        }
          <button className="openModalBtun" onClick={()=>closeModal(false)}>Cancel</button>
       </div>
     </div>

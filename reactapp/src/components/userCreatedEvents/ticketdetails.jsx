@@ -4,6 +4,18 @@ import './businessDetails.css'
 
 
 export default function TicketInfo({ticket}){
+        const dateStart = new Date(ticket.date?.startDate); // Replace this with your actual date
+        const startDate = dateStart.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
+        const dateEnd = new Date(ticket.date?.endDate); // Replace this with your actual date
+        const endDate = dateEnd.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
 console.log(ticket)
 
 return (<>
@@ -16,7 +28,7 @@ return (<>
 <p>Remaing TIckets : {ticket.totalTickets}</p>
 <p>Ticket Type :{ticket.type}</p>
 <p>Ticket Desc :{ticket.desc}</p>
-<p>Ticket Sale starts :{ticket.date?.startDate} ends : {ticket.date?.startDate}</p> 
+<p>Ticket Sale starts :{startDate} ends : {endDate}</p> 
        
         </div>
 

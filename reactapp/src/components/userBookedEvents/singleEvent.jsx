@@ -6,6 +6,14 @@ import { format } from 'date-fns'
 import Model from './Model.jsx'
 const Searchitem = ({ details }) => {
   const [openmodel, setopenmodel] = useState(false)
+
+  const dateStart = new Date(details.purchaseDate); // Replace this with your actual date
+  const startDate = dateStart.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
   return (
     <>
       
@@ -17,9 +25,9 @@ const Searchitem = ({ details }) => {
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-PYJfcaNbGeylYwwFBKhnWtmHUZKtav6IQ&usqp=CAU" className="searchitemimg" alt="..." />
 
             <div class="card-body" id = "se2">
-              <div ><h1 ><b className="card-title">{details.eventId.name}</b></h1></div>
-              <span class="card-title">{details.purchaseDate}</span><br/>
-              <span class="card-title"  id = "se1">{details.quantity}</span>
+              <div ><h1 ><b className="card-title">EVENT NAME: {details.eventId.name}</b></h1></div>
+              <span class="card-title">DATO OF PURCHASE : {startDate}</span><br/>
+              <span class="card-title"  id = "se1">Ticket Quantity :{details.quantity}</span>
 
               {/* MAKE A POP UP FOR THESE    */}
             
