@@ -135,8 +135,9 @@ html{
   
 @media(max-width:1000px){
   #ub1{
+    font-weight: 900;
     font-size: 6rem;
-    width: 249.5%;
+    width: 71rem;
     padding-top: 15rem;
     padding-bottom: 5rem;
   }

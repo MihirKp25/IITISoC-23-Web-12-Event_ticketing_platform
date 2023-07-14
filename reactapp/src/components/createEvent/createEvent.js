@@ -99,7 +99,7 @@ const NewEvent = () => {
       <div className="newContainer" style={{ margin: 100 }}>
         <div className="top tip">
           <h1 className="toptitle"><b>Add New Event</b></h1>
-          <small>* Please ensure that you fill the form precisely, further once created event <b>CANNOT</b> be updated </small>
+          <small>* Please ensure that you fill the form precisely, event once created, <b>CANNOT</b> be updated later.</small>
         </div>
 
 

@@ -61,11 +61,11 @@ export default function Business() {
     //   ))}
 
 
-    <div className="qwir">
+    <div className="qwir" id = "bd1">
       <Navbar />
       <br /><br /><br /><br /><br />
       <div className="infofo" style={{ color: 'white' }}>INFO</div>
-      <div className="eventcontaine" >
+      <div className="eventcontaine" id = "bd2">
 
         <div className="eventinfo" id = "busdeteventinfo">
           
@@ -83,8 +83,8 @@ export default function Business() {
           </div>
 
         </div>
-        <div className="eventbrief">
-          <h3>Ticket Details</h3>
+        <div className="eventbrief" id = "bd3">
+          <div className="eventtitle"><b>Ticket Details</b></div>
         {data.tickettitle?.map(ticket=>(<TicketInfo ticket={ticket}/>))}
         </div>
         {/* {openModal && <Modal closeModal={setopenModal} eventId={id} />} */}
@@ -93,7 +93,7 @@ export default function Business() {
 
 
 
-      <Footer />
+      
     </div>
 
 

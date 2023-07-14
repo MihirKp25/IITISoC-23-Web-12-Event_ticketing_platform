@@ -73,37 +73,31 @@ html{
 .openModalBtn:hover{
   background-color: rgb(184, 10, 94);
 }
-.listresults1 {
+/* .listresults {
   align-items: center;
-  justify-content: center;
-  padding: 15px;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: rgba(31, 31, 31, 0.475);
-  border-radius: 15px;
-} 
-.listresultitem1{
-  margin: 10px;
-}
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: blue;
+  padding: 0;
+}  */
 #jaja{
   font-size: 30px;
 }
 .eventbrief1{
-  /* height: 400px; */
-  padding: 20px;
-  
-  
+  height: 400px;
+  padding-top: 20px;
+  padding-left: 15px;
+  padding-right: 3px;
   margin-bottom:10px ;
-  color:rgb(239, 238, 237);
+  color:rgb(255, 255, 255);
   border: 1px solid rgb(46, 46, 46);
   background-color: rgb(45,45,45);
   border-radius: 15px;
-  /* font-size: 16px; */
+  font-size: 16px;
 }
 .imge{
   height: 9rem;
-  width: 10rem;
-  border-radius: 10px;
+  width: 9rem;
 }
 
 /* blurring   */
@@ -154,6 +148,8 @@ html{
     flex-direction: column;
   }
   .eventinfo{
+    margin-top: 15rem;
+    width: 100%;
     height: 200rem;
   }
   .eventtitle{
@@ -170,8 +166,12 @@ html{
     background-color: rgb(45,45,45);
     height: 110rem;
     margin-top: 10rem;
-    width: 100%
-
+    width: 86rem;
+    margin-left: 0px;
+    margin-right: 0px;
+    position: relative;
+    left: -2%;
+    
   }
   #jaja{
     font-size: 7rem;
@@ -186,13 +186,15 @@ html{
     font-size: 7rem;
   }
   #kaka{
-    margin-left: 6rem;
+    margin-top: 10rem;
+    margin-left: 26rem;
   }
   #haha{
     font-size: 7rem;
-    /* color: aliceblue; */
   }
   .eventbrief1{
+    margin-top: 4rem;
+    margin-bottom: 8rem;
     height: 1000px;
   }
   .qaqa{
@@ -201,5 +203,11 @@ html{
     ;
     justify-content: center;
     margin: 0px;
+  }
+  .childinfo{
+    font-size: 5rem;
+  }
+  #k1k{
+    font-size: 5rem;
   }
 }

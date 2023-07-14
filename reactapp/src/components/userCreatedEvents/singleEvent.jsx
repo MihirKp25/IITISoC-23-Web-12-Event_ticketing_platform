@@ -32,19 +32,19 @@ const endDate = dateEnd.toLocaleDateString('en-US', {
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-PYJfcaNbGeylYwwFBKhnWtmHUZKtav6IQ&usqp=CAU" class="img-fluid rounded-start" className="searchitemimg" alt="..." />
 
               <div class="card-body">
-                 <h5 class="card-title"> {details.name}</h5>
-                 <p class="card-title">Event Duration : {startDate} - {endDate} </p>
-                 <p class="card-title">Event Ends : {details.date.startDate}</p>
-                 <p class="card-title">Event Type: {details.type}</p> 
-                 <p class="card-title">Event Type: {details.address}, {details.city}, {details.country}</p> 
+                 <h5 class="card-title"><b style = {{color:"#EBDECC"}}> {details.name}</b></h5>
+                 <p class="card-title"><b style = {{color:"#EBDECC"}}>Event Duration : </b>{startDate} - {endDate} </p>
+                 <p class="card-title"><b style = {{color:"#EBDECC"}}>Event Ends :</b> {details.date.startDate}</p>
+                 <p class="card-title"><b style = {{color:"#EBDECC"}}>Event Type: </b>{details.type}</p> 
+                 <p class="card-title"><b style = {{color:"#EBDECC"}}>Event Type: </b>{details.address}, {details.city}, {details.country}</p> 
               
-           
+                <div id = "sese1">
                   {/* MAKE A POP UP FOR THESE    */}
-                 <Link to={`/user/details/${details._id}`} ><button className="openModalBtn">VIEW DETAILS</button></Link>
+                 <Link to={`/user/details/${details._id}`} ><button id = "sese2"className="openModalBtn">VIEW DETAILS</button></Link>
 
-                 <Link to={`/bookings/${details._id}`} ><button className="openModalBtn">VIEW BOOKINGS</button></Link>
+                 <Link to={`/bookings/${details._id}`} ><button id = "sese2"className="openModalBtn">VIEW BOOKINGS</button></Link>
               
-                 
+                 </div>
 
 
 

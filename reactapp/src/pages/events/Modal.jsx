@@ -152,25 +152,25 @@ const currentDateString = currentDate.toISOString();
        
       {/* <span onClick={closeModal(false)}>Close</span> */}
       <div className="modalContainer">
-        <div className="title" style={{ fontWeight:'400', fontSize:'30px'}}>CONFIRM TICKET BOOKING </div>
-        <span className="container">
+        <div className="title" id = "mo1">CONFIRM TICKET BOOKING </div>
+        <span className="m1m1">
          
-          <span className="details"><b>Details:</b><small>  {ticketDet.totalTickets} Tickets Remaining</small></span><br/>
-          <FontAwesomeIcon icon = {faBookmark}></FontAwesomeIcon>
+        <span className="details"><b>Details:</b><small>  {ticketDet.totalTickets} Tickets Remaining</small></span><br/>
+          <FontAwesomeIcon style={{color:"red"}}icon = {faBookmark}></FontAwesomeIcon>
           <span className="modalchildtitle"><b> NAME:</b></span>
-            <span className="childinfo">&ensp;{ticketDet?.name}</span><br/>
-          <FontAwesomeIcon icon = {faLocationDot}></FontAwesomeIcon>
+            <span className="childinfo" id = "mo2">&ensp;{ticketDet?.name}</span><br/>
+          <FontAwesomeIcon style={{color:"green"}}icon = {faLocationDot}></FontAwesomeIcon>
           <span className="modalchildtitle"><b> CATEGORY:</b></span>
-            <span className="childinfo">&ensp;{ticketDet?.type}</span><br/>
-            <FontAwesomeIcon icon = {faLanguage}></FontAwesomeIcon>
+            <span className="childinfo" id = "mo2">&ensp;{ticketDet?.type}</span><br/>
+            <FontAwesomeIcon style={{color:"blue"}}icon = {faLanguage}></FontAwesomeIcon>
           <span className="modalchildtitle"><b> DESCRIPTION:</b></span>
-            <span className="childinfo">&ensp;{ticketDet?.desc}</span><br/>
-          <FontAwesomeIcon icon = {faClock}></FontAwesomeIcon>
+            <span className="childinfo" id = "mo2">&ensp;{ticketDet?.desc}</span><br/>
+          <FontAwesomeIcon style={{color:"yellow"}}icon = {faClock}></FontAwesomeIcon>
           <span className="modalchildtitle"><b> PRICE <small>per Ticket</small> :</b></span>
-            <span className="childinfo">&ensp;<b> $ {ticketDet?.price}</b></span><br/>
-          <FontAwesomeIcon icon = {faPeopleArrows}></FontAwesomeIcon>
+            <span className="childinfo" id = "mo2">&ensp;<b> $ {ticketDet?.price}</b></span><br/>
+          <FontAwesomeIcon style={{color:"black"}}icon = {faPeopleArrows}></FontAwesomeIcon>
           <span className="modalchildtitle"><b> TICKET SALE ENDS:</b></span>
-            <span className="childinfo">&ensp;{startDate} - {endDate}</span><br/><br/>
+            <span className="childinfo" od = "mo2">&ensp;{startDate} - {endDate}</span><br/><br/>
           <FontAwesomeIcon icon = {faTags}></FontAwesomeIcon>
           <span className="modalchildtitle"><b>SELECT NUMBER OF TICKETS:</b></span>
           
@@ -179,8 +179,8 @@ const currentDateString = currentDate.toISOString();
         <ToastContainer/>
         <div className="imlidli" style={{display:'flex', flexDirection:'column', alignItems:'center', marginTop:'10px'}}>
         <div className="headerSearchItem">
-                <FontAwesomeIcon icon={faPerson} className="headerIcon" />
-                <span
+                <FontAwesomeIcon id = "mo2" style = {{color:'red'}}icon={faPerson} className="headerIcon" />
+                <span id = "mo2"
                   onClick={() => setOpenOptions(!openOptions)}
                   className="headerSearchText"
                 >{`${option.tickets} tickets`}</span>
@@ -211,15 +211,17 @@ const currentDateString = currentDate.toISOString();
                   </div>
                 )}
               </div>
-              <span className="modalchildtitle"><b>AMOUNT TO PAY : $ {option.tickets*ticketDet.price}</b>
+              <span className="modalchildtitle" id = "mo2"><b>AMOUNT TO PAY : $ {option.tickets*ticketDet.price}</b>
          </span>
               
         </div>
+        <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
         { currentDateString<endDate ? <>
-        <button className="openModalBtun" onClick={loadRazorpay}>CONFIRM BOOKING</button>
+        <button className="openModalBtun" id = "mo4" onClick={loadRazorpay}>CONFIRM BOOKING</button>
         </> : <h2 style={{color:"#fd5f5f"}}>Ticket Sale Ended</h2>
         }
-         <button className="openModalBtun" onClick={()=>closeModal(false)}>Cancel</button>
+         <button className="openModalBtun" id = "mo4" onClick={()=>closeModal(false)}>Cancel</button>
+         </div>
       </div>
     </div>
   )

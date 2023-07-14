@@ -18,7 +18,7 @@ function Model({ closemodel, ticketinfo }) {
   return (
   
     <div className="qwe">
-      <div className="eventcontaine" >
+      <div className="eventcontaine" id = "m1">
         {/* <div className="eventinf">
           <img src={a} alt="" className="eventinfoim" />
           <div className="abouteven">
@@ -28,46 +28,46 @@ function Model({ closemodel, ticketinfo }) {
 
         </div> */}
         <div className="eventbrie">
-          <span className="eventtitle" style={{ fontSize: '30px', fontWeight: '1000', color: 'rgb(233, 231, 229)' }}><b>INSERT COURSE TITLE</b></span><br /><br />
-
-          <FontAwesomeIcon icon={faBookmark}></FontAwesomeIcon>
-          <span className="childtitl"><b>Event name: </b>{ticketinfo.eventId.name}</span><br />
+          <span className="eventtitle" id = "m2"><b>INSERT COURSE TITLE</b></span><br /><br />
+          <div className = "m3">
+          <FontAwesomeIcon icon={faBookmark} style={{color:'red'}}></FontAwesomeIcon>
+          <span className="childtitl m3" ><b>Event name: </b>{ticketinfo.eventId.name}</span><br />
           {/* <span className="childinf">&ensp;{data.type}</span><br/><br/> */}
-          <FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon>
-          <span className="childtitl"><b>Event type: </b>{ticketinfo.eventId.type}</span><br />
+          <FontAwesomeIcon icon={faLocationDot}style={{color:'blue'}}></FontAwesomeIcon>
+          <span className="childtitl m3" ><b>Event type: </b>{ticketinfo.eventId.type}</span><br />
           {/* <span className="childinf">&ensp;{data.address} , {data.city} ,{data.country}</span><br/><br/> */}
-          <FontAwesomeIcon icon={faLanguage}></FontAwesomeIcon>
-          <span className="childtitl"><b>Event date:</b> {ticketinfo.eventId.date.startDate} to {ticketinfo.eventId.date.endDate}</span><br />
+          <FontAwesomeIcon icon={faLanguage}style={{color:'yellow'}}></FontAwesomeIcon>
+          <span className="childtitl m3" ><b>Event date:</b> {ticketinfo.eventId.date.startDate} to {ticketinfo.eventId.date.endDate}</span><br />
           {/* <span className="childinf">&ensp;{data.city}</span><br/><br/> */}
-          <FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
-          <span className="childtitl"><b>Event venue:</b> {ticketinfo.eventId.address}  {ticketinfo.eventId.city}  {ticketinfo.eventId.country}</span><br />
+          <FontAwesomeIcon icon={faClock}style={{color:'green'}}></FontAwesomeIcon>
+          <span className="childtitl m3" ><b>Event venue:</b> {ticketinfo.eventId.address}  {ticketinfo.eventId.city}  {ticketinfo.eventId.country}</span><br />
           <span className="childinf">&ensp;
-          <b>Ticket name:</b> {ticketinfo.ticketId.name}
+          <>Ticket name:</> {ticketinfo.ticketId.name}
           </span><br />
           <span className="childinf">&ensp;
-          <b>Ticket name:</b> {ticketinfo.ticketId.type}
+          <>Ticket name:</> {ticketinfo.ticketId.type}
         </span><br/>
         <span className="childinf">&ensp;
-        <b>Ticket purchase date:</b> {ticketinfo.purchaseDate}
+        <>Ticket purchase date:</> {ticketinfo.purchaseDate}
         </span><br/>
         <span className="childinf">&ensp;
-        <b>No of tickets: </b>{ticketinfo.quantity}
+        <>TNo of tickets: </>{ticketinfo.quantity}
         </span><br/>
-        <FontAwesomeIcon icon={faMoneyBills} style={{ fontSize: '30px' }}></FontAwesomeIcon>&ensp;
+        <FontAwesomeIcon icon={faMoneyBills} id = "m8m"style={{color:'green'}}></FontAwesomeIcon>&ensp;
         <span className="childinf">&ensp;
-        <b>Total amount paid: </b>$ {ticketinfo.quantity * ticketinfo.ticketId.price}
+        <>Total amount paid: </>$ {ticketinfo.quantity * ticketinfo.ticketId.price}
         </span><br/><br />
         <span className="childinf">&ensp;
-        <b>Ticket Desc: </b><p>{ticketinfo.ticketId.desc}</p>
+        <>Ticket Desc: </><p>{ticketinfo.ticketId.desc}</p>
         </span><br/>
-
+        </div>
  
 
-          <FontAwesomeIcon icon={faPeopleArrows}></FontAwesomeIcon>
-          <span className="childinf">&ensp;<p>For Further Details, Please check the mail send to your registered EmailId {user.email}</p></span><br /><br /><br />
+          <FontAwesomeIcon icon={faPeopleArrows}style={{color:'red'}}></FontAwesomeIcon>
+          <span className="childinf">&ensp;<p>For Further Details, Please check the mail send to your registered EmailId {user.email}</p></span>
          
-          
-          <button className="openModalBt" onClick={() => closemodel(false)}>CLOSE</button>
+          <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+          <button className="openModalBt" onClick={() => closemodel(false)}>CLOSE</button></div>
         </div>
       </div>
 

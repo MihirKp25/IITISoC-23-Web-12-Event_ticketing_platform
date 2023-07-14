@@ -15,12 +15,17 @@ html{
 .card {
     background-color: rgb(22,22,22);
     border-radius: 5px;
-    border: 1px gray solid;
+    border: 0px solid;
+    box-shadow: 4px 4px 10px 0px black;
     color: rgb(235, 222, 204);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
+    transition: 0.5s;
+ }
+ .card:hover{
+    transform: skew(1.1,1.1);
  }
 #se1{
     position:relative;

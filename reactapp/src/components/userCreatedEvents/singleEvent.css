@@ -35,3 +35,21 @@
      justify-content: center;
  }
   */
+
+#sese1{
+    display: flex;
+}  
+#sese2{
+    margin: 5px;
+}
+@media(max-width:1000px){
+    #sese1{
+        position: relative;
+        align-items: center;
+        justify-content: center;
+    }
+    #sese2{
+        font-size: 3rem;
+
+    }
+}

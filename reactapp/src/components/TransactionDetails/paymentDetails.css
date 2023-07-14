@@ -1,6 +1,10 @@
 /* *{
     background-color: black;
   } */
+  #pd1{
+    padding-top: 50px;
+    font-size: 50px;
+  }
   .unit{
     color: beige;
     text-align: center;
@@ -75,4 +79,20 @@
   }
   .col-md-12{
     margin-top: 50px;
+  }
+  @media(max-width:1000px){
+    #pd4{
+      position: relative;
+      left: -6rem;
+      display: flex;
+      flex-direction: row;
+      padding-bottom: 2rem;
+    }
+    #pd5{
+      position: relative;
+      left: -6rem;
+      display: flex;
+      flex-direction: row;
+      padding-bottom: 2rem;
+    }
   }

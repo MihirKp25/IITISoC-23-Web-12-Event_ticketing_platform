@@ -15,7 +15,7 @@
 b{ color:white}
 .modalContainer {
   width: 600px;
-  height: 650px;
+  height: 450px;
   border-radius: 12px;
   background-color: rgb(34, 33, 33);
   color: rgb(255, 255, 255);
@@ -62,7 +62,9 @@ b{ color:white}
   justify-content: center;
   align-items: center;
 }
-
+#mo1{
+  font-weight:400; font-size:30px;
+}
 .modalContainer .footer button {
   width: 150px;
   height: 45px;
@@ -113,7 +115,45 @@ b{ color:white}
   cursor: pointer;
   background-color: white;
 }
+.m1m1{
+  padding-left: 30px;
+  padding-top: 20px;
 
+}
+#mo4{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 .optionCounterButton:disabled {
   cursor: not-allowed;
+}
+
+@media(max-width:1000px){
+  .modalBackground{
+    top: 0rem;
+    height: 100%;
+    width: 100%;
+  }
+  .modalContainer{
+    height: 110rem;
+    width: 90rem;
+  }
+  #mo1{
+    font-size: 6rem;
+  }
+  .m1m1{
+    padding-top: 8rem;
+    padding-left: 9rem;
+    font-size: 4rem;
+  }
+  #mo2{
+    font-size: 4rem;
+  }
+  #mo4{
+    margin-left: 5rem;
+    margin-right: 5rem;
+    height: 9rem;
+    width: 22rem;
+    font-size: 3rem;
+  }
 }

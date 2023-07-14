@@ -32,17 +32,17 @@ console.log("k")
     return (
 
         <div className="unit">
-            <h1>TICKET DETAILS</h1>
+            <h1 id = "pd1"style={{color:'black'}}>TICKET DETAILS</h1>
             <div className="ticket">
                 <div class="container">
                     <div class="col-md-12">
 
-                        <span> <label htmlFor="inputdefault">
+                        <span id = "pd4"> <label htmlFor="inputdefault">
                             TRANSACTION ID :
                         </label>
                             <input className="col-xs-3 " id="inputdefault" type="text" placeholder="Trans ID" onChange={handleChange1}/></span>
 
-                        <span><label htmlFor="inputdefault">
+                        <span id = "pd5"><label htmlFor="inputdefault">
                             SEARCH :
                         </label><input className="col-xs-4" id="inputdefault" type="text" placeholder="search" onChange={handleChange2}/></span>
 
@@ -64,7 +64,7 @@ console.log("k")
                     <Table style={{ width: '100%',border:"solid" }}>
       {/* <Thead> */}
       <Tbody>
-        <Tr>
+        <Tr id = "pd2">
           <Th>Name</Th>
           <Th>Order_Id</Th>
           <Th>Payment_id</Th>

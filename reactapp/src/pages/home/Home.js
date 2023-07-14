@@ -126,7 +126,7 @@ export default function Home() {
           <b><span className='ltwotit'><b><span style={{ color: "rgb(192, 255, 57)" }}>EVENTBRITE: </span>Ticketing made easy!</b></span><br /><br /></b>
           <span className="ltwocontent" >Publish your event in under five minutes.
             Craft unique experiences using our simple and powerful event platform. Create, ticket and host both on-ground and digital events on a platform used by thousands of live event loving fans.</span><br /><br />
-          <span className="clicknoe clicknoq" style={{ fontWeight: '300' }}><a href = "/AboutUs">More about us!</a><FontAwesomeIcon icon={faArrowRight} className='arrowright' /></span>
+          <span className="clicknoe clicknoq" style={{ fontWeight: '300' }}><a style={{textDecoration:'none', color:'rgb(192, 255, 57)'}} href = "/AboutUs">More about us!</a><FontAwesomeIcon icon={faArrowRight} className='arrowright' /></span>
 
         </div>
 

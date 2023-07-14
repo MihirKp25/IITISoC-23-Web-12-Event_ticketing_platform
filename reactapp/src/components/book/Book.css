@@ -28,13 +28,11 @@ html{
   display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-  width: 545px;
-  /* display: grid;
-  grid-template-columns: 550px 550px; */
-  align-items: center;
-  border: 1px solid gray;
+    width: 483px;
+    align-items: center;
+    border: 1px solid gray;
     border-radius: 5px;
-    padding-top: 15px;
+    padding-top: 1px;
     margin-top: 100px;
     padding-bottom: 10px;
 }
@@ -79,9 +77,10 @@ html{
   }
   .col-lg-4{
     color: rgb(145, 145, 145);
-    border: 1px rgb(102, 102, 102) solid;
+    border: 0px rgb(102, 102, 102) solid;
     border-radius: 7px;
     width: 500px;
+    transition: 0.5s;
   }
 
 /* RESPONSIVE DESIGN */
