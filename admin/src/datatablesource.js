@@ -7,7 +7,7 @@ export const userColumns = [
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"}  alt="avatar" />
+          <img className="cellImg" src={params.row.image || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"}  alt="avatar" />
           {params.row.username}
         </div>
       );
@@ -19,7 +19,7 @@ export const userColumns = [
     width: 230,
   },
   {
-    field: "phone",
+    field: "contactNo",
     headerName: "Phone",
     width: 230,
   },
@@ -31,42 +31,58 @@ export const userColumns = [
   },
  
 ];
-export const eventColumns = [
+export const BookedeventColumns = [
   { field: "id", headerName: "ID", width: 70 },
+   
   {
-    field: "event",
-    headerName: "Event",
-    width: 230,
-    renderCell: (params) => {
-      return (
-        <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.username}
-        </div>
-      );
-    },
-  },
-  {
-    field: "name",
-    headerName: "Name",
+    field: "userId",
+    headerName: "UserId",
     width: 230,
   },
   {
-    field: "type",
-    headerName: "Type",
+    field: "eventId",
+    headerName: "EventId",
     width: 230,
   },
   {
-    field: "address",
-    headerName: "Address",
+    field: "ticketId",
+    headerName: "TicketId",
+    width: 200,
+  },
+  {
+    field: "purchaseDate",
+    headerName: "Date",
     width: 230,
   },
 
+
+ 
+];
+export const CreatedeventColumns = [
+  { field: "id", headerName: "ID", width: 70 },
+   
   {
-    field: "date",
-    headerName: "Date",
-    width: 100,
+    field: "userId",
+    headerName: "UserId",
+    width: 230,
   },
+  {
+    field: "eventId",
+    headerName: "EventId",
+    width: 230,
+  },
+  {
+    field: "ticketId",
+    headerName: "TicketId",
+    width: 200,
+  },
+  {
+    field: "soldDate",
+    headerName: "Date",
+    width: 230,
+  },
+
+
  
 ];
 

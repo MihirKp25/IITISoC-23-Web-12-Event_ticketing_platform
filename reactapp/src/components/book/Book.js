@@ -55,7 +55,7 @@ const handleClick=()=>{
 
   return (
      
-    <div className='maincontainer' style={{backgroundColor:'rgb(31,31,31)'}}>
+    <div className='maincontainer' style={{backgroundColor:'rgb(31,31,31)', marginTop:"-190px"}}>
       <Navbar />
        
 
@@ -80,7 +80,7 @@ const handleClick=()=>{
  
 
               
-    <div className='asas' style={{ display:'flex', textAlign:'center',justifyContent:'center',color:'rgb(235, 222, 204)'}}><br/>Search results:
+    <div className='asas' style={{ display:'flex', textAlign:'center',justifyContent:'center',color:'rgb(235, 222, 204)', margin:"-20px"}}><br/>Search results:
     </div><br/><br/>
     </div>
 <div className="listresults" id = "b1">

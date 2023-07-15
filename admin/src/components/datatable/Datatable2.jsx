@@ -1,6 +1,6 @@
 import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
-import { eventColumns } from "../../datatablesource";
+import { BookedeventColumns } from "../../datatablesource";
 import { Link } from "react-router-dom";
 import useFetch from "../../hook/useFetch";
 import { useState, useEffect } from "react";
@@ -61,7 +61,7 @@ const Datatable2 = () => {
       <DataGrid
         className="datagrid"
         rows={data}
-        columns={eventColumns.concat(actionColumn)}
+        columns={BookedeventColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection

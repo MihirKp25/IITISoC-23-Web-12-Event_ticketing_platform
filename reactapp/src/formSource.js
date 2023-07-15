@@ -74,12 +74,7 @@ export const EventInputs = [
         type: "text",
         placeholder: " description",
     },
-    {
-        id: "date",
-        label: "Date:",
-        type: "text",
-        placeholder: " 12/12/2022",
-    },
+  
     {
         id: "time",
         label: "Time:",

@@ -20,7 +20,7 @@ const AllEventsCountryPage = () => {
     <>
     <Navbar/>
     <div className="container">
-      <h1 className="headingText">All Events - {country}</h1>
+      <h1 className="headingText" style={{marginTop:"3rem"}}>All Events - {country}</h1>
       <div className="listresults">
         {data.map((event) => (
           <div className="listresultitem">

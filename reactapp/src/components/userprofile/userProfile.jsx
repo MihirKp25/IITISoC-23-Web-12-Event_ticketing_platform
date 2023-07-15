@@ -19,7 +19,7 @@ export default function UserProfile() {
       <Navbar/>
       <div className="main-container">
         <div className="lefts">
-            <img src = {user.image || a} className='a1a'></img>
+           <img src ={user.image || a} style={{width:"90px", height:"130px"}}  className='a1a'></img>
             <div className='a2a'><b>{user.username}</b></div><br/>
             <span className="asd"><a className="asd"style = {{textDecoration:'none'}}href = "/created/event">YOUR CREATED EVENTS</a></span><br/>
             <span className="asd"><a className="asd"style = {{textDecoration:'none'}}href = "/booked/event">YOUR BOOKED EVENTS</a></span><br/>

@@ -26,7 +26,7 @@ const Searchitem = ({ details }) => {
 
             <div class="card-body" id = "se2">
               <div ><h1 ><b className="card-title">EVENT NAME: {details.eventId.name}</b></h1></div>
-              <span class="card-title">DATO OF PURCHASE : {startDate}</span><br/>
+              <span class="card-title">DATE OF PURCHASE : {startDate}</span><br/>
               <span class="card-title"  id = "se1">Ticket Quantity :{details.quantity}</span>
 
               {/* MAKE A POP UP FOR THESE    */}

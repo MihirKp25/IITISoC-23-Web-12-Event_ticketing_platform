@@ -29,7 +29,7 @@ const AllEventsPage = () => {
     <>
     <Navbar/>
      <div className="container">
-      <h1 className="headingText">All Events - {capitalizedType}</h1>
+      <h1 className="headingText" style={{marginTop:"3rem"}}>All Events - {capitalizedType}</h1>
     <div className="listresults">
      
         {data.map((event) => (

@@ -15,21 +15,19 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 
-const NewTicket = ({ infoEvent ,index}) => {
+const NewTicket = ({ infoEvent, index }) => {
     const [isTicketButtonDisabled, setIsTicketButtonDisabled] = useState(false);
     const location = useLocation();
     console.log(location);
-    const [info, setInfo] = useState({});
+ //   const [info, setInfo] = useState({});
     const { user } = useContext(AuthContext);
     const [eventId, setEventId] = useState(undefined);
 
     const { data, loading, error } = useFetch(`http://localhost:3000/ticket/${infoEvent._id}`);
-
-    const handleChange = (e) => {
-        setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-    };
 
     const [ticketDate, setTicketDate] = useState([
         {
@@ -41,55 +39,168 @@ const NewTicket = ({ infoEvent ,index}) => {
 
 
 
+    const formik = useFormik({
+        initialValues: {
+            name: "",
+            type: "",
+            price: "",
+            description: "",
+            totalTickets: "",
 
-    const handleClick = async (e) => {
-        e.preventDefault();
 
-        try {
-            setIsTicketButtonDisabled(true)
-            toast.success(`Ticket Type ${index+1} ,Generated Successfully`, {
-                position: toast.POSITION.TOP_CENTER
-            });
-            const newTicket = {
-                ...info,
-                date:ticketDate[0]
-            };
-            console.log(newTicket);
-            //  await axios.post("/event", infoEvent);    
-            const response = await axios.post(`http://localhost:3000/ticket/${infoEvent._id}`, newTicket);
-            console.log(response.data);
-            console.log(infoEvent._id)
-            await axios.post(`http://localhost:3000/user/event`, { ticketId: response.data._id, userId: user._id, eventId: infoEvent._id });
-        } catch (err) {
-            console.log(err);
-        }
-    };
+        },
+        validationSchema: Yup.object({
+            name: Yup.string().required('name is required').max(15, "name can be only 15 character long"),
+            type: Yup.string().required('type is required'),
+            price: Yup.string().required("price is required").min(0, "price must be positive"),
+            totalTickets: Yup.string().required("Total tickets is required").min(0, "total must be positive"),
+            description: Yup.string().required("Description is required").max(100, "Description must be less than 100 words"),
+        }),
 
+        onSubmit: async (values) => {
+
+
+            try {
+                setIsTicketButtonDisabled(true)
+                toast.success(`Ticket Type ${index + 1} ,Generated Successfully`, {
+                    position: toast.POSITION.TOP_CENTER
+                });
+                const newTicket = {
+                    ...values,
+                    date: ticketDate[0]
+                };
+                console.log(newTicket);
+                //  await axios.post("/event", infoEvent);    
+                const response = await axios.post(`http://localhost:3000/ticket/${infoEvent._id}`, newTicket);
+                console.log(response.data);
+                console.log(infoEvent._id)
+                await axios.post(`http://localhost:3000/user/event`, { ticketId: response.data._id, userId: user._id, eventId: infoEvent._id });
+            } catch (err) {
+                console.log(err);
+            }
+        },
+    });
+
+
+
+    /*
+        const handleClick = async (e) => {
+            e.preventDefault();
+    
+            try {
+                setIsTicketButtonDisabled(true)
+                toast.success(`Ticket Type ${index+1} ,Generated Successfully`, {
+                    position: toast.POSITION.TOP_CENTER
+                });
+                const newTicket = {
+                    ...info,
+                    date:ticketDate[0]
+                };
+                console.log(newTicket);
+                //  await axios.post("/event", infoEvent);    
+                const response = await axios.post(`http://localhost:3000/ticket/${infoEvent._id}`, newTicket);
+                console.log(response.data);
+                console.log(infoEvent._id)
+                await axios.post(`http://localhost:3000/user/event`, { ticketId: response.data._id, userId: user._id, eventId: infoEvent._id });
+            } catch (err) {
+                console.log(err);
+            }
+        };
+    */
 
     return (
         <div className="newa">
-            <ToastContainer/>
+            <ToastContainer />
             <div className="newContainer pop" >
                 <div className="top">
-                    <h1 className="toptitle"><b>Add Ticket type {index+1}</b></h1>
+                    <h1 className="toptitle"><b>Add Ticket type {index + 1}</b></h1>
                 </div>
 
                 <div className="righta">
                     <form className='inputform' >
 
-                        {TicketInputs.map((input) => (
-                            <div className="formInput" key={input.id}>
-                                <b><label className='inputlabel'>{input.label}</label></b><br />
-                                <input className='inputstyle'
-                                    id={input.id}
-                                    onChange={handleChange}
-                                    type={input.type}
-                                    placeholder={input.placeholder}
-                                    disabled={isTicketButtonDisabled}
-                                    style={{ backgroundColor: isTicketButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
-                                />
-                            </div>
-                        ))}
+
+                        <div className="formInput">
+
+                            <b><label className="inputlabel">Name:</label></b><br />
+                            <input className="inputstyle"
+                                id="name"
+                                type="text"
+
+                       
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                               
+                            />
+                            {formik.touched.name && formik.errors.name ? (
+                                <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.name}</div>
+                            ) : null}
+                        </div>
+                        <div className="formInput">
+
+                            <b><label className="inputlabel">type:</label></b><br />
+                            <input className="inputstyle"
+                                id="type"
+                                type="text"
+
+                             
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                               
+                            />
+                            {formik.touched.type && formik.errors.type ? (
+                                <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.type}</div>
+                            ) : null}
+                        </div>
+                        <div className="formInput">
+
+                            <b><label className="inputlabel">Price:</label></b><br />
+                            <input className="inputstyle"
+                                id="price"
+                                type="number"
+
+                               min={0}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                               
+                            />
+                            {formik.touched.price && formik.errors.price ? (
+                                <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.price}</div>
+                            ) : null}
+                        </div>
+                        <div className="formInput">
+
+                            <b><label className="inputlabel">Description:</label></b><br />
+                            <input className="inputstyle"
+                                id="description"
+                                type="text"
+
+                               
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                
+                            />
+                            {formik.touched.description && formik.errors.description ? (
+                                <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.description}</div>
+                            ) : null}
+                        </div>
+                        <div className="formInput">
+
+                            <b><label className="inputlabel">TotalTickets:</label></b><br />
+                            <input className="inputstyle"
+                                id="totalTickets"
+                                type="number"
+                                min={0}
+                                
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                
+                            />
+                            {formik.touched.totalTickets && formik.errors.totalTickets ? (
+                                <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.totalTickets}</div>
+                            ) : null}
+                        </div>
+
 
                         {/* <div className="formInput">
                             <label>Choose a event</label>
@@ -106,25 +217,25 @@ const NewTicket = ({ infoEvent ,index}) => {
                             </select>
                         </div> */}
 
-                        <p id = 's'>{`Ticket Sale Starts ${format(ticketDate[0].startDate, "MM/dd/yyyy")} `} </p>
-                        <p id = 's'>{`Ticket Sale Ends ${format(ticketDate[0].endDate, "MM/dd/yyyy")} `} </p>
-                    
+                        <p id='s'>{`Ticket Sale Starts ${format(ticketDate[0].startDate, "MM/dd/yyyy")} `} </p>
+                        <p id='s'>{`Ticket Sale Ends ${format(ticketDate[0].endDate, "MM/dd/yyyy")} `} </p>
+
                         {!isTicketButtonDisabled &&
-                        <DateRange
-                            editableDateInputs={true}
-                            onChange={item => setTicketDate([item.selection])}
-                            moveRangeOnFirstSelection={false}
-                            ranges={ticketDate}
-                            minDate={new Date()}
+                            <DateRange
+                                editableDateInputs={true}
+                                onChange={item => setTicketDate([item.selection])}
+                                moveRangeOnFirstSelection={false}
+                                ranges={ticketDate}
+                                minDate={new Date()}
                             />}
-                            
+
                         <div style={{ display: 'flex', textAlign: "center", alignItems: "center" }}>
-                            <button className="createtktbtn" onClick={handleClick}>Create Tickets</button>
-                           
+                            <button className="createtktbtn" type='submit' onClick={formik.handleSubmit}>Create Tickets</button>
+
                         </div>
                         {isTicketButtonDisabled && <small>*Ticket Generated and Form is <b>Locked</b> </small>}
                     </form>
-                    
+
                 </div>
             </div>
 

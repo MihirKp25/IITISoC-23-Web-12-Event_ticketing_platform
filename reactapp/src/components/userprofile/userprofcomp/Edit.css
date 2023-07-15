@@ -1,6 +1,6 @@
-::placeholder{
-    font-weight: bold;
+.inputstyle{
     color: black;
+    font-weight: bold;
 }
 .asdfg{
     display: flex;

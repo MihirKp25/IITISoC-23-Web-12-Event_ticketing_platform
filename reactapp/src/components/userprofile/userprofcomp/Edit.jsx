@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useContext , useState} from 'react';
+import { useContext , useState,useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faUserPen } from '@fortawesome/free-solid-svg-icons';
 // import { SearchContext } from '../../hooks/context/SearchContext';
@@ -21,7 +21,24 @@ export default function Edit() {
    const [info, setInfo] = useState({firstname:"", lastname:"", username:"", email:"",age:""});
 
 const navigate =useHistory();
-console.log(user)
+
+
+useEffect(() => {
+  fetchUserProfile();
+}, []);
+
+const fetchUserProfile = async () => {
+  try {
+    const response = await axios.get(`http://localhost:3000/user/${user._id}`, {
+      headers: {
+        'Cache-Control': 'no-cache',
+      },
+    });
+    setInfo(response.data);
+  } catch (error) {
+    console.log('Error fetching user profile:', error);
+  }
+};
 
 const handleChange = (e) => {
   setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -44,6 +61,8 @@ const SubmitImage = async(e) => {
  };
   //console.log(updatedUser);
  const result= await axios.put(`http://localhost:3000/user/${user._id}`, updatedUser);
+
+  setIsImageSelected(!isImageSelected);
  console.log(result);
  navigate.push('/user/profile');
 }
@@ -57,9 +76,13 @@ const handleSubmitButton = async (e) => {
        e.preventDefault();
     
       try{
-        const updatedUser = {info};
+       
      
-      const result= await axios.put(`http://localhost:3000/user/${user._id}`, updatedUser);
+      const result= await axios.put(`http://localhost:3000/user/${user._id}`, info);
+
+     await fetchUserProfile();
+      setIsInputDisabled(!isInputDisabled);
+
       console.log(result);
       navigate.push('/user/profile');
     }
@@ -72,7 +95,7 @@ const handleSubmitButton = async (e) => {
     
         <div className=''><div className="b1b">Account Details</div><br/>
             <div className="asdfg" style={{textAlign:'center'}}>
-                 <img src={ user.image|| a} alt="" className="ai" /><br/>
+                 <img src={user.image|| a}  style={{width:"200px", height:"270px"}}  alt="" className="ai" /><br/>
                  <br/>
                  {/* <button className='openModalBtn' id = "b5b" >tap to change</button> */}
                  
@@ -95,11 +118,11 @@ const handleSubmitButton = async (e) => {
                  <div className='asdfg'style={{textAlign:'center', textDecoration:'underline'}}><b id = "b3b">Personal Information</b></div>    
             <div className="asdf">
                 
-                    <div className='formInput' id = "b8b"><b><label className='inputlabel' id = "b6b">first name:<br/></label></b><input className='inputstyle' id = "firstname" placeholder={user.firstname} disabled={isInputDisabled} onChange={handleChange}/></div>
-                    <div className='formInput' id = "b8b"><b><label className='inputlabel' id = "b6b">last name:<br/></label></b><input className='inputstyle' id = "lastname" placeholder={user.lastname} disabled={isInputDisabled} onChange={handleChange}/></div>
-                    <div className='formInput' id = "b8b"><b><label className='inputlabel' id = "b6b">username:<br/></label></b><input className='inputstyle' id = "username" placeholder={ user.username} disabled={isInputDisabled} onChange={handleChange}/></div>
-                    <div className='formInput' id = "b8b"><b><label className='inputlabel' id = "b6b">email ID:<br/></label></b><input className='inputstyle' id = "email" placeholder={user.email} disabled={isInputDisabled} onChange={handleChange}/></div>
-                    <div className='formInput' id = "b8b"><b><label className='inputlabel' id = "b6b">Age:<br/></label></b><input className='inputstyle' id = "age" placeholder={user.age} disabled={isInputDisabled} onChange={handleChange}/><br/></div>
+                    <div className='formInput' id = "b8b"><b><label className='inputlabel' id = "b6b">first name:<br/></label></b><input className='inputstyle' id = "firstname" value={info.firstname}  disabled={isInputDisabled} onChange={handleChange}/></div>
+                    <div className='formInput' id = "b8b"><b><label className='inputlabel' id = "b6b">last name:<br/></label></b><input className='inputstyle' id = "lastname" value={info.lastname} disabled={isInputDisabled} onChange={handleChange}/></div>
+                    <div className='formInput' id = "b8b"><b><label className='inputlabel' id = "b6b">username:<br/></label></b><input className='inputstyle' id = "username" value={info.username} disabled={isInputDisabled} onChange={handleChange}/></div>
+                    <div className='formInput' id = "b8b"><b><label className='inputlabel' id = "b6b">email ID:<br/></label></b><input className='inputstyle' id = "email"value={info.email} disabled={isInputDisabled} onChange={handleChange}/></div>
+                    <div className='formInput' id = "b8b"><b><label className='inputlabel' id = "b6b">Age:<br/></label></b><input className='inputstyle' id = "age" value={info.age} disabled={isInputDisabled} onChange={handleChange}/><br/></div>
 
                   { isInputDisabled ? 
                       <div style={{display:'flex', justifyContent:'center'}}><button className="openModalBtn" id = "b4b" onClick={()=>{   setIsInputDisabled(!isInputDisabled); }}>EDIT</button></div>
