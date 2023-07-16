@@ -59,17 +59,21 @@ module.exports.getUsers = async (req,res,next)=>{
 
   module.exports.viewUserCreatedEvents = async (req,res,next)=>{
     try {
-      
+     
       // const users = await User.findById(userId);
       const details = await Created.find({userId:req.params.id}).populate('ticketId').populate('eventId').exec();
-      console.log(details)
+      console.log(details);
+      console.log("hiii");
       const createdEvents=await Promise.all(details.map(detail=>{
-        return Event.findById(detail.eventId._id)
+   
+          return Event.findById(detail.eventId._id)
+        
       }));
       const uniqueEvents = [...new Set(createdEvents)];  //REMOVES DUPLICATES
 
       // console.log(event);
       console.log(uniqueEvents);
+      console.log("problem")
       res.status(200).json(uniqueEvents);
     } catch (err) {
       next(err);
@@ -112,7 +116,7 @@ module.exports.viewUserBookedEvents = async (req,res,next)=>{
   try {
     
     // const users = await User.findById(userId);
-    const purchase = await Purchase.find({userId:req.params.id}).populate('eventId').populate('ticketId').exec(); //exec Function is used to populate multiple fields here see in documentation
+    const purchase = await Purchase.find({userId:req.params.id}).populate('eventId').populate('ticketId').populate('orderDetail').exec(); //exec Function is used to populate multiple fields here see in documentation
     // const events= await Promise.all(purchase.map((e)=>{
     //   return Event.findById(e.eventId);
     // })); 

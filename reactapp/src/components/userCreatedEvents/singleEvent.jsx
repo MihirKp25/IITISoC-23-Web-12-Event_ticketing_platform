@@ -29,12 +29,12 @@ const endDate = dateEnd.toLocaleDateString('en-US', {
           <div class="col-lg-4">
 
             <div class="card">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-PYJfcaNbGeylYwwFBKhnWtmHUZKtav6IQ&usqp=CAU" class="img-fluid rounded-start" className="searchitemimg" alt="..." />
+              <img src={details.photos[0] || "http://res.cloudinary.com/dg7seerl9/image/upload/v1689512962/upload/ogw0ec9vuandxuasonsw.png"} class="img-fluid rounded-start" className="searchitemimg" alt="..." />
 
               <div class="card-body">
                  <h5 class="card-title"><b style = {{color:"#EBDECC"}}> {details.name}</b></h5>
                  <p class="card-title"><b style = {{color:"#EBDECC"}}>Event Duration : </b>{startDate} - {endDate} </p>
-                 <p class="card-title"><b style = {{color:"#EBDECC"}}>Event Ends :</b> {details.date.startDate}</p>
+                 {/* <p class="card-title"><b style = {{color:"#EBDECC"}}>Event Ends :</b> {startDate}</p> */}
                  <p class="card-title"><b style = {{color:"#EBDECC"}}>Event Type: </b>{details.type}</p> 
                  <p class="card-title"><b style = {{color:"#EBDECC"}}>Event Type: </b>{details.address}, {details.city}, {details.country}</p> 
               

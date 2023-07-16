@@ -26,6 +26,7 @@ const NewEvent = () => {
   const clickopencal = () => {
     setopencal(true);
   }
+  const [isLoading, setIsLoading] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [numTicketTypes, setNumTicketTypes] = useState(1)
   const [files, setFiles] = useState("");
@@ -93,7 +94,7 @@ const NewEvent = () => {
       address: "",
       city: "",
       country: "",
-      description: "",
+      desc: "",
       
       time: "",
       freeOrPaid: false
@@ -105,7 +106,7 @@ const NewEvent = () => {
       address: Yup.string().required("address is required"),
       city: Yup.string().required("city is required"),
       country: Yup.string().required("country is required"),
-      description: Yup.string().required("Description is required").max(100, "Description must be less than 100 words"),
+      desc: Yup.string().required("Description is required").max(200, "Description must be less than 200 words"),
      
       time: Yup.string().required("Time is required"),
     }),
@@ -113,6 +114,7 @@ const NewEvent = () => {
     onSubmit: async (values) => {
 
       try {
+        setIsLoading(true);
         setIsButtonDisabled(true);
         toast.success('Event Created Succesfully , Please Move to create Tickets', {
           position: toast.POSITION.TOP_CENTER
@@ -137,6 +139,7 @@ const NewEvent = () => {
 
         const newevent = { ...values, photos: list, date: date[0] };
         console.log(newevent);
+        setIsLoading(false);
         const response = await axios.post("http://localhost:3000/event", newevent);
         setResponseValue(response.data);
         console.log(response.data);
@@ -147,7 +150,12 @@ const NewEvent = () => {
   });
 
 
-  return (
+  return (<>
+    {isLoading ? (
+      <div class="loader"></div>
+     ) : (
+     <>
+
     <div className="new">
       <Navbar />
       <ToastContainer />
@@ -166,7 +174,7 @@ const NewEvent = () => {
 
             <div className="formInput">
               <label htmlFor="file">
-                Images: <FontAwesomeIcon icon={faImage} className='arrowright' />
+               Upload Images: <FontAwesomeIcon icon={faImage} className='arrowright' />
               </label>
               <input
                 type="file"
@@ -278,7 +286,7 @@ const NewEvent = () => {
               <div className="formInput">
                 <b><label className="inputlabel">Description</label></b><br />
                 <textarea  className="inputstyle"
-                  id="description"
+                  id="desc"
                   type="text"
                   
                   disabled={isButtonDisabled}
@@ -286,8 +294,8 @@ const NewEvent = () => {
                   onBlur={formik.handleBlur}
                   style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' ,height:"180px" }}
                 />
-                {formik.touched.description && formik.errors.description ? (
-                  <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.description}</div>
+                {formik.touched.desc && formik.errors.desc ? (
+                  <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.desc}</div>
                 ) : null}
               </div>
 
@@ -341,7 +349,7 @@ const NewEvent = () => {
               </div> */}
 
             <div classname="qwert">
-              <button className="createtktbtn" type="submit" onClick={formik.handleSubmit}>Move to Create Ticket</button>
+              <button className="createtktbtn" type="submit" onClick={formik.handleSubmit} disabled={isButtonDisabled}>Move to Create Ticket</button>
 
             </div>
             {isButtonDisabled &&
@@ -357,6 +365,8 @@ const NewEvent = () => {
 
 
     </div>
+    </>)}
+    </>
 
   );
 };

@@ -54,7 +54,8 @@ const handleClick=()=>{
 
 
   return (
-     
+    
+   
     <div className='maincontainer' style={{backgroundColor:'rgb(31,31,31)', marginTop:"-190px"}}>
       <Navbar />
        
@@ -105,5 +106,6 @@ const handleClick=()=>{
 
   
 </div>
+
   )
 }

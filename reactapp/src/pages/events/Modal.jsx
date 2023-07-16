@@ -216,7 +216,7 @@ const currentDateString = currentDate.toISOString();
               
         </div>
         <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
-        { currentDateString<endDate ? <>
+        { currentDateString<ticketDet.date?.endDate ? <>
         <button className="openModalBtun" id = "mo4" onClick={loadRazorpay}>CONFIRM BOOKING</button>
         </> : <h2 style={{color:"#fd5f5f"}}>Ticket Sale Ended</h2>
         }

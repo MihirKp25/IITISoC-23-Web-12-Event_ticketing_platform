@@ -22,7 +22,7 @@ const Searchitem = ({ details }) => {
         
 
           <div class="card">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd-PYJfcaNbGeylYwwFBKhnWtmHUZKtav6IQ&usqp=CAU" className="searchitemimg" alt="..." />
+            <img src={details.eventId.photos[0] || "http://res.cloudinary.com/dg7seerl9/image/upload/v1689512962/upload/ogw0ec9vuandxuasonsw.png"} className="searchitemimg" alt="..." />
 
             <div class="card-body" id = "se2">
               <div ><h1 ><b className="card-title">EVENT NAME: {details.eventId.name}</b></h1></div>

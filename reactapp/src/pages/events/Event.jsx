@@ -160,7 +160,7 @@ console.log(data.date?.endDate)
                 <option key={ticket.id} className="inputoption" value={ticket.price} onClick={(e)=>{setTicket(ticket)}} >{ticket.price}</option>
               ))}
             </select>
-            { currentDateString<endDate ? <>
+            { currentDateString<data.date?.endDate ? <>
             <h1 >
              <b id = "k1k"style={{color:"#fd5f5f"}}>Bookings Open</b> </h1>
             <button className="openModalBtn" id= "kaka" onClick={handleClick}>BOOK NOW!</button></> : <h1 > <b style={{color:"#fd5f5f"}}>Event Expired</b> </h1>

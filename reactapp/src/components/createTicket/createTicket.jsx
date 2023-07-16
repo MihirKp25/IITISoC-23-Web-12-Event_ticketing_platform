@@ -20,6 +20,7 @@ import * as Yup from 'yup';
 
 
 const NewTicket = ({ infoEvent, index }) => {
+    const [isLoading, setIsLoading] = useState(false);
     const [isTicketButtonDisabled, setIsTicketButtonDisabled] = useState(false);
     const location = useLocation();
     console.log(location);
@@ -44,7 +45,7 @@ const NewTicket = ({ infoEvent, index }) => {
             name: "",
             type: "",
             price: "",
-            description: "",
+            desc: "",
             totalTickets: "",
 
 
@@ -54,13 +55,14 @@ const NewTicket = ({ infoEvent, index }) => {
             type: Yup.string().required('type is required'),
             price: Yup.string().required("price is required").min(0, "price must be positive"),
             totalTickets: Yup.string().required("Total tickets is required").min(0, "total must be positive"),
-            description: Yup.string().required("Description is required").max(100, "Description must be less than 100 words"),
+            desc: Yup.string().required("Description is required").max(100, "Description must be less than 100 words"),
         }),
 
         onSubmit: async (values) => {
 
 
             try {
+                setIsLoading(true);
                 setIsTicketButtonDisabled(true)
                 toast.success(`Ticket Type ${index + 1} ,Generated Successfully`, {
                     position: toast.POSITION.TOP_CENTER
@@ -70,7 +72,8 @@ const NewTicket = ({ infoEvent, index }) => {
                     date: ticketDate[0]
                 };
                 console.log(newTicket);
-                //  await axios.post("/event", infoEvent);    
+                //  await axios.post("/event", infoEvent); 
+                setIsLoading(false);   
                 const response = await axios.post(`http://localhost:3000/ticket/${infoEvent._id}`, newTicket);
                 console.log(response.data);
                 console.log(infoEvent._id)
@@ -109,6 +112,12 @@ const NewTicket = ({ infoEvent, index }) => {
     */
 
     return (
+
+        <>
+         {isLoading ? (
+      <div class="loader"></div>
+     ) : (
+     <>
         <div className="newa">
             <ToastContainer />
             <div className="newContainer pop" >
@@ -172,7 +181,7 @@ const NewTicket = ({ infoEvent, index }) => {
 
                             <b><label className="inputlabel">Description:</label></b><br />
                             <input className="inputstyle"
-                                id="description"
+                                id="desc"
                                 type="text"
 
                                
@@ -180,8 +189,8 @@ const NewTicket = ({ infoEvent, index }) => {
                                 onBlur={formik.handleBlur}
                                 
                             />
-                            {formik.touched.description && formik.errors.description ? (
-                                <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.description}</div>
+                            {formik.touched.desc && formik.errors.desc ? (
+                                <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.desc}</div>
                             ) : null}
                         </div>
                         <div className="formInput">
@@ -230,7 +239,7 @@ const NewTicket = ({ infoEvent, index }) => {
                             />}
 
                         <div style={{ display: 'flex', textAlign: "center", alignItems: "center" }}>
-                            <button className="createtktbtn" type='submit' onClick={formik.handleSubmit}>Create Tickets</button>
+                            <button className="createtktbtn" type='submit' onClick={formik.handleSubmit} disabled={isTicketButtonDisabled}>Create Tickets</button>
 
                         </div>
                         {isTicketButtonDisabled && <small>*Ticket Generated and Form is <b>Locked</b> </small>}
@@ -242,6 +251,8 @@ const NewTicket = ({ infoEvent, index }) => {
 
 
         </div>
+        </>)}
+        </>
 
     );
 };

@@ -15,7 +15,7 @@ const Create = () => {
     username: undefined,
     password: undefined,
   });
-  
+  const [isLoading, setIsLoading] = useState(false);
   const navigate=useHistory(); 
   const { loading, error, dispatch } = useContext(AuthContext);
 
@@ -28,16 +28,22 @@ const Create = () => {
   const handleClick = async (e) => {
      e.preventDefault();
     dispatch({ type: "LOGIN_START" });
+    setIsLoading(true);
     try {
       const res = await axios.post("http://localhost:3000/auth/login", credentials);
-      if (res.data.isAdmin || !res.data.isAdmin) {
-       
-        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-        // notify();
-        navigate.push("/");
-       
-        
-      } else {
+      toast.success("Login Successfull", {
+        position: toast.POSITION.TOP_CENTER
+    });
+    if (res.data.isAdmin || !res.data.isAdmin) {
+      dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
+      toast.success('Login Successful', { position: toast.POSITION.TOP_CENTER });
+      
+      // Delay navigation by 1 second to show loader
+      setTimeout(() => {
+        setIsLoading(false);
+        navigate.push('/');
+      }, 1000);
+    }  else {
        
         dispatch({
           type: "LOGIN_FAILURE",
@@ -56,39 +62,49 @@ const Create = () => {
     }
   };
 
-  return (<>
-    <Navbar/>
-    <ToastContainer/>
-  <div className="flex"> 
-    <div className="left"></div>
-    <div className="create">
-        <img src={logo} alt="" style={{width:'200px'}}className="loglogo" />
-      <h2 style={{fontSize:'48px', fontWeight:'1000'}}><b>Log in</b></h2>
-      
-        <input 
-          className='entry'
-          type="text" 
-          required 
-          onChange={handleChange} placeholder='Username' id='username'
-        />
-        <input 
-          className='entry'
-          type="password" 
-          required 
-          onChange={handleChange} placeholder='Password:' id='password'
-        />
-        <br /><br />
-        
-        <button style={{color:'white',fontWeight:'200',fontFamily:'Montserrat, sans-serif',padding:'13px 38px 13px 7px', width:'250px',border:'none',borderRadius:'4px', backgroundColor:'#d1410c', cursor:'pointer', textDecoration:'none'}} className="logregbtn"><a href="/"  style={{textDecoration:"none", color:'white'}} onClick={handleClick} ><span style={{textDecoration:"none"}}>Login </span></a></button>
-      <br/>
-      {/* <ToastContainer /> */}
-      <hr style={{width:'237px'}}/>
-      <span style={{fontSize:'13px'}}>Don't have an account? <span style={{cursor:'pointer',color:'#d1410c'}}><a href="/Register" style ={{textDecoration:'none', color:'#d1410c'}}>Sign up!</a></span></span>
-    </div>
-   </div> 
-  
-   </>
+
+  return (
+    <>
+      <ToastContainer />
+
+      {isLoading ? (
+       <div class="loader"></div>
+      ) : (
+        <>
+          <Navbar />
+          <div className="flex">
+            <div className="left"></div>
+            <div className="create">
+              <img src={logo} alt="" style={{ width: '200px' }} className="loglogo" />
+              <h2 style={{ fontSize: '48px', fontWeight: '1000' }}><b>Log in</b></h2>
+
+              <input
+                className='entry'
+                type="text"
+                required
+                onChange={handleChange} placeholder='Username' id='username'
+              />
+              <input
+                className='entry'
+                type="password"
+                required
+                onChange={handleChange} placeholder='Password:' id='password'
+              />
+              <br /><br />
+
+              <button style={{ color: 'white', fontWeight: '200', fontFamily: 'Montserrat, sans-serif', padding: '13px 38px 13px 7px', width: '250px', border: 'none', borderRadius: '4px', backgroundColor: '#d1410c', cursor: 'pointer', textDecoration: 'none' }} className="logregbtn"><a href="/" style={{ textDecoration: "none", color: 'white' }} onClick={handleClick}><span style={{ textDecoration: "none" }}>Login </span></a></button>
+
+
+              <br />
+              <hr style={{ width: '237px' }} />
+              <span style={{ fontSize: '13px' }}>Don't have an account? <span style={{ cursor: 'pointer', color: '#d1410c' }}><a href="/Register" style={{ textDecoration: 'none', color: '#d1410c' }}>Sign up!</a></span></span>
+            </div>
+          </div>
+        </>
+      )}
+    </>
   );
 }
+
  
 export default Create;

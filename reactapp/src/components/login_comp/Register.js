@@ -14,7 +14,7 @@ import * as Yup from 'yup';
 const Create = () => {
 
 
-
+  const [isLoading, setIsLoading] = useState(false);
  // const [info, setInfo] = useState({});
   const [responseValue, setResponseValue] = useState(null);
 
@@ -51,21 +51,23 @@ const Create = () => {
       /*  toast.success('Registered Succesfully ', {
           position: toast.POSITION.TOP_CENTER
         });*/
-  
+        setIsLoading(true);
          
           const response = await axios.post("http://localhost:3000/auth/register", values);
           setResponseValue(response.data);
           console.log(response.data);
          setTimeout(() => {
+          setIsLoading(false);
             navigate.push("/login");
           }, 2000); // Delay the navigation by 2000 milliseconds (2 seconds)
   
   
       }
       catch (err) {
-        toast.error('Try different Username or Password', {
+        toast.error('Try different Username/Password/Email', {
           position: toast.POSITION.TOP_CENTER
         });
+        setIsLoading(false);
         console.log(err)
       }
     },
@@ -78,8 +80,14 @@ const Create = () => {
 
   return (
     <>
-      <Navbar />
+      
       <ToastContainer />
+
+      {isLoading ? (
+       <div class="loader"></div>
+      ) : (
+      <>
+      <Navbar />
       <div className="flex">
         <div className="left"></div>
         <div className="create">
@@ -193,6 +201,9 @@ const Create = () => {
 
         </div>
       </div>
+      
+      </>
+      )}
     </>
   );
 }

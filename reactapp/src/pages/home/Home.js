@@ -49,14 +49,14 @@ export default function Home() {
   //     position: toast.POSITION.TOP_CENTER
   // });
   // }
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    if(user){
-      toast.success('Login Successfull Welcome !', {
-        position: toast.POSITION.TOP_CENTER
-    });
-    }
-  }, []);
+  //   if(user){
+  //     toast.success('Login Successfull Welcome !', {
+  //       position: toast.POSITION.TOP_CENTER
+  //   });
+  //   }
+  // },[]);
 
 
   return (
@@ -97,7 +97,7 @@ export default function Home() {
 
         {/* EVENTS LIST */}
         <div className='findnewevents'><FontAwesomeIcon icon={faArrowTrendUp} style={{ paddingTop: '70px', fontSize: '3em', paddingLeft: '137px', paddingRight: '30px' }} />
-        <span className='idli'>TRENDING EVENTS</span><br /><span className="imlimli">Don't miss out on these trending events!! </span>
+        <span className='idli'>TRENDING <span style={{color:"red"}}>FREE</span> EVENTS</span><br /><span className="imlimli">Don't miss out on these trending events!! </span>
         </div>
         <Event/>
         <a style={{ color: 'black', textDecoration: 'none' }} href="/Book"><span className="imlimli idlidli" >and more.... </span></a><br /><br/><br/><br/><br/>
