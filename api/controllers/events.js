@@ -218,7 +218,7 @@ module.exports.EventsbyCountry=async(req,res, next)=>{
 
   
   try {
-   const countryType= { $regex: new RegExp(`^${type}$`, 'i') }
+   const countryType= { $regex: new RegExp(`^${country}$`, 'i') }
     const events = await Event.find({ country: countryType});
     res.status(200).json(events);
   } catch (error) {

@@ -46,47 +46,6 @@ const NewEvent = () => {
   ]);
 
 
-  /*
-    const handleChange = (e) => {
-      setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-      setNumTicketTypes(e.target.value);
-    };
-  
-  
-    const handleClick = async (e) => {
-      e.preventDefault();
-      try {
-        setIsButtonDisabled(true);
-        toast.success('Event Created Succesfully , Please Move to create Tickets', {
-          position: toast.POSITION.TOP_CENTER
-      });
-        const list = await Promise.all(
-          Object.values(files).map(async (file) => {
-            const data = new FormData();
-            data.append("file", file);
-            data.append("upload_preset", "upload");
-            const uploadRes = await axios.post(
-              "https://api.cloudinary.com/v1_1/dg7seerl9/image/upload",
-              data
-            );
-  
-            const { url } = uploadRes.data;
-            return url;
-          })
-        );
-  
-  
-  
-        const newevent = { ...info, photos: list, date: date[0] };
-        console.log(list);
-        const response = await axios.post("http://localhost:3000/event", newevent);
-        setResponseValue(response.data);
-        console.log(response.data);
-        setTicketModal(true);
-      }
-      catch (err) { console.log(err) }
-    };
-  */
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -206,15 +165,16 @@ const NewEvent = () => {
 
               <div className="formInput">
                 <b><label className="inputlabel">Type:</label></b><br />
-                <input className="inputstyle"
-                  id="type"
-                  type="text"
-                 
-                  disabled={isButtonDisabled}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
-                />
+                <select className="inputoption" id="type" onChange={formik.handleChange}  onBlur={formik.handleBlur} disabled={isButtonDisabled}>
+                <option className="inputoption" value="Music">Music</option>
+                <option className="inputoption" value='Dance'>Dance</option>
+                <option className="inputoption" value='Gaming'>Gaming</option>
+                <option className="inputoption" value='Sports'>Sports</option>
+                <option className="inputoption" value='Festival'>Festival</option>
+                <option className="inputoption" value='Health'>Health</option>
+                <option className="inputoption" value='Misc'>Misc..</option>
+              </select>
+              
                 {formik.touched.type && formik.errors.type ? (
                   <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.type}</div>
                 ) : null}

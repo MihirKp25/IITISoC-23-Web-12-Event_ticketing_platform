@@ -4,18 +4,48 @@ html {
 .navbar{
     position: fixed;
     width: 100%;
-    height: 89px;
+    height: 75px;
     top: 0;
     display: flex;
     flex-direction: row;
-    z-index: 10;
-    background-color: #000000;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5)
+    
     
 }
+.userImage{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    margin-right: 35px;
+    margin-top: 10px;
+}
+.userInfoNav{
+    display: flex;
+    flex-direction: row;
+}
+.headername{
+    margin-left: 50px;
+    color: aqua;
+}
+
 .hidebooked{
-    padding-top: 20px;
+    padding-top: 15px;
     position: absolute;
     display:none;
+}
+
+.logout{
+    color:white;
+    padding-right:50px ;
+    padding-top:10px ;
+    font-size:18px ;
+
+}
+.logout:hover{
+    
+   cursor: pointer;
 }
 .navdropdown{
     text-decoration: none;
@@ -25,19 +55,8 @@ html {
 .navdropdown:hover{
     color: red;
 }
-.logo{
-    cursor: pointer;
-    margin-top: 9px;
-    margin-left: 20px;
-    margin-right: 20px;
-    height: 65px;
-    width: 170px;
-    transition: 0.5s;
-}
-.logo:hover{
-    height: 67px;
-    margin-right: 20px;
-}
+
+
 
 .navul{
     text-decoration: none;
@@ -45,7 +64,7 @@ html {
     color: white;
     display: flex;
     padding-left: 190px;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 .navbarli{
     text-decoration: none;
@@ -56,11 +75,18 @@ html {
     transition: 0.5s;
     cursor: pointer;
 }
+
+.auth{
+    color: white;
+    text-decoration: none;
+}
 .navbari{
     text-decoration: none;
     list-style: none;
-    color: white;
+    color:white;
     transition: 0.5s;
+    font-size: 20px;
+    font-weight: 500;
 }
 .navbari:hover{
     color: red;
@@ -78,34 +104,31 @@ html {
 .icons{
     margin-left: 400px;
     margin-right: 50px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
  
 @media(max-width:1000px){
     .navbar{
         width: 100%;
         height: 290px;
+        justify-content: flex-start;
+      
     }
-    .logo{
-        margin-top: 14px;
-        margin-left: 20px;
-        margin-right: -80px;
-        height: 168px;
-        width: 354px;
-    }
+  
     .navul{
-        margin-left: 77px;
+        margin-left: 800px;
         padding-left: 0px;
     }
     .navbarli{
-        padding-top: 39px;
+        padding-top: 20px;
         font-size: 45px;
     }
     .usernameo{
         font-size: 35px;
     }
+    
     .logoutnname{
-        padding-top: 12rem;
+       
         position: fixed;
         right: 5rem;
     }

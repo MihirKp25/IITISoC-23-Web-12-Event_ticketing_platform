@@ -17,10 +17,11 @@ const AllEventsCountryPage = () => {
 
 
   return (
+    <div className="maincontainer">
     <>
     <Navbar/>
-    <div className="container">
-      <h1 className="headingText" style={{marginTop:"3rem"}}>All Events - {country}</h1>
+    <div className="container1">
+      <h1 className="headingText" style={{marginTop:"1rem", color:"white", marginLeft:"37rem"}}>All Events - {country}</h1>
       <div className="listresults">
         {data.map((event) => (
           <div className="listresultitem">
@@ -31,6 +32,7 @@ const AllEventsCountryPage = () => {
     </div>
 
     </>
+    </div>
   );
 };
 

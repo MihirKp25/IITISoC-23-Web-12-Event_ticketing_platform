@@ -26,10 +26,11 @@ const AllEventsPage = () => {
   }, [type]);*/
 
   return (
+    <div className="maincontainer">
     <>
     <Navbar/>
-     <div className="container">
-      <h1 className="headingText" style={{marginTop:"3rem"}}>All Events - {capitalizedType}</h1>
+     <div className="container1">
+      <h1 className="headingText" style={{marginTop:"1rem", color:"white", marginLeft:"37rem"}}>All Events - {capitalizedType}</h1>
     <div className="listresults">
      
         {data.map((event) => (
@@ -41,6 +42,7 @@ const AllEventsPage = () => {
    
       </div>
     </>
+    </div>
   );
 };
 
