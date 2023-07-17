@@ -57,7 +57,9 @@ const Create = () => {
         position: toast.POSITION.TOP_CENTER
     });
     console.log(err);
+    
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      setIsLoading(false);
     
     }
   };

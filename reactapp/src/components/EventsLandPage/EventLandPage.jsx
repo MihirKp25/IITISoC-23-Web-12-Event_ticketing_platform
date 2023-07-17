@@ -31,7 +31,7 @@ return (
           {data.map(event => (
             <Link to={`/event/${event._id}`}>
                <Card style={{ width: '18rem' ,margin:"2rem", }}>
-      <Card.Img variant="top" src={event.photos[0] || "http://res.cloudinary.com/dg7seerl9/image/upload/v1689512962/upload/ogw0ec9vuandxuasonsw.png"} />
+      <Card.Img variant="top" src={event.photos[0] || "http://res.cloudinary.com/dg7seerl9/image/upload/v1689512962/upload/ogw0ec9vuandxuasonsw.png"} className='cardimg' />
       <Card.Body>
         <Card.Title ><b >{event.name}</b></Card.Title>
         {/* <Card.Title ><b> Scheduled on</b>: {startDate} - {endDate}</Card.Title> */}

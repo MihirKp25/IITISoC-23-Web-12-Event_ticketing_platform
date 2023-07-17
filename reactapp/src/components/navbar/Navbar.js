@@ -8,12 +8,14 @@ import { useState, useRef } from 'react';
 import a from "../userprofile/profilepic.jpg"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useFetch from '../../hooks/useFetch';
 
 function Navbar() {
-  
+ 
   const [isActive, setisActive] = useState(false);
 
   const {user,dispatch} =useContext(AuthContext);
+  const userforimg=useFetch(`http://localhost:3000/user/${user._id}`)
   const handleClick=()=>{
    
       toast.info('Logout Succesfully ', {
@@ -49,7 +51,7 @@ function Navbar() {
         {  user ? (
         <div className='userInfoNav'>
         <span className="logout" onClick={handleClick}>𝐋𝐨𝐠𝐨𝐮𝐭</span> 
-        <a href='/user/profile'> <div className='userImage'> <img style={{height:"35px", width:"35px", borderRadius:"50%",}} src={user.image ||a}/></div>   </a> 
+        <a href='/user/profile'> <div className='userImage'> <img style={{height:"35px", width:"35px", borderRadius:"50%",}} src={userforimg.data?.image ||a}/></div>   </a> 
          </div>
         ) :  
         

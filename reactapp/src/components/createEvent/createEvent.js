@@ -65,7 +65,7 @@ const NewEvent = () => {
       address: Yup.string().required("address is required"),
       city: Yup.string().required("city is required"),
       country: Yup.string().required("country is required"),
-      desc: Yup.string().required("Description is required").max(200, "Description must be less than 200 words"),
+      desc: Yup.string().required("Description is required").max(500, "Description must be less than 500 words"),
      
       time: Yup.string().required("Time is required"),
     }),

@@ -6,6 +6,7 @@ import useFetch from "../../hook/useFetch";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/Authcontext";
+import _ from 'lodash';//LODASH IS A FUNCTION TO SORT DUPLICATES IN A ARRAY
 import axios from "axios";
 
 const Datatable3 = () => {
@@ -17,12 +18,15 @@ const Datatable3 = () => {
 
 
   const {data,loading,error}=useFetch(`http://localhost:3000/user/events/created/${userId}`);
-  console.log(data);
+  // console.log(data);
+  const uniqueData = _.uniqBy(data, '_id')
+  console.log(uniqueData)
   
   
-  useEffect(() => {
-    setList(data);
-  }, [data]);
+  
+  // useEffect(() => {
+  //   setList(uniqueData);
+  // }, [uniqueData]);
 
 
 
@@ -60,7 +64,7 @@ const Datatable3 = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={data}
+        rows={uniqueData}
         columns={CreatedeventColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}

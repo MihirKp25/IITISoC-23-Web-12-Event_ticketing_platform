@@ -62,12 +62,12 @@ export const CreatedeventColumns = [
   { field: "id", headerName: "ID", width: 70 },
    
   {
-    field: "userId",
-    headerName: "UserId",
+    field: "name",
+    headerName: "Name",
     width: 230,
   },
   {
-    field: "eventId",
+    field: "tickettitle",
     headerName: "EventId",
     width: 230,
   },

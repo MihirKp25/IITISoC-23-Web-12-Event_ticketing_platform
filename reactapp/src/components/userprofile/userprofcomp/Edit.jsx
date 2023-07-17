@@ -10,6 +10,7 @@ import { useHistory} from "react-router-dom";
 import './Edit.css';
 import a from '../profilepic.jpg'
 import axios from "axios"
+import useFetch from '../../../hooks/useFetch';
 
 
 
@@ -21,10 +22,11 @@ export default function Edit() {
    const [info, setInfo] = useState({firstname:"", lastname:"", username:"", email:"",age:""});
 
 const navigate =useHistory();
-
+const userforimg=useFetch(`http://localhost:3000/user/${user._id}`)
 
 useEffect(() => {
   fetchUserProfile();
+  // reFetch();
 }, []);
 
 const fetchUserProfile = async () => {
@@ -95,7 +97,7 @@ const handleSubmitButton = async (e) => {
     
         <div className=''><div className="b1b">Account Details</div><br/>
             <div className="asdfg" style={{textAlign:'center'}}>
-                 <img src={user.image|| a}  style={{width:"200px", height:"270px"}}  alt="" className="ai" /><br/>
+                 <img src={userforimg.data?.image || a}  style={{width:"200px", height:"270px"}}  alt="" className="ai" /><br/>
                  <br/>
                  {/* <button className='openModalBtn' id = "b5b" >tap to change</button> */}
                  
