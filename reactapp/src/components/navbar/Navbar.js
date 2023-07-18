@@ -9,13 +9,42 @@ import a from "../userprofile/profilepic.jpg"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useFetch from '../../hooks/useFetch';
+import { useHistory} from "react-router-dom";
+import { useEffect } from 'react';
+import axios from 'axios';
+import { set } from 'date-fns';
 
 function Navbar() {
- 
+  const [userImg,setuserImg]=useState(null)
   const [isActive, setisActive] = useState(false);
-
+  const navigate=useHistory(); 
   const {user,dispatch} =useContext(AuthContext);
-  const userforimg=useFetch(`http://localhost:3000/user/${user._id}`)
+
+  
+    useEffect( () => {
+
+const fetchDATA=async()=>{
+
+      if (user) { try {
+        const response = await axios.get(`http://localhost:3000/user/${user._id}`);
+        const userforimg = response.data;
+        setuserImg(userforimg.image);
+      } catch (error) {
+        // Handle any error that occurs during the request
+        console.error(error);
+      }
+    }
+  }
+  fetchDATA();
+      // Handle the fetched data here
+      // This effect will run when the user object changes
+      // or when the fetch request is completed
+    
+    });
+  
+
+
+
   const handleClick=()=>{
    
       toast.info('Logout Succesfully ', {
@@ -23,6 +52,11 @@ function Navbar() {
     });
     
     dispatch({ type: "LOGOUT" });
+    
+    
+  
+      navigate.push("/login");
+  
   }
 
   return (
@@ -51,7 +85,7 @@ function Navbar() {
         {  user ? (
         <div className='userInfoNav'>
         <span className="logout" onClick={handleClick}>𝐋𝐨𝐠𝐨𝐮𝐭</span> 
-        <a href='/user/profile'> <div className='userImage'> <img style={{height:"35px", width:"35px", borderRadius:"50%",}} src={userforimg.data?.image ||a}/></div>   </a> 
+        <a href='/user/profile'> <div className='userImage'> <img style={{height:"35px", width:"35px", borderRadius:"50%",}} src={userImg || a}/></div>   </a> 
          </div>
         ) :  
         
