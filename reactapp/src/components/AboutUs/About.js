@@ -1,67 +1,57 @@
+
 import "./About.css";
 import Navbar from "../navbar/Navbar";
-import img from "../images/bk.png"
-import img1 from '../images/sd.png';
-import img2 from '../images/PY.webp';
+import img from "./ticket.png";
+import sort from './sort1.png';
+import ic1 from './ic1.avif';
+import qr from './qr.png';
+
 const AboutUs = () => {
     return (
         <>
-        
+        <div className="title">
         <Navbar/>
-            <div className="container " id='Align'  >
-            <h1>ABOUT US</h1>
+</div>
+     
+     <div className="cont">
+<h1>Event Creating and Booking made Easier !!!</h1> </div>
+<div className="title2">
+<h5>Easiest way to book and create events in simple steps.</h5>  </div>
+<div className="pre-container">
+    
+ <div className="container">
+<div className="img">
+ <img src={img}  height="600px" width="300px"alt="" />
+ </div>
 
-        <div className="wrapper">
-<p>Lorem ipsum dolor sit amet. A reiciendis sequi in consequatur inventore non molestiae dolores aut enim quibusdam quo cumque ullam. Quo provident aliquam est nemo quaerat vel illum nobis sed Quis eveniet in rerum odit? Non numquam adipisci et fuga distinctio ut reprehenderit galisum 33 delectus dicta.  </p>
-<div className="shift">
-    <h1>WHAT MAKES US DIFFERNT? </h1>
-<div className="row">
-    <div className="col row mx-0">
-    <article class="card1" >
-    <div class="temporary_text">
-      <img src={img} height="95px"  width="70px"/>
-   </div>
-<div class="card_content">
-    <h5 class="card_title">EASY BOOKING</h5>
-        <span class="card_subtitle">Thsi is a subtitle of this page. Let us see how it looks on the Web.</span>
-        <p class="card_description">Lorem ipsum dolor, sit amet  expedita exercitationem recusandae aut dolor tempora aperiam itaque possimus at, cupiditate earum, quae repudiandae aspernatur? Labore minus soluta consequatur placeat.</p>
-    
-</div>
-</article>
-</div>
-<div className="col row mx-0">
-<article class="card1"  >
-    <div class="temporary_text">
-      <img src={img1} height="95px"  width="80px"/>
+<div className="text">
+    <div className="t">
+<img src={ic1} height="100 px" width="100 px"alt="" />
+<h4>Easy Payments</h4>
+<p>No hectic issues while payments.Just a few steps and confirm your ticket</p>
+   
     </div>
-<div class="card_content">
-    <h5 class="card_title">FAST CREATE</h5>
-        <span class="card_subtitle">Thsi is a subtitle of this page. Let us see how it looks on the Web.</span>
-        <p class="card_description">Lorem ipsum dolor, sit amet  expedita exercitationem recusandae aut dolor tempora aperiam itaque possimus at, cupiditate earum, quae repudiandae aspernatur? Labore minus soluta consequatur placeat.</p>
+    <div className="t">
+<img src={sort} height="100 px" width="100 px"alt="" />
+<h4>Quick Sorting </h4>
+<p>Easily sort events you want and confirm your ticket in just few steps </p>
     
-</div>
-</article>
-</div>
-<div className="col row mx-0">
-<article class="card1">
-    <div class="temporary_text">
-      <img src={img2} height="95px"  width="85px"/>
     </div>
-<div class="card_content">
-    <h5 class="card_title">EASY PAYMENTS</h5>
-        <span class="card_subtitle">Thsi is a subtitle of this page. Let us see how it looks on the Web.</span>
-        <p class="card_description">Lorem ipsum dolor, sit amet  expedita exercitationem recusandae aut dolor tempora aperiam itaque possimus at, cupiditate earum, quae repudiandae aspernatur? Labore minus soluta consequatur placeat.</p>
+    <div className="t">
+<img src={qr} height="100 px" width="100 px"alt="" />
+<h4>QR Scanner </h4>
+<p>QR Code provided for easy authentication and enter the event  </p>
     
-</div>
-</article>
-</div>
-</div>
-</div>
-       </div>
-       </div>
-       
-       </>
-      );
+    </div>
+     </div>
+     </div>
+     </div>
+     
 
-    }
+        
+        
+        </>
+            
+)
+    };
 export default AboutUs;
