@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass, faUser} from '@fortawesome/free-solid-svg-icons'
 import image from '../images/logo.png'
-import '../navbar/Navbar.css';
+import '../Navbor/Navbor.css';
 import { AuthContext} from "../../hooks/context/AuthContext";
 import { useContext } from 'react';
 import { useState, useRef } from 'react';
@@ -15,7 +14,7 @@ import axios from 'axios';
 import { set } from 'date-fns';
 import b from '../images/appbg.png'
 
-function Navbar() {
+function Navbor() {
   const [userImg,setuserImg]=useState(null)
   const [isActive, setisActive] = useState(false);
   const navigate=useHistory(); 
@@ -63,32 +62,32 @@ const fetchDATA=async()=>{
   return (
     <>
     <ToastContainer/>
-      <div className='navbar'>
+      <div className='navbor'>
    
-        <div className="navnamenlogo">
+        <div className="navnamenlooo">
           
-        <img src={b} alt="" className="logoimg" />
+        <img src={b} alt="" className="logoiog" />
 
         </div>
 
-        <ul className="navul">
-          <li className='navbarli'><a className="navbari" href = "/">HOME</a></li>
-          <li className='navbarli'><a className="navbari" href = "/event">CREATE</a></li>
-          <li className='navbarli'><a className="navbari" href = "/list">BOOK</a></li>        
-          <li className='navbarli'><a className="navbari"href = "/AboutUs">ABOUT US</a></li>
+        <ul className="navol">
+          <li className='navbaroi'><a className="navbaoi" href = "/">HOME</a></li>
+          <li className='navbaroi'><a className="navbaoi" href = "/event">CREATE</a></li>
+          <li className='navbaroi'><a className="navbaoi" href = "/list">BOOK</a></li>        
+          <li className='navbaroi'><a className="navbaoi"href = "/AboutUs">ABOUT US</a></li>
         </ul>
 
-        <div className='logoutnname'>
+        <div className='logoutnnaoe'>
         {  user ? (
-        <div className='userInfoNav'>
-        <span className="logout" id = "na1"onClick={handleClick}>Logout</span> 
-        <a href='/user/profile'> <div className='userImage'> <img id = "na2"src={userImg || a}/></div>   </a> 
+        <div className='userInfoNov'>
+        <span className="logoot" id = "no1"onClick={handleClick}>Logout</span> 
+        <a href='/user/profile'> <div className='userImaoe'> <img id = "no2"src={userImg || a}/></div>   </a> 
          </div>
         ) :  
         
-        <div className="userInfoNav">
-          <span className="logout" id = "na1" >   <a className='auth' href='/register'>Register</a> </span>
-           <span className="logout"id = "na1" >  <a className='auth' href='/login'>Login</a> </span> 
+        <div className="userInfoNov">
+          <span className="logoot" id = "no1" >   <a className='auoh' href='/register'>Register</a> </span>
+           <span className="logoot"id = "no1" >  <a className='auoh' href='/login'>Login</a> </span> 
        
         </div>
          }
@@ -99,5 +98,5 @@ const fetchDATA=async()=>{
   );
 }
 
-export default Navbar;
+export default Navbor;
 

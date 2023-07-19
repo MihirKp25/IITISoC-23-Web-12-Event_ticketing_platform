@@ -14,7 +14,10 @@ html{
   grid-template-columns: 4fr 2fr;
   font-family: 'Quicksand', sans-serif;
 }
-  
+.imge{
+  height: 90px;
+  width:90px;
+} 
   .eventinfo{
     border-radius: 15px;
     border: 1px solid rgb(46, 46, 46);
@@ -95,10 +98,10 @@ html{
   border-radius: 15px;
   font-size: 16px;
 }
-.imge{
+/* .imge{
   height: 9rem;
   width: 9rem;
-}
+} */
 
 /* blurring   */
 /* .btn-modal {
@@ -164,7 +167,7 @@ html{
   }
   .eventbriefi{
     background-color: rgb(45,45,45);
-    height: 110rem;
+    height: 127rem;
     margin-top: 10rem;
     width: 86rem;
     margin-left: 0px;
@@ -209,5 +212,12 @@ html{
   }
   #k1k{
     font-size: 5rem;
+  }
+  .imge{
+    width: 20rem;
+    height: 20rem;
+  }
+  #e9e{
+    width: 85rem;
   }
 }

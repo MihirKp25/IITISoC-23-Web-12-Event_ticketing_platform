@@ -113,7 +113,7 @@ console.log(data.date?.endDate)
       <ToastContainer/>
       <div className="eventcontainer" >
         <div className="eventinfo">
-        <img src={image} alt="Unable to load image, Please hover over Gallery" className="eventinfoimg" />
+        <img src={image} alt="Unable to load image, Please hover over Gallery" className="eventinfoimg" id = "e9e"/>
           <div className="aboutevent">
             <div className="eventtitle" ><b>{data.name}</b></div><br />
             {/* <div className="eventorganiser" ><b>BY:</b> <>NEED TO BE PASSED</></div><br/><br/><br/> */}
@@ -187,9 +187,9 @@ console.log(data.date?.endDate)
            <div id = "haha"className="eventtitle" style = {{fontWeight:'600'}}>Gallery</div>
            <div className="listresults1">
   {data.photos?.map((photo,index)=>(
-    <div className="listresultitem1" id = "qaqa"onClick={()=>{setImage(photo)}} onMouseOver={()=>{setImage(photo)}}>
+    <span className="listresultitem1" id = "qaqa"onClick={()=>{setImage(photo)}} onMouseOver={()=>{setImage(photo)}}>
         <img src={photo} alt="WAIT" className="imge" />
-     </div>    
+     </span>    
   ))}
 
 </div> 
