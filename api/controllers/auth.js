@@ -36,16 +36,16 @@ module.exports.login = async (req, res, next) => {
 
         const token = jwt.sign(
             { id: user._id, isAdmin: user.isAdmin },
-            "thereisabuginyourappdebugittogetuserandpasswordinfo"
+            process.env.JWT
         );
 
-        const { password, isAdmin, ...otherDetails } = user._doc;
+        const { password, ...otherDetails } = user._doc;
         res
-            .cookie("access_token", token, {
+            .cookie("jwt", token, {
                 httpOnly: true,
             })
             .status(200)
-            .json({ details: { ...otherDetails }, isAdmin });
+            .json({ details: { ...otherDetails }, token});
     } catch (err) {
         next(err);
     }

@@ -19,7 +19,7 @@ function Navbar() {
   const [userImg,setuserImg]=useState(null)
   const [isActive, setisActive] = useState(false);
   const navigate=useHistory(); 
-  const {user,dispatch} =useContext(AuthContext);
+  const {user,dispatch, logout} =useContext(AuthContext);
 
   
     useEffect( () => {
@@ -55,7 +55,7 @@ const fetchDATA=async()=>{
     dispatch({ type: "LOGOUT" });
     
     
-  
+   logout();
       navigate.push("/login");
   
   }

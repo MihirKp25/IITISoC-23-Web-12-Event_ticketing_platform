@@ -17,7 +17,7 @@ const Create = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const navigate=useHistory(); 
-  const { loading, error, dispatch } = useContext(AuthContext);
+  const { loading, error, dispatch, login } = useContext(AuthContext);
 
  // const navigate = useNavigate();
 
@@ -34,6 +34,10 @@ const Create = () => {
       toast.success("Login Successfull", {
         position: toast.POSITION.TOP_CENTER
     });
+    const {token, details}=res.data;
+    login(token, details);
+
+
     if (res.data.isAdmin || !res.data.isAdmin) {
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
       toast.success('Login Successful', { position: toast.POSITION.TOP_CENTER });
@@ -58,7 +62,7 @@ const Create = () => {
     });
     console.log(err);
     
-      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      dispatch({ type: "LOGIN_FAILURE", payload: err.res.data });
       setIsLoading(false);
     
     }

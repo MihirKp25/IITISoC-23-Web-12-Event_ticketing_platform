@@ -1,4 +1,5 @@
 import { createContext, useEffect, useReducer } from "react";
+import Cookies from "js-cookie";
 
 const INITIAL_STATE={
  user:JSON.parse(localStorage.getItem("user")) || null,
@@ -46,9 +47,31 @@ const AuthReducer=(state,action)=>{
 export const AuthContextProvider = ({children}) =>{
  const [state,dispatch]=useReducer(AuthReducer,INITIAL_STATE);
 
-  useEffect(()=>{
-    localStorage.setItem("user",JSON.stringify(state.user))
-  },[state.user]);
+ useEffect(() => {
+  localStorage.setItem("user", JSON.stringify(state.user));
+}, [state.user]);
+
+const login = (token, user) => {
+  // Set the JWT token as a cookie
+  Cookies.set("jwt", token, { expires: 1, secure: true, sameSite: "None" });
+
+  // Dispatch the LOGIN_SUCCESS action with the user object
+  dispatch({ type: "LOGIN_SUCCESS", payload: user });
+
+  // Store the user information in local storage
+  localStorage.setItem("user", JSON.stringify(user));
+};
+
+const logout = () => {
+  // Remove the JWT token cookie
+  Cookies.remove("jwt");
+
+  // Dispatch the LOGOUT action
+  dispatch({ type: "LOGOUT" });
+
+  // Remove the user information from local storage
+  localStorage.removeItem("user");
+};
 
   return(
         <AuthContext.Provider
@@ -56,6 +79,8 @@ export const AuthContextProvider = ({children}) =>{
             user:state.user,
             loading:state.loading,
             error:state.error,
+            login,
+            logout,
             dispatch,
         }}
         >
