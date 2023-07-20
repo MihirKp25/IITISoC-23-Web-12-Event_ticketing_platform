@@ -32,9 +32,10 @@ console.log("k")
     return (
 
         <div className="unit">
-            <h1 id = "pd1"style={{color:'black'}}>TICKET DETAILS</h1>
+            <h1 id = "pd1"style={{color:'purple'}}>TICKET DETAILS</h1>
+            
             <div className="ticket">
-                <div class="container">
+           
                     <div class="col-md-12">
 
                         <span id = "pd4"> <label htmlFor="inputdefault">
@@ -61,10 +62,10 @@ console.log("k")
 
 
 
-                    <Table style={{ width: '100%',border:"solid" }}>
+                    <Table style={{ width: '1200px',border:"solid"}}>
       {/* <Thead> */}
-      <Tbody>
-        <Tr id = "pd2">
+      <Tbody id="pd6">
+        <Tr id = "pd2" style={{color:'gray'}}>
           <Th>Name</Th>
           <Th>Order_Id</Th>
           <Th>Payment_id</Th>
@@ -73,7 +74,7 @@ console.log("k")
         </Tr>
       {/* </Thead> */}   
      {data.map(order=>(<>
-        <Tr>
+        <Tr >
           <Td>{order.orderDetail.razorpay.orderId}</Td>
           <Td>{order.orderDetail.razorpay.orderId}</Td>
           <Td>{order.orderDetail.razorpay.paymentId}</Td>
@@ -86,11 +87,10 @@ console.log("k")
     </Table>
     </div>
     </div>
+    </div>
 
-
-            </div>
-
-        </div>
+          
+   
 
 
 
