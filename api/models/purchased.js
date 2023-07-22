@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 
 const PurchaseSchema = new mongoose.Schema({  
    userId:{
-    type:String
+      type:mongoose.Schema.Types.ObjectId,
+      ref:'User'
    },
    eventId:{
       type:mongoose.Schema.Types.ObjectId,

@@ -23,6 +23,18 @@ module.exports.createTicket= async (req, res, next) => {
     next(err);
   }
 };
+module.exports.updateTicketSale = async (req, res, next) => {
+  try {
+    const updatedTicket= await Ticket.findByIdAndUpdate(
+      req.params.id,
+      {ticketSale:req.body.ticketSale}
+    );
+    console.log(updatedTicket)
+    res.status(200).json(updatedTicket);
+  } catch (err) {
+    next(err);
+  }
+};
 
 module.exports.updateTicket = async (req, res, next) => {
   try {

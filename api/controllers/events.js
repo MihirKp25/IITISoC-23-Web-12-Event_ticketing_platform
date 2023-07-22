@@ -229,7 +229,7 @@ module.exports.EventsbyCountry=async(req,res, next)=>{
 }
 
 module.exports.getOrders=async(req,res, next)=>{
-  const orders = await Purchase.find({eventId:req.params.id}).populate('orderDetail').populate('ticketId').exec();
+  const orders = await Purchase.find({eventId:req.params.id}).populate('orderDetail').populate('ticketId').populate('userId').exec();
 
   
   try {

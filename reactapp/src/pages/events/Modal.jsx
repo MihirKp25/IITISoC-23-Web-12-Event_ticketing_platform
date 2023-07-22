@@ -13,6 +13,7 @@ import TicketBook from '../../components/ticketbBook/TicketBook';
 
 
 export default function Modal({closeModal,eventId,ticketDet}) {
+  const [sale,setSale]=useState(ticketDet.ticketSale)
   const [loading, setLoading] = useState(false);
   const [orderAmount, setOrderAmount] = useState(0);
   const {user}=useContext(AuthContext);
@@ -152,7 +153,7 @@ const currentDateString = currentDate.toISOString();
        
       {/* <span onClick={closeModal(false)}>Close</span> */}
       <div className="modalContainer">
-        <div className="title" id = "mo1">CONFIRM TICKET BOOKING </div>
+        <div className="title" id = "mo1">CONFIRM TICKET BOOKING <small>{!sale && <b>Ticket Sale Paused</b>}</small></div>
         <span className="m1m1">
          
         <span className="details"><b>Details:</b><small>  {ticketDet.totalTickets} Tickets Remaining</small></span><br/>
@@ -217,7 +218,7 @@ const currentDateString = currentDate.toISOString();
         </div>
         <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
         { currentDateString<ticketDet.date?.endDate ? <>
-        <button className="openModalBtun" id = "mo4" onClick={loadRazorpay}>CONFIRM BOOKING</button>
+        <button className="openModalBtun" id = "mo4" onClick={loadRazorpay} disabled={!sale}>CONFIRM BOOKING</button>
         </> : <h2 style={{color:"#fd5f5f"}}>Ticket Sale Ended</h2>
         }
          <button className="openModalBtun" id = "mo4" onClick={()=>closeModal(false)}>Cancel</button>

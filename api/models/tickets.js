@@ -34,6 +34,10 @@ const TicketSchema =new mongoose.Schema({
     },
     ticketNumber:{
         type:Number
+    },
+    ticketSale:{
+        type:Boolean,
+        default:true
     }
 
 

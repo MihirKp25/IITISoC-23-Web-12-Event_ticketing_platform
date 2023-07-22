@@ -18,15 +18,27 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import './businessDetails.css'
 
 export default function Business() {
-
+  const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
   const detailsId = location.pathname.split('/')[3];
   console.log(detailsId);
-  // const [data,setData]=useState({})
+  const [data,setData]=useState({})
 
-  const { data, loading, error, reFetch } = useFetch(`http://localhost:3000/user/events/details/booked/${detailsId}`);
-  console.log(data);
+  // const { data, loading, error, reFetch } = useFetch(`http://localhost:3000/user/events/details/booked/${detailsId}`);
+  // console.log(data);
+
+    useEffect(()=>{
+  const fetch=async()=>{
+            setIsLoading(true)
+            const dataa=await axios.get(`http://localhost:3000/user/events/details/booked/${detailsId}`);
+            setData(dataa.data);
+            console.log(dataa.data);
+            setIsLoading(false)
+  }
+fetch();
+  },[])
   // console.log(data.eventId);
+
   const dateStart = new Date(data.date?.startDate); // Replace this with your actual date
   const startDate = dateStart.toLocaleDateString('en-US', {
     year: 'numeric',
@@ -60,7 +72,10 @@ export default function Business() {
     //    <TicketInfo ticket={ticketInfo}/>
     //   ))}
 
-
+<>
+{isLoading ? (
+       <div class="loader"></div>
+      ) : (<>
     <div className="qwir" id = "bd1">
       <Navbar />
       <br /><br /><br /><br /><br />
@@ -98,13 +113,14 @@ export default function Business() {
 
 
 
+</>)}
+
+    </>
 
 
 
 
-
-
-    // </>
+    
   )
-
+  
 }

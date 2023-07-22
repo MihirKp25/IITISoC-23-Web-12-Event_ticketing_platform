@@ -1,15 +1,19 @@
 const express=require("express");
-const {purchaseTicket,createTicket, updateTicket, deleteTicket, getTicket, getTickets}=require("../controllers/ticket");
+const {purchaseTicket,createTicket, updateTicket, deleteTicket, getTicket, getTickets,updateTicketSale}=require("../controllers/ticket");
 const {verifyToken, verifyUser}= require("../utils/verifyToken");
 
 
 
 const router = express.Router();
+
+router.post("/ticketsale/:id", updateTicketSale);
 //CREATE
 router.post("/:eventid", createTicket);
 
 //UPDATE
-router.put("/:id",verifyUser, updateTicket);
+
+
+router.put("/:id", updateTicket);
 //DELETE
 router.delete("/:id/:eventid",verifyUser, deleteTicket);
 //GET
