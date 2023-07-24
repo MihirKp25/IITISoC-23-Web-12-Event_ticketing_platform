@@ -71,6 +71,7 @@ const logout = () => {
 
   // Remove the user information from local storage
   localStorage.removeItem("user");
+  localStorage.removeItem("jwtToken");
 };
 
   return(

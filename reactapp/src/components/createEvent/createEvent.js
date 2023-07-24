@@ -19,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-
+import { setAuthToken } from "../../hooks/auth";
 
 const NewEvent = () => {
   const [opencal, setopencal] = useState(false);
@@ -54,7 +54,7 @@ const NewEvent = () => {
       city: "",
       country: "",
       desc: "",
-      
+
       time: "",
       freeOrPaid: false
 
@@ -66,7 +66,7 @@ const NewEvent = () => {
       city: Yup.string().required("city is required"),
       country: Yup.string().required("country is required"),
       desc: Yup.string().required("Description is required").max(500, "Description must be less than 500 words"),
-     
+
       time: Yup.string().required("Time is required"),
     }),
 
@@ -99,6 +99,10 @@ const NewEvent = () => {
         const newevent = { ...values, photos: list, date: date[0] };
         console.log(newevent);
         setIsLoading(false);
+
+        const token = localStorage.getItem('jwtToken');
+        setAuthToken(token);
+
         const response = await axios.post("http://localhost:3000/event", newevent);
         setResponseValue(response.data);
         console.log(response.data);
@@ -112,189 +116,189 @@ const NewEvent = () => {
   return (<>
     {isLoading ? (
       <div class="loader"></div>
-     ) : (
-     <>
+    ) : (
+      <>
 
-    <div className="new">
-      <Navbar />
-      <ToastContainer />
-      <div className="newContainer" style={{ margin: 100 }}>
-        <div className="top tip">
-          <h1 className="toptitle"><b>Add New Event</b></h1>
-          <small>* Please ensure that you fill the form precisely, event once created, <b>CANNOT</b> be updated later.</small>
-        </div>
-
-
-
-
-        <div className="right">
-
-          <form className="inputform">
-
-            <div className="formInput">
-              <label htmlFor="file">
-               Upload Images: <FontAwesomeIcon icon={faImage} className='arrowright' />
-              </label>
-              <input
-                type="file"
-                id="file"
-                multiple
-                onChange={(e) => setFiles(e.target.files)}
-                style={{ display: "none" }}
-              />
+        <div className="new">
+          <Navbar />
+          <ToastContainer />
+          <div className="newContainer" style={{ margin: 100 }}>
+            <div className="top tip">
+              <h1 className="toptitle"><b>Add New Event</b></h1>
+              <small>* Please ensure that you fill the form precisely, event once created, <b>CANNOT</b> be updated later.</small>
             </div>
 
 
 
-            <div className="formInput">
-             
-                <b><label className="inputlabel">Name:</label></b><br />
-                <input className="inputstyle"
-                  id="name"
-                  type="text"
 
+            <div className="right">
+
+              <form className="inputform">
+
+                <div className="formInput">
+                  <label htmlFor="file">
+                    Upload Images: <FontAwesomeIcon icon={faImage} className='arrowright' />
+                  </label>
+                  <input
+                    type="file"
+                    id="file"
+                    multiple
+                    onChange={(e) => setFiles(e.target.files)}
+                    style={{ display: "none" }}
+                  />
+                </div>
+
+
+
+                <div className="formInput">
+
+                  <b><label className="inputlabel">Name:</label></b><br />
+                  <input className="inputstyle"
+                    id="name"
+                    type="text"
+
+                    disabled={isButtonDisabled}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
+                  />
+                  {formik.touched.name && formik.errors.name ? (
+                    <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.name}</div>
+                  ) : null}
+                </div>
+
+                <div className="formInput">
+                  <b><label className="inputlabel">Type:</label></b><br />
+                  <select className="inputoption" id="type" onChange={formik.handleChange} onBlur={formik.handleBlur} disabled={isButtonDisabled}>
+                    <option className="inputoption" value="Music">Music</option>
+                    <option className="inputoption" value='Dance'>Dance</option>
+                    <option className="inputoption" value='Gaming'>Gaming</option>
+                    <option className="inputoption" value='Sports'>Sports</option>
+                    <option className="inputoption" value='Festival'>Festival</option>
+                    <option className="inputoption" value='Health'>Health</option>
+                    <option className="inputoption" value='Misc'>Misc..</option>
+                  </select>
+
+                  {formik.touched.type && formik.errors.type ? (
+                    <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.type}</div>
+                  ) : null}
+                </div>
+
+                <div className="formInput">
+                  <b><label className="inputlabel">Address</label></b><br />
+                  <input className="inputstyle"
+                    id="address"
+                    type="text"
+
+                    disabled={isButtonDisabled}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
+                  />
+                  {formik.touched.address && formik.errors.address ? (
+                    <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.address}</div>
+                  ) : null}
+                </div>
+
+                <div className="formInput">
+                  <b><label className="inputlabel">City</label></b><br />
+                  <input className="inputstyle"
+                    id="city"
+                    type="text"
+
+                    disabled={isButtonDisabled}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
+                  />
+                  {formik.touched.city && formik.errors.city ? (
+                    <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.city}</div>
+                  ) : null}
+                </div>
+
+                <div className="formInput">
+                  <b><label className="inputlabel">Country</label></b><br />
+                  <input className="inputstyle"
+                    id="country"
+                    type="text"
+
+                    disabled={isButtonDisabled}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
+                  />
+                  {formik.touched.country && formik.errors.country ? (
+                    <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.country}</div>
+                  ) : null}
+                </div>
+
+                <div className="formInput">
+                  <b><label className="inputlabel">Tiime</label></b><br />
+                  <input className="inputstyle"
+                    id="time"
+                    type='time'
+                    disabled={isButtonDisabled}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
+                  />
+                  {formik.touched.time && formik.errors.time ? (
+                    <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.time}</div>
+                  ) : null}
+                </div>
+
+                <div className="formInput">
+                  <b><label className="inputlabel">Description</label></b><br />
+                  <textarea className="inputstyle"
+                    id="desc"
+                    type="text"
+
+                    disabled={isButtonDisabled}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)', height: "180px" }}
+                  />
+                  {formik.touched.desc && formik.errors.desc ? (
+                    <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.desc}</div>
+                  ) : null}
+                </div>
+
+                <div className="formInput">
+                  <span id='s'>Select Date :</span><br />
+                  <label id='s'>{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</label><br />
+                  {!isButtonDisabled &&
+                    <DateRange
+                      editableDateInputs={true}
+                      onChange={item => setDate([item.selection])}
+                      moveRangeOnFirstSelection={false}
+                      ranges={date}
+                      minDate={new Date()}
+
+                    />}
+                </div>
+
+
+
+
+                <div className="formInput">
+                  <label className="inputlabel">Free/Paid&ensp;</label>
+                  <select className="inputoption" id="featured" onChange={formik.handleChange} disabled={isButtonDisabled}>
+                    <option className="inputoption" value={false}>Paid</option>
+                    <option className="inputoption" value={true}>Free</option>
+                  </select>
+                </div>
+
+                <p className="inputlabel" >How many ticket types you want to keep</p>
+                <input
+                  type="number"
+                  id="numTicketTypes"
                   disabled={isButtonDisabled}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
+                  onChange={(e) => { setNumTicketTypes(e.target.value); }}
+                  min={0}
                 />
-                {formik.touched.name && formik.errors.name ? (
-                  <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.name}</div>
-                ) : null}
-              </div>
 
-              <div className="formInput">
-                <b><label className="inputlabel">Type:</label></b><br />
-                <select className="inputoption" id="type" onChange={formik.handleChange}  onBlur={formik.handleBlur} disabled={isButtonDisabled}>
-                <option className="inputoption" value="Music">Music</option>
-                <option className="inputoption" value='Dance'>Dance</option>
-                <option className="inputoption" value='Gaming'>Gaming</option>
-                <option className="inputoption" value='Sports'>Sports</option>
-                <option className="inputoption" value='Festival'>Festival</option>
-                <option className="inputoption" value='Health'>Health</option>
-                <option className="inputoption" value='Misc'>Misc..</option>
-              </select>
-              
-                {formik.touched.type && formik.errors.type ? (
-                  <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.type}</div>
-                ) : null}
-              </div>
 
-              <div className="formInput">
-                <b><label className="inputlabel">Address</label></b><br />
-                <input className="inputstyle"
-                  id="address"
-                  type="text"
-                 
-                  disabled={isButtonDisabled}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
-                />
-                {formik.touched.address && formik.errors.address ? (
-                  <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.address}</div>
-                ) : null}
-              </div>
-
-              <div className="formInput">
-                <b><label className="inputlabel">City</label></b><br />
-                <input className="inputstyle"
-                  id="city"
-                  type="text"
-                  
-                  disabled={isButtonDisabled}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
-                />
-                {formik.touched.city && formik.errors.city ? (
-                  <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.city}</div>
-                ) : null}
-              </div>
-
-              <div className="formInput">
-                <b><label className="inputlabel">Country</label></b><br />
-                <input className="inputstyle"
-                  id="country"
-                  type="text"
-                  
-                  disabled={isButtonDisabled}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
-                />
-                {formik.touched.country && formik.errors.country? (
-                  <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.country}</div>
-                ) : null}
-              </div>
-
-              <div className="formInput">
-                <b><label className="inputlabel">Tiime</label></b><br />
-                <input className="inputstyle"
-                  id="time"
-                  type='time'
-                  disabled={isButtonDisabled}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' }}
-                />
-                {formik.touched.time && formik.errors.time ? (
-                  <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.time}</div>
-                ) : null}
-              </div>
-
-              <div className="formInput">
-                <b><label className="inputlabel">Description</label></b><br />
-                <textarea  className="inputstyle"
-                  id="desc"
-                  type="text"
-                  
-                  disabled={isButtonDisabled}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  style={{ backgroundColor: isButtonDisabled ? 'lightgrey' : 'rgb(235, 222, 204)' ,height:"180px" }}
-                />
-                {formik.touched.desc && formik.errors.desc ? (
-                  <div style={{ color: "red", marginTop: "2px", fontSize: "15px" }}>{formik.errors.desc}</div>
-                ) : null}
-              </div>
-
-              <div className="formInput">
-              <span id='s'>Select Date :</span><br />
-              <label id='s'>{`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</label><br />
-              {!isButtonDisabled &&
-                <DateRange
-                  editableDateInputs={true}
-                  onChange={item => setDate([item.selection])}
-                  moveRangeOnFirstSelection={false}
-                  ranges={date}
-                  minDate={new Date()}
-
-                />}
-            </div>
-            
-
-          
-
-            <div className="formInput">
-              <label className="inputlabel">Free/Paid&ensp;</label>
-              <select className="inputoption" id="featured" onChange={formik.handleChange} disabled={isButtonDisabled}>
-                <option className="inputoption" value={false}>Paid</option>
-                <option className="inputoption" value={true}>Free</option>
-              </select>
-            </div>
-           
-            <p className="inputlabel" >How many ticket types you want to keep</p>
-            <input
-              type="number"
-              id="numTicketTypes"
-              disabled={isButtonDisabled}
-              onChange={(e) => { setNumTicketTypes(e.target.value); }}
-              min={0}
-            />
-           
-           
-            {/* <div className="selectTickets">
+                {/* <div className="selectTickets">
                 <label>Tickets</label>
                 <select id="tickets" multiple onChange={handleSelect}>
                   {loading
@@ -308,25 +312,25 @@ const NewEvent = () => {
                 </select>
               </div> */}
 
-            <div classname="qwert">
-              <button className="createtktbtn" type="submit" onClick={formik.handleSubmit} disabled={isButtonDisabled}>Move to Create Ticket</button>
+                <div classname="qwert">
+                  <button className="createtktbtn" type="submit" onClick={formik.handleSubmit} disabled={isButtonDisabled}>Move to Create Ticket</button>
 
+                </div>
+                {isButtonDisabled &&
+                  <small>*Event is Created and form is <b>LOCKED</b>  please create Tickets</small>}
+              </form>
             </div>
-            {isButtonDisabled &&
-              <small>*Event is Created and form is <b>LOCKED</b>  please create Tickets</small>}
-          </form>
+          </div>
+
+          {ticketModal && Array.from({ length: numTicketTypes }).map((_, index) => (
+            <NewTicket infoEvent={responseValue} index={index} />
+          ))}
+
+
+
         </div>
-      </div>
-
-      {ticketModal && Array.from({ length: numTicketTypes }).map((_, index) => (
-        <NewTicket infoEvent={responseValue} index={index} />
-      ))}
-
-
-
-    </div>
-    </>)}
-    </>
+      </>)}
+  </>
 
   );
 };

@@ -2,6 +2,8 @@ import { useState } from "react";
 import useFetch from "../../hooks/useFetch"
 import axios from "axios";
 // import TicketBooked from "../functions/TicketBooked";
+import { setAuthToken } from "../../hooks/auth";
+
 
 export default function TicketBook({eventId}){
 
@@ -12,6 +14,9 @@ const [ticket,setTickets]=useState(0);
 const handleClick=async ()=>{
 
    try {
+      const token = localStorage.getItem('jwtToken');
+      setAuthToken(token);
+
          const purchase= await axios.post(`http://localhost:3000/ticket/purchase/${eventId}/${data._id}`,{eventId:eventId,ticketId:data._id,ticket});   //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION
    }
   catch(err){

@@ -13,16 +13,32 @@ const Datatable2 = () => {
   const [list, setList] = useState();
 
   const { userId } = useParams();
-  console.log(userId);
+  //console.log(userId);
 
 
   const { data, loading, error , reFetch} = useFetch(`http://localhost:3000/user/events/booked/${userId}`);
-  console.log(data);
+ // console.log(data);
+   const data1=[];
   
+  // Loop through the eventData array to access the _id of each event
+   for (const event of data) {
+    data1.push(event.eventId);
+   
+ 
+    }
+ 
+
+  
+ // const eventId = data.eventId[1]._id;
+ // console.log(eventId);
+/*    useEffect( async()=>{
+      const  data1 = await axios.get(`http://localhost:3000/event/find/${eventId}`);
+      console.log(data1);
+    })*/
   
   useEffect(() => {
-    setList(data);
-  }, [data]);
+    setList(data1);
+  }, [data1]);
 
 
 
@@ -60,11 +76,10 @@ const Datatable2 = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={data}
+        rows={data1}
         columns={BookedeventColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
         getRowId={row=>row._id}
       />
     </div>

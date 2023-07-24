@@ -113,7 +113,7 @@
 
 
 
-
+import { setAuthToken } from '../../hooks/auth';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import './paymentDetails.css'
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
@@ -126,6 +126,9 @@ export default function PaymentDetails() {
       const id=location.pathname.split('/')[2];
       
       console.log(id)
+      const token = localStorage.getItem('jwtToken');
+      setAuthToken(token);
+
       const {data,error,loading}=useFetch(`http://localhost:3000/event/orders/${id}`);
       console.log(data)
 

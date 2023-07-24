@@ -36,16 +36,24 @@ module.exports.login = async (req, res, next) => {
 
         const token = jwt.sign(
             { id: user._id, isAdmin: user.isAdmin },
-            process.env.JWT
+            process.env.JWT,
+            {
+                expiresIn:"2h"
+            }
         );
+           
+      //  user.token=token;
 
-        const { password, ...otherDetails } = user._doc;
-        res
+        const { password,isAdmin, ...otherDetails } = user._doc;
+
+        res.status(200).json({details:{...otherDetails},isAdmin, token})
+       /* res
             .cookie("jwt", token, {
                 httpOnly: true,
             })
             .status(200)
-            .json({ details: { ...otherDetails }, token});
+            .json({ details: { ...otherDetails }, token});*/
+
     } catch (err) {
         next(err);
     }

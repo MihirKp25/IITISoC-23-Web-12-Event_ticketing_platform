@@ -14,6 +14,7 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { set } from 'date-fns';
 import b from '../images/appbg.png'
+import { setAuthToken } from '../../hooks/auth';
 
 function Navbar() {
   const [userImg,setuserImg]=useState(null)
@@ -27,6 +28,9 @@ function Navbar() {
 const fetchDATA=async()=>{
 
       if (user) { try {
+
+        const token = localStorage.getItem('jwtToken');
+                setAuthToken(token);
         const response = await axios.get(`http://localhost:3000/user/${user._id}`);
         const userforimg = response.data;
         setuserImg(userforimg.image);
@@ -73,7 +77,7 @@ const fetchDATA=async()=>{
 
         <ul className="navul">
           <li className='navbarli'><a className="navbari" href = "/">HOME</a></li>
-          <li className='navbarli'><a className="navbari" href = "/event">CREATE</a></li>
+          <li className='navbarli'><a className="navbari" href ={user ?"/event" :"/login" } >CREATE</a></li>
           <li className='navbarli'><a className="navbari" href = "/list">BOOK</a></li>        
           <li className='navbarli'><a className="navbari"href = "/AboutUs">ABOUT US</a></li>
         </ul>

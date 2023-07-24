@@ -32,34 +32,41 @@ export const userColumns = [
  
 ];
 export const BookedeventColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+  
    
   {
-    field: "userId",
-    headerName: "UserId",
-    width: 230,
-  },
-  {
-    field: "eventId",
-    headerName: "EventId",
-    width: 230,
-  },
-  {
-    field: "ticketId",
-    headerName: "TicketId",
+    field: "name",
+    headerName: "Name",
     width: 200,
   },
   {
-    field: "purchaseDate",
-    headerName: "Date",
-    width: 230,
+    field: "type",
+    headerName: "Event type",
+    width: 200,
+  },
+  {
+    field: "city",
+    headerName: "City",
+    width: 200,
+  },
+  {
+    field: "country",
+    headerName: "Country",
+    width: 200,
+  },
+  {
+    field: "endDate",
+    headerName: "EndDate",
+    width: 200,
   },
 
 
  
 ];
+
+
 export const CreatedeventColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+ 
    
   {
     field: "name",

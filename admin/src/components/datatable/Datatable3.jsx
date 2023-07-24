@@ -14,19 +14,19 @@ const Datatable3 = () => {
   const [list, setList] = useState();
 
   const { userId } = useParams();
-  console.log(userId)
+ // console.log(userId)
 
 
   const {data,loading,error}=useFetch(`http://localhost:3000/user/events/created/${userId}`);
-  // console.log(data);
-  const uniqueData = _.uniqBy(data, '_id')
-  console.log(uniqueData)
+  console.log(data);
+  //const uniqueData = _.uniqBy(data, '_id')
+  //console.log(uniqueData)
   
   
   
-  // useEffect(() => {
-  //   setList(uniqueData);
-  // }, [uniqueData]);
+  useEffect(() => {
+     setList(data);
+   }, [data]);
 
 
 
@@ -64,11 +64,11 @@ const Datatable3 = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={uniqueData}
+        rows={data}
         columns={CreatedeventColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
+      
         getRowId={row=>row._id}
       />
     </div>

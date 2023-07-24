@@ -1,6 +1,7 @@
-
+import { setAuthToken } from '../../hooks/auth';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+
 
 function Payment() {
   const [loading, setLoading] = useState(false);
@@ -25,6 +26,10 @@ function Payment() {
     script.onload = async () => {
       try {
         setLoading(true);
+        
+        const token = localStorage.getItem('jwtToken');
+        setAuthToken(token);
+        
         const result = await axios.post('http://localhost:3000/create-order', {
           amount: orderAmount + '00',
         });
@@ -41,6 +46,10 @@ function Payment() {
           description: 'example transaction',
           order_id: order_id,
           handler: async function (response) {
+            
+            const token = localStorage.getItem('jwtToken');
+            setAuthToken(token);
+
             const result = await axios.post('http://localhost:3000/pay-order', {
               amount: amount,
               razorpayPaymentId: response.razorpay_payment_id,

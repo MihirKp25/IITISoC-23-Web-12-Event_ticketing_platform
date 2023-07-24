@@ -52,7 +52,10 @@ const UserSchema = new mongoose.Schema({
   events:{
     type:[String],
   },
-  image:{type:String}
+  image:{
+    type:String
+  },
+ 
 
   
 }, { timestamps: true })

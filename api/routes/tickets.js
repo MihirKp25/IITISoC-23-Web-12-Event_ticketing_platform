@@ -8,12 +8,12 @@ const router = express.Router();
 
 router.post("/ticketsale/:id", updateTicketSale);
 //CREATE
-router.post("/:eventid", createTicket);
+router.post("/:eventid",verifyUser, createTicket);
 
 //UPDATE
 
 
-router.put("/:id", updateTicket);
+router.put("/:id",verifyUser, updateTicket);
 //DELETE
 router.delete("/:id/:eventid",verifyUser, deleteTicket);
 //GET
@@ -23,7 +23,7 @@ router.get("/:id", getTicket);
 
 router.get("/", getTickets);
 
-router.post("/purchase/:eventId/:ticketId",purchaseTicket);
+router.post("/purchase/:eventId/:ticketId", verifyUser, purchaseTicket);
 
 
 

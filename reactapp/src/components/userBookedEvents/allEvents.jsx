@@ -12,6 +12,7 @@ import { useState, useContext } from 'react';
 import { SearchContext } from '../../hooks/context/SearchContext.jsx';
 import useFetch from '../../hooks/useFetch.jsx';
 import { useLocation } from 'react-router-dom';
+import { setAuthToken } from '../../hooks/auth.js';
 import { AuthContext } from '../../hooks/context/AuthContext.jsx';
 export default function Book() {
  
@@ -21,7 +22,8 @@ export default function Book() {
   console.log(user)
 
  
-
+  const token = localStorage.getItem('jwtToken');
+  setAuthToken(token);
   const { data, loading, error , reFetch} = useFetch(`http://localhost:3000/user/events/booked/${user._id}`);
   console.log(data);
 

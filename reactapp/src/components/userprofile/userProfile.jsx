@@ -7,6 +7,7 @@ import Edit from './userprofcomp/Edit.jsx'
 
 import { AuthContext } from '../../hooks/context/AuthContext';
 import useFetch from '../../hooks/useFetch';
+import { setAuthToken } from '../../hooks/auth';
 
 
 export default function UserProfile() {
@@ -14,7 +15,11 @@ export default function UserProfile() {
 
   const {user } =useContext(AuthContext);
 
-  const userforimg=useFetch(`http://localhost:3000/user/${user._id}`)
+  const token = localStorage.getItem('jwtToken');
+  setAuthToken(token);
+
+
+const userforimg=useFetch(`http://localhost:3000/user/${user._id}`)
 console.log(userforimg.data?.image)
   
   return (

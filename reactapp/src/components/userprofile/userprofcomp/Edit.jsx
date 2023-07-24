@@ -11,7 +11,7 @@ import './Edit.css';
 import a from '../profilepic.jpg'
 import axios from "axios"
 import useFetch from '../../../hooks/useFetch';
-
+import { setAuthToken } from '../../../hooks/auth';
 
 
 export default function Edit() {
@@ -31,6 +31,9 @@ useEffect(() => {
 
 const fetchUserProfile = async () => {
   try {
+
+    const token = localStorage.getItem('jwtToken');
+    setAuthToken(token);
     const response = await axios.get(`http://localhost:3000/user/${user._id}`, {
       headers: {
         'Cache-Control': 'no-cache',
@@ -78,7 +81,8 @@ const handleSubmitButton = async (e) => {
        e.preventDefault();
     
       try{
-       
+        const token = localStorage.getItem('jwtToken');
+        setAuthToken(token);
      
       const result= await axios.put(`http://localhost:3000/user/${user._id}`, info);
 

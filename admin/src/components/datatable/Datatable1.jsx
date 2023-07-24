@@ -88,7 +88,7 @@ const Datatable1 = () => {
         columns={userColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
-        checkboxSelection
+        
         getRowId={row=>row._id}
       />
     </div>

@@ -4,23 +4,23 @@ const User=require("../models/user.js")
 const router=express.Router();
 const {verifyToken, verifyAdmin, verifyUser}= require("../utils/verifyToken");
 
-router.get("/:id", getUser);
+router.get("/:id",verifyUser, getUser);
 
-router.get("/", getUsers);
+router.get("/",verifyAdmin, getUsers);
 
-router.get("/count" , getUserCount);
+//router.get("/count" , getUserCount);
 
-router.get("/events/created/:id", viewUserCreatedEvents);
+router.get("/events/created/:id",verifyUser, viewUserCreatedEvents);
 
-router.get("/events/booked/:id", viewUserBookedEvents);
+router.get("/events/booked/:id",verifyUser, viewUserBookedEvents);
 
-router.put("/:id", editUser);
+router.put("/:id",verifyUser, editUser);
 
 router.delete("/:id",verifyUser, deleteUser);
 
-router.post("/event", userCreatedEvent);
+router.post("/event",verifyUser, userCreatedEvent);
 
-router.get("/events/details/booked/:id", viewDetailsOfCreatedEvent);
+router.get("/events/details/booked/:id",verifyUser, viewDetailsOfCreatedEvent);
 
 
 

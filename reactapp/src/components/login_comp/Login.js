@@ -34,9 +34,9 @@ const Create = () => {
       toast.success("Login Successfull", {
         position: toast.POSITION.TOP_CENTER
     });
-    const {token, details}=res.data;
-    login(token, details);
-
+    // const {token, details}=res.data;
+    // login(token, details);
+    localStorage.setItem('jwtToken', res.data.token);
 
     if (res.data.isAdmin || !res.data.isAdmin) {
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });

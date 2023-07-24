@@ -3,7 +3,7 @@ import Navbar from '../navbar/Navbar.js';
 import './allEvents.css'
 import SingleEvent from './singleEvent.jsx'
 // import Datepick from "./datepicker.js";
-
+import { setAuthToken } from '../../hooks/auth.js';
 import { DateRange } from 'react-date-range';
 import { format } from 'date-fns'
 import 'react-date-range/dist/styles.css'; // main style file
@@ -23,7 +23,9 @@ export default function Book() {
   console.log(user)
 
  
-
+  const token = localStorage.getItem('jwtToken');
+  setAuthToken(token);
+  
   const { data, loading, error , reFetch} = useFetch(`http://localhost:3000/user/events/created/${user._id}`);
   console.log(data);
   const uniqueData = _.uniqBy(data, '_id')

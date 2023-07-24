@@ -16,6 +16,7 @@ import { format } from "date-fns";
 import { AuthContext } from "../../hooks/context/AuthContext";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import './businessDetails.css'
+import { setAuthToken } from "../../hooks/auth";
 
 export default function Business() {
   const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +31,9 @@ export default function Business() {
     useEffect(()=>{
   const fetch=async()=>{
             setIsLoading(true)
+
+            const token = localStorage.getItem('jwtToken');
+                setAuthToken(token);
             const dataa=await axios.get(`http://localhost:3000/user/events/details/booked/${detailsId}`);
             setData(dataa.data);
             console.log(dataa.data);
