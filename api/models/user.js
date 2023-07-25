@@ -55,7 +55,10 @@ const UserSchema = new mongoose.Schema({
   image:{
     type:String
   },
- 
+ isMajorAdmin: {
+  type: Boolean,
+  default: false,
+},
 
   
 }, { timestamps: true })

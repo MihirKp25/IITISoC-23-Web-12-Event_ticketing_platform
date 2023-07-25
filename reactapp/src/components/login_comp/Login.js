@@ -54,9 +54,11 @@ const Create = () => {
           payload: { message: "You are not allowed!" },
           
         });
+        setIsLoading(false);
       
       }
     } catch (err) {
+      setIsLoading(false);
       toast.error("User not found , Please try again", {
         position: toast.POSITION.TOP_CENTER
     });

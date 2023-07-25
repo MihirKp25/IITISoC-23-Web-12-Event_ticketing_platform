@@ -4,7 +4,7 @@ html{
 
 
 .qwir{
-  height: 1000px;
+  height: 1275px;
   background-color: rgb(31,31,31);
 }
 .infofo{
@@ -16,8 +16,8 @@ html{
   padding-top: 30px;
   margin-left: 150px;
   margin-right: 100px;
-  display: grid;
-  grid-template-columns: 4fr 2fr;
+  display: flex;
+  flex-direction: column;
   font-family: 'Quicksand', sans-serif;
 }
   
@@ -41,8 +41,8 @@ html{
   }
   #bd3{
     position: relative;
-    top: 6.5rem;
-    height: 650px;
+    top: 3.5rem;
+    height: 420px;
     padding-top: 20px;
     padding-left: 15px;
     padding-right: 3px;
@@ -81,6 +81,19 @@ html{
 }
 #busdeteventinfo{
   box-shadow: 4px 4px 10px 0px black;
+  top: -5rem;
+  position: relative;
+}
+.eventbrief{
+  display: flex;
+  flex-direction: row;
+}
+#td1{
+  border:solid red;
+  border-radius: 5px;
+  margin: 2rem;
+  color: white;
+  background-color: red;
 }
 
 @media(max-width:1000px){
@@ -107,12 +120,12 @@ html{
 #busdeteventinfo{
   box-shadow: 4px 4px 10px 0px black;
   width: 100%;
-  height: 85rem;
+  height: 185rem;
 }
 #busdeteventinfoimg{
   width: 84rem;
-
 }
+
 #abevtit{
   font-size: 6rem;
 }
@@ -128,9 +141,11 @@ html{
   font-size: 4rem;
 }
 #bd3{
+  display: flex;
+  flex-direction: column;
   margin-top: 8rem;
   font-size: 4rem;
   width: 100%;
-  height: 110rem;
+  height: 130rem;
 }
 }

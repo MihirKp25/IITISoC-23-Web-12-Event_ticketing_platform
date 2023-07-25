@@ -35,7 +35,7 @@ module.exports.login = async (req, res, next) => {
             return next(createError(400, "Wrong password or username!"));
 
         const token = jwt.sign(
-            { id: user._id, isAdmin: user.isAdmin },
+            { id: user._id, isAdmin: user.isAdmin, isMajorAdmin:user.isMajorAdmin },
             process.env.JWT,
             {
                 expiresIn:"2h"
@@ -44,9 +44,9 @@ module.exports.login = async (req, res, next) => {
            
       //  user.token=token;
 
-        const { password,isAdmin, ...otherDetails } = user._doc;
-
-        res.status(200).json({details:{...otherDetails},isAdmin, token})
+        const { password,isAdmin,isMajorAdmin,  ...otherDetails } = user._doc;
+        otherDetails.isAdmin=isAdmin;
+        res.status(200).json({details:{...otherDetails},isAdmin,isMajorAdmin, token})
        /* res
             .cookie("jwt", token, {
                 httpOnly: true,

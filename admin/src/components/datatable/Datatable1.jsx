@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate} from "react-router-dom";
-
+import { setAuthToken } from "../../hook/auth";
 
 
 
@@ -16,6 +16,10 @@ const Datatable1 = () => {
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState();
   const [user, setUser] = useState([]);
+
+  const token = localStorage.getItem('jwtToken');
+  setAuthToken(token);
+
   const { data, loading, error } = useFetch(`http://localhost:3000/${path}`);
 
   useEffect(() => {
@@ -25,6 +29,9 @@ const Datatable1 = () => {
   const navigate = useNavigate();
   const handleDelete = async (id) => {
     try {
+
+      const token = localStorage.getItem('jwtToken');
+      setAuthToken(token);
       await axios.delete(`http://localhost:3000/${path}/${id}`);
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}

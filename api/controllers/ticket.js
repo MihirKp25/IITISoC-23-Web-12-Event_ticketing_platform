@@ -9,6 +9,7 @@ module.exports.createTicket= async (req, res, next) => {
   console.log(EventId,newTicket);
 
   try {
+    newTicket.eventId=EventId;
     const savedTicket = await newTicket.save();
     try {
       await Event.findByIdAndUpdate(EventId, {

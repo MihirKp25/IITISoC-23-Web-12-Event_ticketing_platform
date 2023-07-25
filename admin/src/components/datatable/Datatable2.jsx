@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { AuthContext } from "../../context/Authcontext";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { setAuthToken } from "../../hook/auth";
 
 const Datatable2 = () => {
   
@@ -15,8 +16,9 @@ const Datatable2 = () => {
   const { userId } = useParams();
   //console.log(userId);
 
-
-  const { data, loading, error , reFetch} = useFetch(`http://localhost:3000/user/events/booked/${userId}`);
+  const token = localStorage.getItem('jwtToken');
+  setAuthToken(token);
+  const { data, loading, error , reFetch} = useFetch(`http://localhost:3000/user/admin/events/booked/${userId}`);
  // console.log(data);
    const data1=[];
   
@@ -27,7 +29,7 @@ const Datatable2 = () => {
  
     }
  
-
+   // console.log(data1)
   
  // const eventId = data.eventId[1]._id;
  // console.log(eventId);
@@ -44,6 +46,8 @@ const Datatable2 = () => {
 
   const handleDelete = async (id) => {
     try {
+      const token = localStorage.getItem('jwtToken');
+      setAuthToken(token);
       await axios.delete(`http://localhost:3000/event/${id}`);
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}

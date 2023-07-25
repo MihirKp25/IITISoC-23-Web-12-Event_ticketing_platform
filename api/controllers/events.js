@@ -6,7 +6,7 @@ const User =require("../models/user.js");
 const CreatedEvent= require("../models/sold.js");
 const nodemailer = require('nodemailer');
 const qrcode = require('qrcode');
-const sold = require('../models/sold.js');
+const Sold = require('../models/sold.js');
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -50,10 +50,13 @@ module.exports.editEvent= async (req,res,next)=>{
 };
 // DELETE EVENT
 module.exports.deleteEvent= async (req,res,next)=>{
-
+    const ide=req.params.id;
     try{
-        await Event.findByIdAndDelete(req.params.id);
-        res.status(200).json("Hotel has been deleted.");
+        await Event.findByIdAndDelete(ide);
+        // await Ticket.deleteMany({eventId:ide});
+        // await Sold.deleteMany({eventId:ide});
+        // await Purchase.deleteMany({eventId:ide});
+        res.status(200).json("Event has been deleted.");
     }
     catch(err){
         next(err);

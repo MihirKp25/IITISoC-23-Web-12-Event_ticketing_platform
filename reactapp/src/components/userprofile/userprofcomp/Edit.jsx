@@ -14,6 +14,8 @@ import useFetch from '../../../hooks/useFetch';
 import { setAuthToken } from '../../../hooks/auth';
 
 
+
+
 export default function Edit() {
    const {user}=useContext(AuthContext);
    const [isInputDisabled, setIsInputDisabled] = useState(true);
@@ -32,7 +34,7 @@ useEffect(() => {
 const fetchUserProfile = async () => {
   try {
 
-    const token = localStorage.getItem('jwtToken');
+   const token = localStorage.getItem('jwtToken');
     setAuthToken(token);
     const response = await axios.get(`http://localhost:3000/user/${user._id}`, {
       headers: {
@@ -49,17 +51,33 @@ const handleChange = (e) => {
   setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 };
 
+
+
+
 const SubmitImage = async(e) => {
   e.preventDefault();
   const data = new FormData();
   data.append("file", file);
   data.append("upload_preset", "upload");
  try{ 
-   const uploadRes = await axios.post(
-     "https://api.cloudinary.com/v1_1/dg7seerl9/image/upload", data);
 
+   const uploadRes = await axios.post(
+     "https://api.cloudinary.com/v1_1/dg7seerl9/image/upload",data, );
+     
    const { url } = uploadRes.data;
    console.log(url);
+
+// try {
+ 
+//   if (!file) {
+//     console.error('No image selected.');
+//     return;
+//   }
+
+//   const uploadResult = await cloudinaryInstance.uploader.upload(file);
+//   console.log('Image uploaded:', uploadResult.secure_url);
+//   // Do something with the uploaded image URL, such as saving it in your database or displaying it on the page.
+
    
    const updatedUser = {
     image:url,

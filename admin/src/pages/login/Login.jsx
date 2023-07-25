@@ -26,10 +26,12 @@ const Create = () => {
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post("http://localhost:3000/auth/login", credentials);
-      if (res.data.isAdmin) {
+      console.log(res.data);
+      if (res.data.isMajorAdmin) {
        
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
         // notify();
+        localStorage.setItem('jwtToken', res.data.token);
         navigate("/");
        
         

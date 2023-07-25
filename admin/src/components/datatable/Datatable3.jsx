@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/Authcontext";
 import _ from 'lodash';//LODASH IS A FUNCTION TO SORT DUPLICATES IN A ARRAY
 import axios from "axios";
+import { setAuthToken } from "../../hook/auth";
 
 const Datatable3 = () => {
 
@@ -16,22 +17,26 @@ const Datatable3 = () => {
   const { userId } = useParams();
  // console.log(userId)
 
+  const token = localStorage.getItem('jwtToken');
+  setAuthToken(token);
 
-  const {data,loading,error}=useFetch(`http://localhost:3000/user/events/created/${userId}`);
+  const {data,loading,error}=useFetch(`http://localhost:3000/user/admin/events/created/${userId}`);
   console.log(data);
-  //const uniqueData = _.uniqBy(data, '_id')
-  //console.log(uniqueData)
+  const uniqueData = _.uniqBy(data, '_id')
+  console.log(uniqueData)
   
   
   
   useEffect(() => {
-     setList(data);
-   }, [data]);
+     setList(uniqueData);
+   }, [uniqueData]);
 
 
 
   const handleDelete = async (id) => {
     try {
+      const token = localStorage.getItem('jwtToken');
+      setAuthToken(token);
       await axios.delete(`http://localhost:3000/event/${id}`);
       setList(list.filter((item) => item._id !== id));
     } catch (err) {}
@@ -64,7 +69,7 @@ const Datatable3 = () => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={data}
+        rows={uniqueData}
         columns={CreatedeventColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}

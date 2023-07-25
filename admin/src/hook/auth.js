@@ -4,7 +4,7 @@ export const getToken = () => {
     return localStorage.getItem('jwtToken');
   };
   
-  export const setAuthToken =async (token) => {
+  export const setAuthToken = (token) => {
     if (token) {
       // Apply the token to every request header
       axios.defaults.headers.common['Authorization'] = `${token}` ;

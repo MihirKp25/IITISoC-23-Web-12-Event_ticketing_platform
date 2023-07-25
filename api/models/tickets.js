@@ -38,7 +38,10 @@ const TicketSchema =new mongoose.Schema({
     ticketSale:{
         type:Boolean,
         default:true
-    }
+    },eventId: {
+        type: String,
+   
+    },
 
 
 

@@ -2,6 +2,8 @@ const Created= require('../models/sold.js');
 const User=require('../models/user.js');
 const Event =require('../models/event.js');
 const Purchase=require('../models/purchased.js')
+const Sold=require('../models/sold.js')
+const Ticket=require('../models/tickets.js')
 
 
 
@@ -24,9 +26,19 @@ module.exports.editUser= async (req,res,next)=>{
 };
 // DELETE User
 module.exports.deleteUser= async (req,res,next)=>{
-
+  const ide=req.params.id;
+  // const events=await Sold.find({userId:ide});
+  // const fn =await Promise.all(events.map(event=>{
+  //   Event.findByIdAndDelete(event.eventId);
+  //   Ticket.deleteMany({eventId:event.eventId});
+// }));
     try{
-        await User.findByIdAndDelete(req.params.id);
+        await User.findByIdAndDelete(ide);
+        // await Purchase.deleteMany({ userId:ide });
+        // await Sold.deleteMany({ userId:ide});
+        
+     
+    
         res.status(200).json("User has been deleted.");
     }
     catch(err){

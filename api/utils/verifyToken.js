@@ -4,7 +4,7 @@ const { createError } = require("./error");
 module.exports.verifyToken= verifyToken = (req, res, next) => {
  // const token = req.cookies.jwt;
   const token = req.headers.authorization;
-   console.log(token);
+   //console.log(token);
   if (!token) {
     return next(createError(401, "You are not authenticated!"));
   }
@@ -19,7 +19,7 @@ module.exports.verifyToken= verifyToken = (req, res, next) => {
 module.exports.verifyUser = (req, res, next) => {
 
   const token = req.headers.authorization;
-  console.log(token);
+  //console.log(token);
  if (!token) {
    return next(createError(401, "You are not authenticated!"));
  }
@@ -40,7 +40,7 @@ module.exports.verifyUser = (req, res, next) => {
 module.exports.verifyAdmin = (req, res, next) => {
 
   const token = req.headers.authorization;
-  console.log(token);
+  //console.log(token);
  if (!token) {
    return next(createError(401, "You are not authenticated!"));
  }
@@ -55,6 +55,27 @@ module.exports.verifyAdmin = (req, res, next) => {
       next();
     } else {
       return next(createError(403, "You are not authorized!"));
+    }
+
+};
+module.exports.verifyMajorAdmin = (req, res, next) => {
+
+  const token = req.headers.authorization;
+ // console.log(token);
+ if (!token) {
+   return next(createError(401, "You are not authenticated!"));
+ }
+
+ jwt.verify(token, process.env.JWT, (err, user) => {
+  if (err) return next(createError(403, "Token is not valid!"));
+  req.user = user;})
+
+
+
+    if (req.user.isMajorAdmin) {
+      next();
+    } else {
+      return next(createError(403, "You are not authorized as Major Admin!"));
     }
 
 };

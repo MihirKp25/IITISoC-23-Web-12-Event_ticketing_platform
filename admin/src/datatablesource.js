@@ -55,8 +55,8 @@ export const BookedeventColumns = [
     width: 200,
   },
   {
-    field: "endDate",
-    headerName: "EndDate",
+    field: "address",
+    headerName: "Address",
     width: 200,
   },
 
@@ -74,18 +74,18 @@ export const CreatedeventColumns = [
     width: 230,
   },
   {
-    field: "tickettitle",
-    headerName: "EventId",
+    field: "type",
+    headerName: "Event Type",
     width: 230,
   },
   {
-    field: "ticketId",
-    headerName: "TicketId",
+    field: "city",
+    headerName: "City",
     width: 200,
   },
   {
-    field: "soldDate",
-    headerName: "Date",
+    field: "country",
+    headerName: "Country",
     width: 230,
   },
 

@@ -1,6 +1,6 @@
 import "./createEvent.css";
 import Navbar from "../navbar/Navbar";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { EventInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
@@ -13,19 +13,23 @@ import { DateRange } from 'react-date-range';
 import { format } from "date-fns";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { setAuthToken } from "../../hooks/auth";
+import { AuthContext } from "../../hooks/context/AuthContext";
+// import user from "../../../../api/models/user";
 
 const NewEvent = () => {
+  const navigate=useHistory();
   const [opencal, setopencal] = useState(false);
   const clickopencal = () => {
     setopencal(true);
   }
+  const {user}=useContext(AuthContext)
   const [isLoading, setIsLoading] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [numTicketTypes, setNumTicketTypes] = useState(1)
@@ -44,7 +48,7 @@ const NewEvent = () => {
       key: 'selection'
     }
   ]);
-
+ console.log(user)
 
   const formik = useFormik({
     initialValues: {
@@ -71,6 +75,13 @@ const NewEvent = () => {
     }),
 
     onSubmit: async (values) => {
+  //     if(!user.isAdmin){
+  //       toast.error('You are not given access to this Feature ', {
+  //         position: toast.POSITION.TOP_CENTER
+  //       });
+      
+  // navigate('/');
+  //     }
 
       try {
         setIsLoading(true);
@@ -83,6 +94,7 @@ const NewEvent = () => {
             const data = new FormData();
             data.append("file", file);
             data.append("upload_preset", "upload");
+    
             const uploadRes = await axios.post(
               "https://api.cloudinary.com/v1_1/dg7seerl9/image/upload",
               data
@@ -103,7 +115,11 @@ const NewEvent = () => {
         const token = localStorage.getItem('jwtToken');
         setAuthToken(token);
 
-        const response = await axios.post("http://localhost:3000/event", newevent);
+        const response = await axios.post("http://localhost:3000/event", newevent ,{headers: {
+    
+          'Access-Control-Allow-Origin': '*', // Allow requests from any origin (update this to restrict if needed)
+        }}
+        );
         setResponseValue(response.data);
         console.log(response.data);
         setTicketModal(true);
