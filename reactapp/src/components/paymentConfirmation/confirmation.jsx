@@ -27,12 +27,15 @@ function Payment() {
       try {
         setLoading(true);
         
-        const token = localStorage.getItem('jwtToken');
-        setAuthToken(token);
-        
+        // const token = localStorage.getItem('jwtToken');
+        // setAuthToken(token);
+        const token = localStorage.getItem('token');
         const result = await axios.post('http://localhost:3000/create-order', {
           amount: orderAmount + '00',
-        });
+        },{ headers: {
+          Authorization: `Bearer ${token}`,
+          // Other headers if needed
+        }});
         const { amount, id: order_id, currency } = result.data;
         const {
           data: { key: razorpayKey },
@@ -47,15 +50,18 @@ function Payment() {
           order_id: order_id,
           handler: async function (response) {
             
-            const token = localStorage.getItem('jwtToken');
-            setAuthToken(token);
-
+            // const token = localStorage.getItem('jwtToken');
+            // setAuthToken(token);
+            const token = localStorage.getItem('token');
             const result = await axios.post('http://localhost:3000/pay-order', {
               amount: amount,
               razorpayPaymentId: response.razorpay_payment_id,
               razorpayOrderId: response.razorpay_order_id,
               razorpaySignature: response.razorpay_signature,
-            });
+            },{ headers: {
+              Authorization: `Bearer ${token}`,
+              // Other headers if needed
+            }});
             alert(result.data.msg);
             // fetchOrders();
           },

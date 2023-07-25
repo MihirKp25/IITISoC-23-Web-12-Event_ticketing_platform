@@ -36,7 +36,7 @@ const Create = () => {
     });
     // const {token, details}=res.data;
     // login(token, details);
-    localStorage.setItem('jwtToken', res.data.token);
+    localStorage.setItem('token', res.data.token);
 
     if (res.data.isAdmin || !res.data.isAdmin) {
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });

@@ -15,8 +15,10 @@ html{
   font-family: 'Quicksand', sans-serif;
 }
 .imge{
-  height: 90px;
-  width:90px;
+  height: 120px;
+  width: 120px;
+  padding: 7px;
+  border-radius: 30px
 } 
   .eventinfo{
     border-radius: 15px;
@@ -27,8 +29,13 @@ html{
     padding: 20px;
   }
   .eventinfoimg{
+    height: 580px;
    width: 820px;
     border-radius: 15px;
+  }
+  #event1{
+    height: 600px;
+    text-align: center;
   }
   .eventtitle{
     text-align:center; margin-top:20px; font-size:35px;

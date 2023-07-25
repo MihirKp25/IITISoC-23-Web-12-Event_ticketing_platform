@@ -106,115 +106,116 @@ console.log(currentDateString>endDate)
 console.log(currentDateString)
 console.log(data.date?.endDate)
  
- 
-  return (<div>
-    <div className="qwer">
-      <Navbar />
-      <ToastContainer/>
-      <div className="eventcontainer" >
-        <div className="eventinfo">
-        <img src={image} alt="Unable to load image, Please hover over Gallery" className="eventinfoimg" id = "e9e"/>
-          <div className="aboutevent">
-            <div className="eventtitle" ><b>{data.name}</b></div><br />
-            {/* <div className="eventorganiser" ><b>BY:</b> <>NEED TO BE PASSED</></div><br/><br/><br/> */}
-            <span className="eventcontent">{data.desc}</span>
-          </div>
+return (<div>
+  <div className="qwer">
+    <Navbar />
+    <ToastContainer/>
+    <div className="eventcontainer" >
 
+      <div className="eventinfo">
+        <div id = "event1">
+      <img src={image} alt="Unable to load image, Please hover over Gallery" className="eventinfoimg" id = "e9e"/></div>
+        <div className="aboutevent">
+          <div className="eventtitle" ><b>{data.name}</b></div><br />
+          {/* <div className="eventorganiser" ><b>BY:</b> <>NEED TO BE PASSED</></div><br/><br/><br/> */}
+          <span className="eventcontent">{data.desc}</span>
         </div>
-        <div>      
-       <div className="eventbriefi">
-          <div className="eventtitle"><b>{data.name}</b></div><br /><br />
-          <div id="asdasd">
-          <FontAwesomeIcon icon={faBookmark}></FontAwesomeIcon>
-          <span className="childtitle"> TYPE:</span>
-          <span className="childinfo">&ensp;{data.type}</span><br />
-          <FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon>
-          <span className="childtitle"> LOCATION:</span>
-          <span className="childinfo">&ensp;{data.address} , {data.city} ,{data.country}</span><br />
-          <FontAwesomeIcon icon={faLanguage}></FontAwesomeIcon>
-          <span className="childtitle"> CITY:</span>
-          <span className="childinfo">&ensp;{data.city}</span><br />
-          <FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
-          <span className="childtitle"> EVENT STARTS :</span>
-          <span className="childinfo">&ensp;
-            {startDate}
-            {/* //NOTE WHENEVER THERES A OBJECT WHITHIN A OBJECT AND ANOTHER OBJECT GIVE A QUESTION MARK SO THAT IT TAKES A NULL VALUE TOO VVVVVVVIMPPPPPPP */}
-          </span><br />
-          <FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
-          <span className="childtitle"> EVENT ENDS :</span>
-          <span className="childinfo">&ensp;
-            {endDate}
-          </span><br />
-         
-          </div>
-          <FontAwesomeIcon icon={faMoneyBills} id = "jaja"></FontAwesomeIcon>&ensp;
-          <span className="eventprice" ><small>per ticket</small>₹ {displayPrice}</span>
-          <div>
 
-            <span className="childtitle"> Select Ticket Type:</span>
-            <select className="inputoption" id="ticketType" onMouseOver={(e) => { setdisplayPrice(e.target.value) }} onClick={(e) => {
-              setdisplayPrice(e.target.value);
-              setTicketIndex(e.target.selectedIndex)
-            }}>
-              {data.tickettitle?.map((ticket) => (
-                <option key={ticket.id} className="inputoption" value={ticket.price} onClick={(e)=>{setTicket(ticket)}} >{ticket.price}</option>
-              ))}
-            </select>
-            { currentDateString<data.date?.endDate ? <>
-            <h1 >
-             <b id = "k1k"style={{color:"#fd5f5f"}}>Bookings Open</b> </h1>
-            <button className="openModalBtn" id= "kaka" onClick={handleClick} >BOOK NOW!</button></> : <h1 > <b style={{color:"#fd5f5f"}}>Event Expired</b> </h1>
-            }
-          </div>
-       
-
-
-        </div>
-        <br/><br/>
-        <div className="eventbrief1" >
-        <div className="eventtitle"id = "haha"  style={{fontWeight:'600'}}> <FontAwesomeIcon icon={faPeopleArrows}></FontAwesomeIcon>Organizer Details</div><br/><br/>
+      </div>
+      <div>      
+     <div className="eventbriefi">
+        <div className="eventtitle"><b>{data.name}</b></div><br /><br />
         <div id="asdasd">
-        <p>NAME : {organizer.firstname} {organizer.lastname}</p>
-        <p>CONTACT NO :{organizer.contactNo}</p>
-        <p>EMAIL :{organizer.email}</p>
+        <FontAwesomeIcon icon={faBookmark}></FontAwesomeIcon>
+        <span className="childtitle"> TYPE:</span>
+        <span className="childinfo">&ensp;{data.type}</span><br />
+        <FontAwesomeIcon icon={faLocationDot}></FontAwesomeIcon>
+        <span className="childtitle"> LOCATION:</span>
+        <span className="childinfo">&ensp;{data.address} , {data.city} ,{data.country}</span><br />
+        <FontAwesomeIcon icon={faLanguage}></FontAwesomeIcon>
+        <span className="childtitle"> CITY:</span>
+        <span className="childinfo">&ensp;{data.city}</span><br />
+        <FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
+        <span className="childtitle"> EVENT STARTS :</span>
+        <span className="childinfo">&ensp;
+          {startDate}
+          {/* //NOTE WHENEVER THERES A OBJECT WHITHIN A OBJECT AND ANOTHER OBJECT GIVE A QUESTION MARK SO THAT IT TAKES A NULL VALUE TOO VVVVVVVIMPPPPPPP */}
+        </span><br />
+        <FontAwesomeIcon icon={faClock}></FontAwesomeIcon>
+        <span className="childtitle"> EVENT ENDS :</span>
+        <span className="childinfo">&ensp;
+          {endDate}
+        </span><br />
+       
         </div>
+        <FontAwesomeIcon icon={faMoneyBills} id = "jaja"></FontAwesomeIcon>&ensp;
+        <span className="eventprice" ><small>per ticket</small>₹ {displayPrice}</span>
+        <div>
+
+          <span className="childtitle"> Select Ticket Type:</span>
+          <select className="inputoption" id="ticketType" onMouseOver={(e) => { setdisplayPrice(e.target.value) }} onClick={(e) => {
+            setdisplayPrice(e.target.value);
+            setTicketIndex(e.target.selectedIndex)
+          }}>
+            {data.tickettitle?.map((ticket) => (
+              <option key={ticket.id} className="inputoption" value={ticket.price} onClick={(e)=>{setTicket(ticket)}} >{ticket.price}</option>
+            ))}
+          </select>
+          { currentDateString<data.date?.endDate ? <>
+          <h1 >
+           <b id = "k1k"style={{color:"#fd5f5f"}}>Bookings Open</b> </h1>
+          <button className="openModalBtn" id= "kaka" onClick={handleClick} >BOOK NOW!</button></> : <h1 > <b style={{color:"#fd5f5f"}}>Event Expired</b> </h1>
+          }
+        </div>
+     
+
+
+      </div>
+      <br/><br/>
+      <div className="eventbrief1" >
+      <div className="eventtitle"id = "haha"  style={{fontWeight:'600'}}> <FontAwesomeIcon icon={faPeopleArrows}></FontAwesomeIcon>Organizer Details</div><br/><br/>
+      <div id="asdasd">
+      <p>NAME : {organizer.firstname} {organizer.lastname}</p>
+      <p>CONTACT NO :{organizer.contactNo}</p>
+      <p>EMAIL :{organizer.email}</p>
+      </div>
+      
+
+
         
-
-
-          
-        </div>
-        <div className="eventbrief1">
-           <div id = "haha"className="eventtitle" style = {{fontWeight:'600'}}>Gallery</div>
-           <div className="listresults1">
-  {data.photos?.map((photo,index)=>(
-    <span className="listresultitem1" id = "qaqa"onClick={()=>{setImage(photo)}} onMouseOver={()=>{setImage(photo)}}>
-        <img src={photo} alt="WAIT" className="imge" />
-     </span>    
-  ))}
+      </div>
+      <div className="eventbrief1">
+         <div id = "haha"className="eventtitle" style = {{fontWeight:'600'}}>Gallery</div>
+         <div className="listresults1">
+{data.photos?.map((photo,index)=>(
+  <span className="listresultitem1" id = "qaqa"onClick={()=>{setImage(photo)}} onMouseOver={()=>{setImage(photo)}}>
+      <img src={photo} alt="WAIT" className="imge" />
+   </span>    
+))}
 
 </div> 
 
 
-          
-        </div>
-        </div>
-
-
-
-        {/* IF ? NOT GIVEN FOR TICKETTITLE WE GET ERROR OF TICKETTITLE NOT DEFINED */}
-
-        {openModal &&
-          <Modal closeModal={setopenModal} eventId={id} ticketDet={ticket} />
-        }
         
+      </div>
       </div>
 
 
 
-      {/* <Footer /> */}
+      {/* IF ? NOT GIVEN FOR TICKETTITLE WE GET ERROR OF TICKETTITLE NOT DEFINED */}
+
+      {openModal &&
+        <Modal closeModal={setopenModal} eventId={id} ticketDet={ticket} />
+      }
+      
     </div>
-    </div>
-  );
+
+
+
+    {/* <Footer /> */}
+  </div>
+  </div>
+);
 };
 
 export default Event;

@@ -18,6 +18,7 @@ export default function Modal({closeModal,eventId,ticketDet}) {
   const [orderAmount, setOrderAmount] = useState(0);
   const {user}=useContext(AuthContext);
   const [openOptions, setOpenOptions] = useState(false);
+  const token = localStorage.getItem('token');
   const [option, setOption] = useState({
     tickets:1
   });
@@ -42,12 +43,19 @@ console.log(data);
 const handleClick=async (orderId)=>{
   
   try {
-    const purchase= await axios.post(`http://localhost:3000/ticket/purchase/${eventId}/${ticketDet._id}`,{eventId:eventId,ticketId:ticketDet._id,ticket:option.tickets,userId:user._id,orderId:orderId});   //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION 
+  
+    const purchase= await axios.post(`http://localhost:3000/ticket/purchase/${eventId}/${ticketDet._id}`,{eventId:eventId,ticketId:ticketDet._id,ticket:option.tickets,userId:user._id,orderId:orderId},{ headers: {
+      Authorization: `Bearer ${token}`,
+      // Other headers if needed
+    }});   //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION 
     toast.success('Tickets Booked Succesfully ..Please check your registered Email for more details', {
       position: toast.POSITION.TOP_CENTER
     });
    console.log(purchase.data._id)
-    await axios.post("http://localhost:3000/event/sendconfirmation",{userId:user._id,purchaseId:purchase.data._id})
+    await axios.post("http://localhost:3000/event/sendconfirmation",{userId:user._id,purchaseId:purchase.data._id},{ headers: {
+      Authorization: `Bearer ${token}`,
+      // Other headers if needed
+    }})
 
     closeModal(false);
       

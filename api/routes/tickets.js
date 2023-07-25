@@ -23,7 +23,7 @@ router.get("/:id", getTicket);
 
 router.get("/", getTickets);
 
-router.post("/purchase/:eventId/:ticketId", verifyUser, purchaseTicket);
+router.post("/purchase/:eventId/:ticketId", purchaseTicket);
 
 
 

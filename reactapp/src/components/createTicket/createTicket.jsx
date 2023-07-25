@@ -63,6 +63,7 @@ const NewTicket = ({ infoEvent, index }) => {
 
 
             try {
+                const token = localStorage.getItem('token');
                 setIsLoading(true);
                 setIsTicketButtonDisabled(true)
                 toast.success(`Ticket Type ${index + 1} ,Generated Successfully`, {
@@ -76,17 +77,23 @@ const NewTicket = ({ infoEvent, index }) => {
                 //  await axios.post("/event", infoEvent); 
                 setIsLoading(false);  
                 
-                const token = localStorage.getItem('jwtToken');
-                setAuthToken(token);
+                // const token = localStorage.getItem('jwtToken');
+                // setAuthToken(token);
 
-                const response = await axios.post(`http://localhost:3000/ticket/${infoEvent._id}`, newTicket);
+                const response = await axios.post(`http://localhost:3000/ticket/${infoEvent._id}`, newTicket,{ headers: {
+                    Authorization: `Bearer ${token}`,
+                    // Other headers if needed
+                  }});
                 console.log(response.data);
                 console.log(infoEvent._id)
 
-                const token1 = localStorage.getItem('jwtToken');
-                setAuthToken(token1);
+                // const token1 = localStorage.getItem('jwtToken');
+                // setAuthToken(token1);
 
-                await axios.post(`http://localhost:3000/user/event`, { ticketId: response.data._id, userId: user._id, eventId: infoEvent._id });
+                await axios.post(`http://localhost:3000/user/event`, { ticketId: response.data._id, userId: user._id, eventId: infoEvent._id },{ headers: {
+                    Authorization: `Bearer ${token}`,
+                    // Other headers if needed
+                  }});
             } catch (err) {
                 console.log(err);
             }

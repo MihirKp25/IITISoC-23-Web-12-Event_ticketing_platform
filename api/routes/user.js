@@ -10,9 +10,9 @@ router.get("/",verifyMajorAdmin, getUsers);
 
 //router.get("/count" , getUserCount);
 
-router.get("/events/created/:id",verifyUser, viewUserCreatedEvents);
+router.get("/events/created/:id", viewUserCreatedEvents);
 
-router.get("/events/booked/:id",verifyUser, viewUserBookedEvents);
+router.get("/events/booked/:id", viewUserBookedEvents);
 
 router.get("/admin/events/created/:id",verifyMajorAdmin, viewUserCreatedEvents);
 

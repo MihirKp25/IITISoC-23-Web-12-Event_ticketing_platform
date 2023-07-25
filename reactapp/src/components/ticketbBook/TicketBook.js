@@ -14,10 +14,14 @@ const [ticket,setTickets]=useState(0);
 const handleClick=async ()=>{
 
    try {
-      const token = localStorage.getItem('jwtToken');
-      setAuthToken(token);
+      const token = localStorage.getItem('token');
+      // const token = localStorage.getItem('jwtToken');
+      // setAuthToken(token);
 
-         const purchase= await axios.post(`http://localhost:3000/ticket/purchase/${eventId}/${data._id}`,{eventId:eventId,ticketId:data._id,ticket});   //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION
+         const purchase= await axios.post(`http://localhost:3000/ticket/purchase/${eventId}/${data._id}`,{eventId:eventId,ticketId:data._id,ticket},{ headers: {
+            Authorization: `Bearer ${token}`,
+            // Other headers if needed
+          }});   //NOTE TO INCLUDE USER DATEILS HERE AFTER COMPLETION
    }
   catch(err){
      console.log(err);

@@ -39,13 +39,17 @@ export default function TicketInfo({ticket}){
 // console.log(data);
 
 const handleClick=async ()=>{
+  const token = localStorage.getItem('token');
   setIsLoading(true);
   const res=await axios.get(`http://localhost:3000/ticket/${ticket._id}`);
   // console.log(res.data)
   setSale(!res.data.ticketSale)
   // const sale=!data.ticketSale;
   // console.log(sale)
-  const updated=await axios.post(`http://localhost:3000/ticket/ticketsale/${ticket._id}`,{ticketSale:sale});
+  const updated=await axios.post(`http://localhost:3000/ticket/ticketsale/${ticket._id}`,{ticketSale:sale},{ headers: {
+    Authorization: `Bearer ${token}`,
+    // Other headers if needed
+  }});
   console.log(updated.data.ticketSale);
   setSalee(updated.data.ticketSale);
   setIsLoading(false);

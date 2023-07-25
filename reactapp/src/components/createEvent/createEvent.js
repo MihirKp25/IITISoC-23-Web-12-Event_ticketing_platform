@@ -19,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { setAuthToken } from "../../hooks/auth";
+
 import { AuthContext } from "../../hooks/context/AuthContext";
 // import user from "../../../../api/models/user";
 
@@ -74,15 +74,15 @@ const NewEvent = () => {
       time: Yup.string().required("Time is required"),
     }),
 
+   
     onSubmit: async (values) => {
-  //     if(!user.isAdmin){
-  //       toast.error('You are not given access to this Feature ', {
-  //         position: toast.POSITION.TOP_CENTER
-  //       });
+      if(!user.isAdmin){
+        toast.error('You are not given access to this Feature ', {
+          position: toast.POSITION.TOP_CENTER
+        });
       
-  // navigate('/');
-  //     }
-
+  navigate('/');
+      }
       try {
         setIsLoading(true);
         setIsButtonDisabled(true);
@@ -94,7 +94,6 @@ const NewEvent = () => {
             const data = new FormData();
             data.append("file", file);
             data.append("upload_preset", "upload");
-    
             const uploadRes = await axios.post(
               "https://api.cloudinary.com/v1_1/dg7seerl9/image/upload",
               data
@@ -105,21 +104,14 @@ const NewEvent = () => {
             console.log(url);
           })
         );
-
-
-
+        const token = localStorage.getItem('token');
         const newevent = { ...values, photos: list, date: date[0] };
         console.log(newevent);
         setIsLoading(false);
-
-        const token = localStorage.getItem('jwtToken');
-        setAuthToken(token);
-
-        const response = await axios.post("http://localhost:3000/event", newevent ,{headers: {
-    
-          'Access-Control-Allow-Origin': '*', // Allow requests from any origin (update this to restrict if needed)
-        }}
-        );
+        const response = await axios.post("http://localhost:3000/event", newevent,{ headers: {
+          Authorization: `Bearer ${token}`,
+          // Other headers if needed
+        }});
         setResponseValue(response.data);
         console.log(response.data);
         setTicketModal(true);

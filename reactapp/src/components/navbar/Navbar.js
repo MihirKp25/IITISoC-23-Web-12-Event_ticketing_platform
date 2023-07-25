@@ -28,10 +28,13 @@ function Navbar() {
 const fetchDATA=async()=>{
 
       if (user) { try {
-
-        const token = localStorage.getItem('jwtToken');
-                setAuthToken(token);
-        const response = await axios.get(`http://localhost:3000/user/${user._id}`);
+        const token = localStorage.getItem('token');
+        // const token = localStorage.getItem('jwtToken');
+        //         setAuthToken(token);
+        const response = await axios.get(`http://localhost:3000/user/${user._id}`,{ headers: {
+          Authorization: `Bearer ${token}`,
+          // Other headers if needed
+        }});
         const userforimg = response.data;
         setuserImg(userforimg.image);
       } catch (error) {

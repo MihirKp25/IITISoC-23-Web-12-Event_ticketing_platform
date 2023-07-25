@@ -23,8 +23,8 @@ export default function Book() {
   console.log(user)
 
  
-  const token = localStorage.getItem('jwtToken');
-  setAuthToken(token);
+  const token = localStorage.getItem('token');
+  // setAuthToken(token);
   
   const { data, loading, error , reFetch} = useFetch(`http://localhost:3000/user/events/created/${user._id}`);
   console.log(data);
@@ -41,6 +41,7 @@ const handleClick=()=>{
      <>
      <h2 id = "ub1">CREATED EVENTS:</h2>
 <div className="listresults">
+  
 {uniqueData.map((item)=>(
              <SingleEvent details={item}  />
   ))}

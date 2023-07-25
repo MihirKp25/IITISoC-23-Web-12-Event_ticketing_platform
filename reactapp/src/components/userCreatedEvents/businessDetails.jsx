@@ -32,10 +32,13 @@ export default function Business() {
     useEffect(()=>{
   const fetch=async()=>{
             setIsLoading(true)
-
-            const token = localStorage.getItem('jwtToken');
-                setAuthToken(token);
-            const dataa=await axios.get(`http://localhost:3000/user/events/details/booked/${detailsId}`);
+            const token = localStorage.getItem('token');
+            // const token = localStorage.getItem('jwtToken');
+            //     setAuthToken(token);
+            const dataa=await axios.get(`http://localhost:3000/user/events/details/booked/${detailsId}`,{ headers: {
+              Authorization: `Bearer ${token}`,
+              // Other headers if needed
+            }});
             setData(dataa.data);
             console.log(dataa.data);
             setIsLoading(false)

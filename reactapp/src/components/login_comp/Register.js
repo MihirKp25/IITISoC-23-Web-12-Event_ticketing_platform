@@ -48,9 +48,9 @@ const Create = () => {
     onSubmit:async (values) => {
       
       try {
-      /*  toast.success('Registered Succesfully ', {
+        toast.success('Registered Succesfully ', {
           position: toast.POSITION.TOP_CENTER
-        });*/
+        });
         setIsLoading(true);
          
           const response = await axios.post("http://localhost:3000/auth/register", values);

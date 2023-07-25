@@ -13,8 +13,8 @@ export default function PaymentDetails() {
       const id=location.pathname.split('/')[2];
       
       console.log(id)
-      const token = localStorage.getItem('jwtToken');
-      setAuthToken(token);
+      // const token = localStorage.getItem('jwtToken');
+      // setAuthToken(token);
 
       const {data,error,loading}=useFetch(`http://localhost:3000/event/orders/${id}`);
       console.log(data)

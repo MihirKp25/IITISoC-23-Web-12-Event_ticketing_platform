@@ -11,12 +11,11 @@ import './Edit.css';
 import a from '../profilepic.jpg'
 import axios from "axios"
 import useFetch from '../../../hooks/useFetch';
-import { setAuthToken } from '../../../hooks/auth';
-
 
 
 
 export default function Edit() {
+  const [userImg,setuserImg]=useState(null)
    const {user}=useContext(AuthContext);
    const [isInputDisabled, setIsInputDisabled] = useState(true);
    const [isImageSelected, setIsImageSelected] = useState(false);
@@ -27,32 +26,79 @@ const navigate =useHistory();
 const userforimg=useFetch(`http://localhost:3000/user/${user._id}`)
 
 useEffect(() => {
+  const fetchDATA=async()=>{
+  
+    if (user) { try {
+      const token = localStorage.getItem('token');
+      // const token = localStorage.getItem('jwtToken');
+      //         setAuthToken(token);
+      const response = await axios.get(`http://localhost:3000/user/${user._id}`,{ headers: {
+        Authorization: `Bearer ${token}`,
+        // Other headers if needed
+      }});
+      const userforimg = response.data;
+      setuserImg(userforimg.image);
+    } catch (error) {
+      // Handle any error that occurs during the request
+      console.error(error);
+    }
+  }
+}
+fetchDATA();
+    // Handle the fetched data here
+    // This effect will run when the user object changes
+    // or when the fetch request is completed
+  
   fetchUserProfile();
   // reFetch();
 }, []);
 
 const fetchUserProfile = async () => {
-  try {
-
-   const token = localStorage.getItem('jwtToken');
-    setAuthToken(token);
-    const response = await axios.get(`http://localhost:3000/user/${user._id}`, {
-      headers: {
-        'Cache-Control': 'no-cache',
-      },
-    });
+  try {  const token = localStorage.getItem('token');
+    const response = await axios.get(`http://localhost:3000/user/${user._id}` ,{ headers: {
+      Authorization: `Bearer ${token}`,
+      // Other headers if needed
+    }});
     setInfo(response.data);
   } catch (error) {
     console.log('Error fetching user profile:', error);
   }
 };
 
+
+
+
+useEffect( () => {
+
+  const fetchDATA=async()=>{
+  
+        if (user) { try {
+          const token = localStorage.getItem('token');
+          // const token = localStorage.getItem('jwtToken');
+          //         setAuthToken(token);
+          const response = await axios.get(`http://localhost:3000/user/${user._id}`,{ headers: {
+            Authorization: `Bearer ${token}`,
+            // Other headers if needed
+          }});
+          const userforimg = response.data;
+          setuserImg(userforimg.image);
+        } catch (error) {
+          // Handle any error that occurs during the request
+          console.error(error);
+        }
+      }
+    }
+    fetchDATA();
+        // Handle the fetched data here
+        // This effect will run when the user object changes
+        // or when the fetch request is completed
+      
+      });
+  
+
 const handleChange = (e) => {
   setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 };
-
-
-
 
 const SubmitImage = async(e) => {
   e.preventDefault();
@@ -60,30 +106,21 @@ const SubmitImage = async(e) => {
   data.append("file", file);
   data.append("upload_preset", "upload");
  try{ 
-
    const uploadRes = await axios.post(
-     "https://api.cloudinary.com/v1_1/dg7seerl9/image/upload",data, );
-     
+     "https://api.cloudinary.com/v1_1/dg7seerl9/image/upload", data);
+
    const { url } = uploadRes.data;
    console.log(url);
-
-// try {
- 
-//   if (!file) {
-//     console.error('No image selected.');
-//     return;
-//   }
-
-//   const uploadResult = await cloudinaryInstance.uploader.upload(file);
-//   console.log('Image uploaded:', uploadResult.secure_url);
-//   // Do something with the uploaded image URL, such as saving it in your database or displaying it on the page.
-
    
    const updatedUser = {
     image:url,
  };
+ const token = localStorage.getItem('token');
   //console.log(updatedUser);
- const result= await axios.put(`http://localhost:3000/user/${user._id}`, updatedUser);
+ const result= await axios.put(`http://localhost:3000/user/${user._id}`, updatedUser,{ headers: {
+  Authorization: `Bearer ${token}`,
+  // Other headers if needed
+}});
 
   setIsImageSelected(!isImageSelected);
  console.log(result);
@@ -99,10 +136,12 @@ const handleSubmitButton = async (e) => {
        e.preventDefault();
     
       try{
-        const token = localStorage.getItem('jwtToken');
-        setAuthToken(token);
-     
-      const result= await axios.put(`http://localhost:3000/user/${user._id}`, info);
+       
+        const token = localStorage.getItem('token');
+      const result= await axios.put(`http://localhost:3000/user/${user._id}`, info,{ headers: {
+        Authorization: `Bearer ${token}`,
+        // Other headers if needed
+      }});
 
      await fetchUserProfile();
       setIsInputDisabled(!isInputDisabled);
@@ -119,7 +158,7 @@ const handleSubmitButton = async (e) => {
     
         <div className=''><div className="b1b">Account Details</div><br/>
             <div className="asdfg" style={{textAlign:'center'}}>
-                 <img src={userforimg.data?.image || a}  style={{width:"200px", height:"270px"}}  alt="" className="ai" /><br/>
+                 <img src={userImg || a}  style={{width:"200px", height:"270px"}}  alt="" className="ai" /><br/>
                  <br/>
                  {/* <button className='openModalBtn' id = "b5b" >tap to change</button> */}
                  
