@@ -105,7 +105,13 @@
 
 
   
- 
+ .unit{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+ }
   #pd1{
     padding-top: 50px;
     font-size: 50px;
@@ -114,14 +120,14 @@
     
     text-align: center;
     justify-content: center;
-    color: rgb(114, 12, 114);
+    color: rgb(0, 0, 0);
   }
   .ticket{
     text-align: left;
     justify-content: left;
    
     margin-top: 20px;
-  color:purple;
+  color:rgb(0, 0, 0);
   }
   
   .ticket>h3{
@@ -206,10 +212,8 @@
   }
 .responsiveTable{
   margin-top: 60px;
-  margin-left: 60px;
-  margin-left: 160px;
   
-  background-color:rgb(154, 11, 154) ;
+  background-color:rgb(255, 255, 255) ;
   color: white;
   
 }
@@ -219,5 +223,5 @@
 }
 #pd6{
   border: solid;
-  border-color: rgb(69, 7, 69);
+  border-color: rgb(0, 0, 0);
 }

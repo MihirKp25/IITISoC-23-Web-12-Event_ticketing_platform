@@ -67,7 +67,7 @@ export default function Home() {
       <ToastContainer/>
       <div className="contone">
         <div className="contonecont">
-          <span className='lonetit' > <b> {user && "Hi "+user.firstname}</b><br/><b>Have any <span style={{ color: "red" }}>weekend plans?</span></b></span><br /><br /><br/>
+          <span className='lonetit' > <b> {user && "Hi, "+user.firstname}</b><br/><b>Have any <span style={{ color: "red" }}>weekend plans?</span></b></span><br /><br /><br/>
           <div className="lonecontent" >Looking for something to do lately? Whether you're a local, new in town or just cruising through we've got loads of great tips and events-from thrilling concerts to thought-provoking conferences, we have a wide variety of experiences for you to choose from.You can explore by location, popularity, free stuff... you got this. Ready?</div><br /><br />
           
           <div className="input-group" id = "#searchbox" >
@@ -87,7 +87,7 @@ export default function Home() {
        {/* UPCOMING EVENTS */}
 <br/>
         <div className='findnewevents'><FontAwesomeIcon icon={faMapLocationDot} style={{ paddingTop: '70px', fontSize: '3em', paddingLeft: '137px', paddingRight: '30px' }} />
-        <span className='idli'>FIND NEW UPCOMING EVENTS!</span><br /><span className="imlimli">Step out or stay in. Make a plan. Have a look at a few locations. </span>
+        <span className='idli'>SUCCESFULLY HOSTED EVENTS IN <span style = {{color:'light blue'}}>THESE COUNTRIES</span>:</span><br /><span className="imlimli">Step out or stay in. Make a plan. Have a look at a few locations. </span>
         </div>
         <Upcoming/>  
 

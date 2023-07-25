@@ -158,7 +158,7 @@ module.exports.countByCountry= async (req,res,next)=>{
      try {
         const countries=req.query.country.split(",")
         const list =await Promise.all(countries.map(country=>{
-             return Event.countDocuments({country:country});
+             return Event.countDocuments({country:{ $regex: new RegExp(`^${country}$`, 'i')}});
         }));
         console.log(list);
         res.status(200).json(list);

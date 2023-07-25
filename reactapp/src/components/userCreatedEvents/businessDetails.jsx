@@ -27,6 +27,7 @@ export default function Business() {
 
   // const { data, loading, error, reFetch } = useFetch(`http://localhost:3000/user/events/details/booked/${detailsId}`);
   // console.log(data);
+  const { data:organizer } = useFetch(`http://localhost:3000/event/organizer/${detailsId}`);
 
     useEffect(()=>{
   const fetch=async()=>{
@@ -98,15 +99,19 @@ fetch();
             <p>Event Type: {data.type}</p>
             <p>Event Description: {data.desc}</p>
             <p>Event Duration:{startDate} to {endDate}</p>
+            <p>{organizer.firstname} {organizer.lastname}</p>
+            <p>{organizer.email} </p>
+            <p>{organizer.contactNo} </p>
             </span>
           </div>
 
         </div>
+        <div className="eventtitle"><b>Ticket Details</b></div>
         <div className="eventbrief" id = "bd3">
-          <div className="eventtitle"><b>Ticket Details</b></div>
+          
         {data.tickettitle?.map(ticket=>(<TicketInfo ticket={ticket}/>))}
         </div>
-        {/* {openModal && <Modal closeModal={setopenModal} eventId={id} />} */}
+       
 
       </div>
 

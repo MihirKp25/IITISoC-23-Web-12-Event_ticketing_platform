@@ -57,15 +57,17 @@ return (<>
       ) : (<>
 <div className='ticketbox'>
           <span className="eventtitle" style={{fontSize:'37px', fontWeight:'1000', color:'rgb(233, 231, 229)'}}><b>{ticket.name}</b></span><br/><br/>
-  <h3>Ticket Sale<b>{salee ? "SALE ON" :"SALE OFF"}</b></h3>  
+  <h3>Ticket Sale: <b style={{color:'red'}}>{salee ? "SALE ON" :"SALE OFF"}</b></h3>  
   {/* <h3> joo{ticket.ticketSale}</h3>     */}
 <p>Price : {ticket.price}</p>
 <p>Remaing TIckets : {ticket.totalTickets}</p>
 <p>Ticket Type :{ticket.type}</p>
 <p>Ticket Desc :{ticket.desc}</p>
 <p>Ticket Sale starts :{startDate} ends : {endDate}</p> 
-       <button>Add Tickets</button>
-       <button onClick={handleClick}>Stop/Resume Ticket Sale</button>
+<div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+       <button id = "td1">Add Tickets</button>
+       <button id ="td1"onClick={handleClick}>Stop/Resume Ticket Sale</button>
+</div>       
         </div>
       </>)}
 

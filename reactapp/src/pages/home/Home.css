@@ -2,6 +2,8 @@ html {
   scroll-behavior: smooth;
 }
 .home{
+    font-family: 'Montserrat', sans-serif;
+
   background-color: black;
 }
 
@@ -27,6 +29,7 @@ html {
   transform: skew(1.1, 1.1);
 }
 .lonetit{
+  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
   font-size: 65px;
 }
@@ -127,6 +130,7 @@ font-family: 'Poppins', sans-serif;
   background-color: rgb(45,45,45);
 }
 .cthrevecou{
+  padding-top: 10px;
   font-size:11px; color:gray
 }
 .countryname{
@@ -356,6 +360,8 @@ font-family: 'Poppins', sans-serif;
 }
 
 .ltwotit{
+  font-family: 'Montserrat', sans-serif;
+
   color: white;
   font-size: 65px;
 }  

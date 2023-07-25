@@ -27,8 +27,12 @@ html{
     padding: 20px;
   }
   .eventinfoimg{
+    height: 580px;
    width: 820px;
     border-radius: 15px;
+  }
+  #event1{
+    height: 600px;
   }
   .eventtitle{
     text-align:center; margin-top:20px; font-size:35px;

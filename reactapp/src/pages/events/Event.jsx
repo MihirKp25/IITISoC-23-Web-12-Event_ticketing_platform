@@ -112,8 +112,10 @@ console.log(data.date?.endDate)
       <Navbar />
       <ToastContainer/>
       <div className="eventcontainer" >
+
         <div className="eventinfo">
-        <img src={image} alt="Unable to load image, Please hover over Gallery" className="eventinfoimg" id = "e9e"/>
+          <div id = "event1">
+        <img src={image} alt="Unable to load image, Please hover over Gallery" className="eventinfoimg" id = "e9e"/></div>
           <div className="aboutevent">
             <div className="eventtitle" ><b>{data.name}</b></div><br />
             {/* <div className="eventorganiser" ><b>BY:</b> <>NEED TO BE PASSED</></div><br/><br/><br/> */}

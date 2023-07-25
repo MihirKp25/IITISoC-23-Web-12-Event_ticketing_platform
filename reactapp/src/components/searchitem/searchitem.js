@@ -26,7 +26,7 @@ const endDate = dateEnd.toLocaleDateString('en-US',{
               <img src={item.photos[0] || "http://res.cloudinary.com/dg7seerl9/image/upload/v1689512962/upload/ogw0ec9vuandxuasonsw.png"} className="searchitemimg cardimg" alt="..."  />
 
               <div class="card-body">
-                <h5 class="card-title"><b>{item.name}</b></h5>
+                <h5 class="card-title"><div style={{display:"flex", alignItems:'center', justifyContent:'center', fontSize:'30px'}}><b>{item.name}</b></div></h5>
                 {/* <p class="card-title">{item.desc}</p> */}
                 <p class="card-title"><b>Type</b> : {item.type}</p>
                 < p class="card-title"><b> Scheduled on</b>: {startDate} - {endDate}</p>
