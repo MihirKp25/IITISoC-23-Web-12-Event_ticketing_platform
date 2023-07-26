@@ -34,3 +34,8 @@
       background-color:'#d1410c'
 }
 
+@media(max-width:1000px){
+    .loglogo{
+        width: 10rem;
+    }
+}

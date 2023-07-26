@@ -91,7 +91,7 @@ const Create = () => {
       <div className="flex">
         <div className="left"></div>
         <div className="create">
-          <img src={logo} alt="" style={{ width: '200px' }} className="loglogo" />
+          <img src={logo} alt=""  className="loglogo" />
           <h2 style={{ fontSize: '48px', fontWeight: '1000' }}><b>Register</b></h2>
           <div>
             <input

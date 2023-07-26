@@ -166,22 +166,22 @@ const currentDateString = currentDate.toISOString();
          
         <span className="details"><b>Details:</b><small>  {ticketDet.totalTickets} Tickets Remaining</small></span><br/>
           <FontAwesomeIcon style={{color:"red"}}icon = {faBookmark}></FontAwesomeIcon>
-          <span className="modalchildtitle"><b> NAME:</b></span>
+          <span className="modalchildtitle"><b style = {{fontWeight:'900', color:'gray'}}> NAME:</b></span>
             <span className="childinfo" id = "mo2">&ensp;{ticketDet?.name}</span><br/>
           <FontAwesomeIcon style={{color:"green"}}icon = {faLocationDot}></FontAwesomeIcon>
-          <span className="modalchildtitle"><b> CATEGORY:</b></span>
+          <span className="modalchildtitle"><b style = {{fontWeight:'900', color:'gray'}}> CATEGORY:</b></span>
             <span className="childinfo" id = "mo2">&ensp;{ticketDet?.type}</span><br/>
             <FontAwesomeIcon style={{color:"blue"}}icon = {faLanguage}></FontAwesomeIcon>
-          <span className="modalchildtitle"><b> DESCRIPTION:</b></span>
+          <span className="modalchildtitle"><b style = {{fontWeight:'900', color:'gray'}}> DESCRIPTION:</b></span>
             <span className="childinfo" id = "mo2">&ensp;{ticketDet?.desc}</span><br/>
           <FontAwesomeIcon style={{color:"yellow"}}icon = {faClock}></FontAwesomeIcon>
-          <span className="modalchildtitle"><b> PRICE <small>per Ticket</small> :</b></span>
+          <span className="modalchildtitle"><b style = {{fontWeight:'900', color:'gray'}}> PRICE <small>per Ticket</small> :</b></span>
             <span className="childinfo" id = "mo2">&ensp;<b> $ {ticketDet?.price}</b></span><br/>
           <FontAwesomeIcon style={{color:"black"}}icon = {faPeopleArrows}></FontAwesomeIcon>
-          <span className="modalchildtitle"><b> TICKET SALE ENDS:</b></span>
+          <span className="modalchildtitle"><b style = {{fontWeight:'900', color:'gray'}}> TICKET SALE ENDS:</b></span>
             <span className="childinfo" od = "mo2">&ensp;{startDate} - {endDate}</span><br/><br/>
           <FontAwesomeIcon icon = {faTags}></FontAwesomeIcon>
-          <span className="modalchildtitle"><b>SELECT NUMBER OF TICKETS:</b></span>
+          <span className="modalchildtitle"><b style = {{fontWeight:'900', color:'gray'}}>SELECT NUMBER OF TICKETS:</b></span>
           
             
         </span>

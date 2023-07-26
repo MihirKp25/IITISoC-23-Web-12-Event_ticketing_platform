@@ -158,13 +158,13 @@ return (<div>
             setTicketIndex(e.target.selectedIndex)
           }}>
             {data.tickettitle?.map((ticket) => (
-              <option key={ticket.id} className="inputoption" value={ticket.price} onClick={(e)=>{setTicket(ticket)}} >{ticket.price}</option>
+              <option key={ticket.id} className="inputoption" value={ticket.price} onClick={(e)=>{setTicket(ticket)}} >{ticket.name}</option>
             ))}
           </select>
           { currentDateString<data.date?.endDate ? <>
           <h1 >
            <b id = "k1k"style={{color:"#fd5f5f"}}>Bookings Open</b> </h1>
-          <button className="openModalBtn" id= "kaka" onClick={handleClick} >BOOK NOW!</button></> : <h1 > <b style={{color:"#fd5f5f"}}>Event Expired</b> </h1>
+          <button className="openModalBtn" id= "kaka" onClick={handleClick} >BOOK NOW!</button></> : <h1 > <b id = "even1">Event Expired</b> </h1>
           }
         </div>
      

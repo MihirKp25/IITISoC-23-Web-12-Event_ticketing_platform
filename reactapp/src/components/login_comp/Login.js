@@ -83,8 +83,8 @@ const Create = () => {
           <div className="flex">
             <div className="left"></div>
             <div className="create">
-              <img src={logo} alt="" style={{ width: '200px' }} className="loglogo" />
-              <h2 style={{ fontSize: '48px', fontWeight: '1000' }}><b>Log in</b></h2>
+              <img src={logo} alt="" className="loglogo" />
+              <h2 id = "log1"><b>Log in</b></h2>
 
               <input
                 className='entry'
@@ -100,12 +100,12 @@ const Create = () => {
               />
               <br /><br />
 
-              <button style={{ color: 'white', fontWeight: '200', fontFamily: 'Montserrat, sans-serif', padding: '13px 38px 13px 7px', width: '250px', border: 'none', borderRadius: '4px', backgroundColor: '#d1410c', cursor: 'pointer', textDecoration: 'none' }} className="logregbtn"><a href="/" style={{ textDecoration: "none", color: 'white' }} onClick={handleClick}><span style={{ textDecoration: "none" }}>Login </span></a></button>
+              <button className="logregbtn"><a href="/" style={{ textDecoration: "none", color: 'white' }} onClick={handleClick}><span style={{ textDecoration: "none" }}>Login </span></a></button>
 
 
               <br />
               <hr style={{ width: '237px' }} />
-              <span style={{ fontSize: '13px' }}>Don't have an account? <span style={{ cursor: 'pointer', color: '#d1410c' }}><a href="/Register" style={{ textDecoration: 'none', color: '#d1410c' }}>Sign up!</a></span></span>
+              <span id = "log2">Don't have an account? <span style={{ cursor: 'pointer', color: '#d1410c' }}><a href="/Register" style={{ textDecoration: 'none', color: '#d1410c' }}>Sign up!</a></span></span>
             </div>
           </div>
         </>
