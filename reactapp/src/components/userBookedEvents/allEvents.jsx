@@ -38,7 +38,7 @@ const handleClick=()=>{
      
     <div>
       <Navbar />
-     <>
+     <div id = "aeaea1">
 
      <h2 id = "ub1">BOOKED EVENTS:</h2>
       
@@ -58,7 +58,7 @@ const handleClick=()=>{
 
 </div> 
 
-</>
+</div>
 </div>
   )
 }

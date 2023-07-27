@@ -69,7 +69,7 @@ function Model({ closemodel, ticketinfo }) {
         </span><br/>
         <FontAwesomeIcon icon={faMoneyBills} id = "m8m"style={{color:'green'}}></FontAwesomeIcon>&ensp;
         <span className="childinf">&ensp;
-        <>Total amount paid: </>$ {ticketinfo.quantity * ticketinfo.ticketId.price}
+        <>Total amount paid: </>Rs. {ticketinfo.quantity * ticketinfo.ticketId.price}
         </span><br/><br />
         <span className="childinf">&ensp;
         <p>OrderId : <b>{ticketinfo.orderDetail.razorpay.orderId}</b><p>PaymentId : <b>{ticketinfo.orderDetail.razorpay.paymentId}</b></p></p>

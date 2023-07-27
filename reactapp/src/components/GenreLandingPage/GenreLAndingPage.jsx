@@ -6,7 +6,7 @@ export default function Genre() {
 
   return (
     <div className="genrecontainer">
-      <a  style={{textDecoration:"none"}}  href='/event/genre/Music'> <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faUserGraduate} /><br />
+      <a  style={{textDecoration:"none"}}  href='/event/genre/Music'> <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faMusic} /><br />
         <EventCard type="Music" />
       </div></a>
       <a   style={{textDecoration:"none"}} href='/event/genre/Sports'> <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faFootball} /><br />
@@ -21,7 +21,7 @@ export default function Genre() {
       <a  style={{textDecoration:"none"}} href='/event/genre/Festival'> <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faMusic} /><br />
         <EventCard type="Festival" />
       </div></a>
-      <a  style={{textDecoration:"none"}} href='/event/genre/Gaming'> <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faChildren} /><br />
+      <a  style={{textDecoration:"none"}} href='/event/genre/Gaming'> <div className="genrebox"><FontAwesomeIcon className='genreicon' icon={faGamepad} /><br />
         <EventCard type="Gaming" />
       </div></a>
     </div>

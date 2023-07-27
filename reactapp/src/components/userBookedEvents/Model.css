@@ -97,19 +97,24 @@ html{
   margin-left: 0px;
 }
 .eventbrie{
-  height: 113rem;
-  width: 60rem;
+  height: 171rem;
+  width: 90rem;
 }
 #m2{
-  font-size: 5rem;
+  font-size: 8rem;
 }
 .m3{
-  font-size: 4rem;
+  font-size: 5rem;
 }
 .childinf{
-  font-size: 40px;
+  font-size: 66px;
 }
 #m8m{
   font-size: 5rem;
 }
+/* .openModalBt{
+  width: 3rem;
+  height: 3rem;
+  font-size: 3rem;
+} */
 }  

@@ -71,7 +71,7 @@ export default function Home() {
           <div className="lonecontent" >Looking for something to do lately? Whether you're a local, new in town or just cruising through we've got loads of great tips and events-from thrilling concerts to thought-provoking conferences, we have a wide variety of experiences for you to choose from.You can explore by location, popularity, free stuff... you got this. Ready?</div><br /><br />
           
           <div className="input-group" id = "#searchbox" >
-          <input type="text" name="text" className="input" id="Email"  placeholder="search by location, date or timing!" onChange={(evt)=>{setCity(evt.target.value)}}/>
+          <input type="text" name="text" className="input" id="Email"  placeholder="search by location!" onChange={(evt)=>{setCity(evt.target.value)}}/>
           <button className="button--submit"onClick={onSearch} >SEARCH</button>
         </div>
         </div>

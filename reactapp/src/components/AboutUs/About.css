@@ -144,13 +144,14 @@
 @media(max-width:1000px){
   #ab1{
     height: 206rem;
-    width: 110rem;
+    width: 96rem;
   }
   #ab2{
     padding-top: 28rem;
     width: 70rem;
   }
   .imim{
+    text-align: center;
     font-size: 6rem;
   }
   #ab14{

@@ -137,6 +137,9 @@ text-align: center;
 } 
 
 @media(max-width:1000px){
+  #aeaea1{
+    width: 80rem;
+  }
 #ub1{
   font-weight: 900;
   font-size: 6rem;
