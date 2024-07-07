@@ -1,4 +1,4 @@
-
+Deployed website:https://iitisoc-event-vibe.vercel.app
 ## Introduction
 
 Welcome to the Event Ticketing Website EVENTVIBE ! This project is a full-stack web application built using the MERN (MongoDB, Express, React, Node.js) stack. The purpose of this website is to provide a user-friendly platform for users to browse and purchase event tickets online. Event organizers can also use this platform to create and manage their events.
